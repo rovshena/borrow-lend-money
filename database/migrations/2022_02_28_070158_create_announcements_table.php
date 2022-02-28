@@ -18,8 +18,8 @@ class CreateAnnouncementsTable extends Migration
             $table->foreignId('user_id')->nullable()->index()->constrained();
             $table->foreignId('country_id')->constrained();
             $table->foreignId('state_id')->constrained();
-            $table->string('title');
-            $table->text('content')->nullable();
+            $table->string('title')->fulltext();
+            $table->text('content')->nullable()->fulltext();
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
@@ -27,8 +27,6 @@ class CreateAnnouncementsTable extends Migration
             $table->unsignedTinyInteger('is_vip')->default(0)->nullable();
             $table->unsignedTinyInteger('type');
             $table->timestamps();
-
-            $table->fullText(['title', 'content']);
         });
     }
 
