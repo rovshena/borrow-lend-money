@@ -1,0 +1,1814 @@
+[
+ {
+  "id": 1,
+  "name": "Aragatsotn Region",
+  "country_id": 1,
+  "state_code": "AG"
+ },
+ {
+  "id": 2,
+  "name": "Ararat Province",
+  "country_id": 1,
+  "state_code": "AR"
+ },
+ {
+  "id": 3,
+  "name": "Armavir Region",
+  "country_id": 1,
+  "state_code": "AV"
+ },
+ {
+  "id": 4,
+  "name": "Gegharkunik Province",
+  "country_id": 1,
+  "state_code": "GR"
+ },
+ {
+  "id": 5,
+  "name": "Kotayk Region",
+  "country_id": 1,
+  "state_code": "KT"
+ },
+ {
+  "id": 6,
+  "name": "Lori Region",
+  "country_id": 1,
+  "state_code": "LO"
+ },
+ {
+  "id": 7,
+  "name": "Shirak Region",
+  "country_id": 1,
+  "state_code": "SH"
+ },
+ {
+  "id": 8,
+  "name": "Syunik Province",
+  "country_id": 1,
+  "state_code": "SU"
+ },
+ {
+  "id": 9,
+  "name": "Tavush Region",
+  "country_id": 1,
+  "state_code": "TV"
+ },
+ {
+  "id": 10,
+  "name": "Vayots Dzor Region",
+  "country_id": 1,
+  "state_code": "VD"
+ },
+ {
+  "id": 11,
+  "name": "Yerevan",
+  "country_id": 1,
+  "state_code": "ER"
+ },
+ {
+  "id": 12,
+  "name": "Absheron District",
+  "country_id": 2,
+  "state_code": "ABS"
+ },
+ {
+  "id": 13,
+  "name": "Agdam District",
+  "country_id": 2,
+  "state_code": "AGM"
+ },
+ {
+  "id": 14,
+  "name": "Agdash District",
+  "country_id": 2,
+  "state_code": "AGS"
+ },
+ {
+  "id": 15,
+  "name": "Aghjabadi District",
+  "country_id": 2,
+  "state_code": "AGC"
+ },
+ {
+  "id": 16,
+  "name": "Agstafa District",
+  "country_id": 2,
+  "state_code": "AGA"
+ },
+ {
+  "id": 17,
+  "name": "Agsu District",
+  "country_id": 2,
+  "state_code": "AGU"
+ },
+ {
+  "id": 18,
+  "name": "Astara District",
+  "country_id": 2,
+  "state_code": "AST"
+ },
+ {
+  "id": 19,
+  "name": "Babek District",
+  "country_id": 2,
+  "state_code": "BAB"
+ },
+ {
+  "id": 20,
+  "name": "Baku",
+  "country_id": 2,
+  "state_code": "BA"
+ },
+ {
+  "id": 21,
+  "name": "Balakan District",
+  "country_id": 2,
+  "state_code": "BAL"
+ },
+ {
+  "id": 22,
+  "name": "Barda District",
+  "country_id": 2,
+  "state_code": "BAR"
+ },
+ {
+  "id": 23,
+  "name": "Beylagan District",
+  "country_id": 2,
+  "state_code": "BEY"
+ },
+ {
+  "id": 24,
+  "name": "Bilasuvar District",
+  "country_id": 2,
+  "state_code": "BIL"
+ },
+ {
+  "id": 25,
+  "name": "Dashkasan District",
+  "country_id": 2,
+  "state_code": "DAS"
+ },
+ {
+  "id": 26,
+  "name": "Fizuli District",
+  "country_id": 2,
+  "state_code": "FUZ"
+ },
+ {
+  "id": 27,
+  "name": "Ganja",
+  "country_id": 2,
+  "state_code": "GA"
+ },
+ {
+  "id": 28,
+  "name": "Gədəbəy",
+  "country_id": 2,
+  "state_code": "GAD"
+ },
+ {
+  "id": 29,
+  "name": "Gobustan District",
+  "country_id": 2,
+  "state_code": "QOB"
+ },
+ {
+  "id": 30,
+  "name": "Goranboy District",
+  "country_id": 2,
+  "state_code": "GOR"
+ },
+ {
+  "id": 31,
+  "name": "Goychay",
+  "country_id": 2,
+  "state_code": "GOY"
+ },
+ {
+  "id": 32,
+  "name": "Goygol District",
+  "country_id": 2,
+  "state_code": "GYG"
+ },
+ {
+  "id": 33,
+  "name": "Hajigabul District",
+  "country_id": 2,
+  "state_code": "HAC"
+ },
+ {
+  "id": 34,
+  "name": "Imishli District",
+  "country_id": 2,
+  "state_code": "IMI"
+ },
+ {
+  "id": 35,
+  "name": "Ismailli District",
+  "country_id": 2,
+  "state_code": "ISM"
+ },
+ {
+  "id": 36,
+  "name": "Jabrayil District",
+  "country_id": 2,
+  "state_code": "CAB"
+ },
+ {
+  "id": 37,
+  "name": "Jalilabad District",
+  "country_id": 2,
+  "state_code": "CAL"
+ },
+ {
+  "id": 38,
+  "name": "Julfa District",
+  "country_id": 2,
+  "state_code": "CUL"
+ },
+ {
+  "id": 39,
+  "name": "Kalbajar District",
+  "country_id": 2,
+  "state_code": "KAL"
+ },
+ {
+  "id": 40,
+  "name": "Kangarli District",
+  "country_id": 2,
+  "state_code": "KAN"
+ },
+ {
+  "id": 41,
+  "name": "Khachmaz District",
+  "country_id": 2,
+  "state_code": "XAC"
+ },
+ {
+  "id": 42,
+  "name": "Khizi District",
+  "country_id": 2,
+  "state_code": "XIZ"
+ },
+ {
+  "id": 43,
+  "name": "Khojali District",
+  "country_id": 2,
+  "state_code": "XCI"
+ },
+ {
+  "id": 44,
+  "name": "Kurdamir District",
+  "country_id": 2,
+  "state_code": "KUR"
+ },
+ {
+  "id": 45,
+  "name": "Lachin District",
+  "country_id": 2,
+  "state_code": "LAC"
+ },
+ {
+  "id": 46,
+  "name": "Lankaran",
+  "country_id": 2,
+  "state_code": "LAN"
+ },
+ {
+  "id": 47,
+  "name": "Lankaran District",
+  "country_id": 2,
+  "state_code": "LA"
+ },
+ {
+  "id": 48,
+  "name": "Lerik District",
+  "country_id": 2,
+  "state_code": "LER"
+ },
+ {
+  "id": 49,
+  "name": "Martuni",
+  "country_id": 2,
+  "state_code": "XVD"
+ },
+ {
+  "id": 50,
+  "name": "Masally District",
+  "country_id": 2,
+  "state_code": "MAS"
+ },
+ {
+  "id": 51,
+  "name": "Mingachevir",
+  "country_id": 2,
+  "state_code": "MI"
+ },
+ {
+  "id": 52,
+  "name": "Nakhchivan Autonomous Republic",
+  "country_id": 2,
+  "state_code": "NX"
+ },
+ {
+  "id": 53,
+  "name": "Neftchala District",
+  "country_id": 2,
+  "state_code": "NEF"
+ },
+ {
+  "id": 54,
+  "name": "Oghuz District",
+  "country_id": 2,
+  "state_code": "OGU"
+ },
+ {
+  "id": 55,
+  "name": "Ordubad District",
+  "country_id": 2,
+  "state_code": "ORD"
+ },
+ {
+  "id": 56,
+  "name": "Qabala District",
+  "country_id": 2,
+  "state_code": "QAB"
+ },
+ {
+  "id": 57,
+  "name": "Qakh District",
+  "country_id": 2,
+  "state_code": "QAX"
+ },
+ {
+  "id": 58,
+  "name": "Qazakh District",
+  "country_id": 2,
+  "state_code": "QAZ"
+ },
+ {
+  "id": 59,
+  "name": "Quba District",
+  "country_id": 2,
+  "state_code": "QBA"
+ },
+ {
+  "id": 60,
+  "name": "Qubadli District",
+  "country_id": 2,
+  "state_code": "QBI"
+ },
+ {
+  "id": 61,
+  "name": "Qusar District",
+  "country_id": 2,
+  "state_code": "QUS"
+ },
+ {
+  "id": 62,
+  "name": "Saatly District",
+  "country_id": 2,
+  "state_code": "SAT"
+ },
+ {
+  "id": 63,
+  "name": "Sabirabad District",
+  "country_id": 2,
+  "state_code": "SAB"
+ },
+ {
+  "id": 64,
+  "name": "Sadarak District",
+  "country_id": 2,
+  "state_code": "SAD"
+ },
+ {
+  "id": 65,
+  "name": "Salyan District",
+  "country_id": 2,
+  "state_code": "SAL"
+ },
+ {
+  "id": 66,
+  "name": "Samukh District",
+  "country_id": 2,
+  "state_code": "SMX"
+ },
+ {
+  "id": 67,
+  "name": "Shabran District",
+  "country_id": 2,
+  "state_code": "SBN"
+ },
+ {
+  "id": 68,
+  "name": "Shahbuz District",
+  "country_id": 2,
+  "state_code": "SAH"
+ },
+ {
+  "id": 69,
+  "name": "Shaki",
+  "country_id": 2,
+  "state_code": "SA"
+ },
+ {
+  "id": 70,
+  "name": "Shaki District",
+  "country_id": 2,
+  "state_code": "SAK"
+ },
+ {
+  "id": 71,
+  "name": "Shamakhi District",
+  "country_id": 2,
+  "state_code": "SMI"
+ },
+ {
+  "id": 72,
+  "name": "Shamkir District",
+  "country_id": 2,
+  "state_code": "SKR"
+ },
+ {
+  "id": 73,
+  "name": "Sharur District",
+  "country_id": 2,
+  "state_code": "SAR"
+ },
+ {
+  "id": 74,
+  "name": "Shirvan",
+  "country_id": 2,
+  "state_code": "SR"
+ },
+ {
+  "id": 75,
+  "name": "Shusha District",
+  "country_id": 2,
+  "state_code": "SUS"
+ },
+ {
+  "id": 76,
+  "name": "Siazan District",
+  "country_id": 2,
+  "state_code": "SIY"
+ },
+ {
+  "id": 77,
+  "name": "Sumqayit",
+  "country_id": 2,
+  "state_code": "SM"
+ },
+ {
+  "id": 78,
+  "name": "Tartar District",
+  "country_id": 2,
+  "state_code": "TAR"
+ },
+ {
+  "id": 79,
+  "name": "Tovuz District",
+  "country_id": 2,
+  "state_code": "TOV"
+ },
+ {
+  "id": 80,
+  "name": "Ujar District",
+  "country_id": 2,
+  "state_code": "UCA"
+ },
+ {
+  "id": 81,
+  "name": "Yardymli District",
+  "country_id": 2,
+  "state_code": "YAR"
+ },
+ {
+  "id": 82,
+  "name": "Yevlakh",
+  "country_id": 2,
+  "state_code": "YE"
+ },
+ {
+  "id": 83,
+  "name": "Yevlakh District",
+  "country_id": 2,
+  "state_code": "YEV"
+ },
+ {
+  "id": 84,
+  "name": "Zangilan District",
+  "country_id": 2,
+  "state_code": "ZAN"
+ },
+ {
+  "id": 85,
+  "name": "Zaqatala District",
+  "country_id": 2,
+  "state_code": "ZAQ"
+ },
+ {
+  "id": 86,
+  "name": "Zardab District",
+  "country_id": 2,
+  "state_code": "ZAR"
+ },
+ {
+  "id": 87,
+  "name": "Brest Region",
+  "country_id": 3,
+  "state_code": "BR"
+ },
+ {
+  "id": 88,
+  "name": "Gomel Region",
+  "country_id": 3,
+  "state_code": "HO"
+ },
+ {
+  "id": 89,
+  "name": "Grodno Region",
+  "country_id": 3,
+  "state_code": "HR"
+ },
+ {
+  "id": 90,
+  "name": "Minsk",
+  "country_id": 3,
+  "state_code": "HM"
+ },
+ {
+  "id": 91,
+  "name": "Minsk Region",
+  "country_id": 3,
+  "state_code": "MI"
+ },
+ {
+  "id": 92,
+  "name": "Mogilev Region",
+  "country_id": 3,
+  "state_code": "MA"
+ },
+ {
+  "id": 93,
+  "name": "Vitebsk Region",
+  "country_id": 3,
+  "state_code": "VI"
+ },
+ {
+  "id": 94,
+  "name": "Adjara",
+  "country_id": 4,
+  "state_code": "AJ"
+ },
+ {
+  "id": 95,
+  "name": "Autonomous Republic of Abkhazia",
+  "country_id": 4,
+  "state_code": "AB"
+ },
+ {
+  "id": 96,
+  "name": "Guria",
+  "country_id": 4,
+  "state_code": "GU"
+ },
+ {
+  "id": 97,
+  "name": "Imereti",
+  "country_id": 4,
+  "state_code": "IM"
+ },
+ {
+  "id": 98,
+  "name": "Kakheti",
+  "country_id": 4,
+  "state_code": "KA"
+ },
+ {
+  "id": 99,
+  "name": "Khelvachauri Municipality",
+  "country_id": 4,
+  "state_code": "29"
+ },
+ {
+  "id": 100,
+  "name": "Kvemo Kartli",
+  "country_id": 4,
+  "state_code": "KK"
+ },
+ {
+  "id": 101,
+  "name": "Mtskheta-Mtianeti",
+  "country_id": 4,
+  "state_code": "MM"
+ },
+ {
+  "id": 102,
+  "name": "Racha-Lechkhumi and Kvemo Svaneti",
+  "country_id": 4,
+  "state_code": "RL"
+ },
+ {
+  "id": 103,
+  "name": "Samegrelo-Zemo Svaneti",
+  "country_id": 4,
+  "state_code": "SZ"
+ },
+ {
+  "id": 104,
+  "name": "Samtskhe-Javakheti",
+  "country_id": 4,
+  "state_code": "SJ"
+ },
+ {
+  "id": 105,
+  "name": "Senaki Municipality",
+  "country_id": 4,
+  "state_code": "50"
+ },
+ {
+  "id": 106,
+  "name": "Shida Kartli",
+  "country_id": 4,
+  "state_code": "SK"
+ },
+ {
+  "id": 107,
+  "name": "Tbilisi",
+  "country_id": 4,
+  "state_code": "TB"
+ },
+ {
+  "id": 108,
+  "name": "Akmola Region",
+  "country_id": 5,
+  "state_code": "AKM"
+ },
+ {
+  "id": 109,
+  "name": "Aktobe Region",
+  "country_id": 5,
+  "state_code": "AKT"
+ },
+ {
+  "id": 110,
+  "name": "Almaty",
+  "country_id": 5,
+  "state_code": "ALA"
+ },
+ {
+  "id": 111,
+  "name": "Almaty Region",
+  "country_id": 5,
+  "state_code": "ALM"
+ },
+ {
+  "id": 112,
+  "name": "Atyrau Region",
+  "country_id": 5,
+  "state_code": "ATY"
+ },
+ {
+  "id": 113,
+  "name": "Baikonur",
+  "country_id": 5,
+  "state_code": "BAY"
+ },
+ {
+  "id": 114,
+  "name": "East Kazakhstan Region",
+  "country_id": 5,
+  "state_code": "VOS"
+ },
+ {
+  "id": 115,
+  "name": "Jambyl Region",
+  "country_id": 5,
+  "state_code": "ZHA"
+ },
+ {
+  "id": 116,
+  "name": "Karaganda Region",
+  "country_id": 5,
+  "state_code": "KAR"
+ },
+ {
+  "id": 117,
+  "name": "Kostanay Region",
+  "country_id": 5,
+  "state_code": "KUS"
+ },
+ {
+  "id": 118,
+  "name": "Kyzylorda Region",
+  "country_id": 5,
+  "state_code": "KZY"
+ },
+ {
+  "id": 119,
+  "name": "Mangystau Region",
+  "country_id": 5,
+  "state_code": "MAN"
+ },
+ {
+  "id": 120,
+  "name": "North Kazakhstan Region",
+  "country_id": 5,
+  "state_code": "SEV"
+ },
+ {
+  "id": 121,
+  "name": "Nur-Sultan",
+  "country_id": 5,
+  "state_code": "AST"
+ },
+ {
+  "id": 122,
+  "name": "Pavlodar Region",
+  "country_id": 5,
+  "state_code": "PAV"
+ },
+ {
+  "id": 123,
+  "name": "Turkestan Region",
+  "country_id": 5,
+  "state_code": "YUZ"
+ },
+ {
+  "id": 124,
+  "name": "West Kazakhstan Province",
+  "country_id": 5,
+  "state_code": "ZAP"
+ },
+ {
+  "id": 125,
+  "name": "Batken Region",
+  "country_id": 6,
+  "state_code": "B"
+ },
+ {
+  "id": 126,
+  "name": "Bishkek",
+  "country_id": 6,
+  "state_code": "GB"
+ },
+ {
+  "id": 127,
+  "name": "Chuy Region",
+  "country_id": 6,
+  "state_code": "C"
+ },
+ {
+  "id": 128,
+  "name": "Issyk-Kul Region",
+  "country_id": 6,
+  "state_code": "Y"
+ },
+ {
+  "id": 129,
+  "name": "Jalal-Abad Region",
+  "country_id": 6,
+  "state_code": "J"
+ },
+ {
+  "id": 130,
+  "name": "Naryn Region",
+  "country_id": 6,
+  "state_code": "N"
+ },
+ {
+  "id": 131,
+  "name": "Osh",
+  "country_id": 6,
+  "state_code": "GO"
+ },
+ {
+  "id": 132,
+  "name": "Osh Region",
+  "country_id": 6,
+  "state_code": "O"
+ },
+ {
+  "id": 133,
+  "name": "Talas Region",
+  "country_id": 6,
+  "state_code": "T"
+ },
+ {
+  "id": 134,
+  "name": "Anenii Noi District",
+  "country_id": 7,
+  "state_code": "AN"
+ },
+ {
+  "id": 135,
+  "name": "Bălți Municipality",
+  "country_id": 7,
+  "state_code": "BA"
+ },
+ {
+  "id": 136,
+  "name": "Basarabeasca District",
+  "country_id": 7,
+  "state_code": "BS"
+ },
+ {
+  "id": 137,
+  "name": "Bender Municipality",
+  "country_id": 7,
+  "state_code": "BD"
+ },
+ {
+  "id": 138,
+  "name": "Briceni District",
+  "country_id": 7,
+  "state_code": "BR"
+ },
+ {
+  "id": 139,
+  "name": "Cahul District",
+  "country_id": 7,
+  "state_code": "CA"
+ },
+ {
+  "id": 140,
+  "name": "Călărași District",
+  "country_id": 7,
+  "state_code": "CL"
+ },
+ {
+  "id": 141,
+  "name": "Cantemir District",
+  "country_id": 7,
+  "state_code": "CT"
+ },
+ {
+  "id": 142,
+  "name": "Căușeni District",
+  "country_id": 7,
+  "state_code": "CS"
+ },
+ {
+  "id": 143,
+  "name": "Chișinău Municipality",
+  "country_id": 7,
+  "state_code": "CU"
+ },
+ {
+  "id": 144,
+  "name": "Cimișlia District",
+  "country_id": 7,
+  "state_code": "CM"
+ },
+ {
+  "id": 145,
+  "name": "Criuleni District",
+  "country_id": 7,
+  "state_code": "CR"
+ },
+ {
+  "id": 146,
+  "name": "Dondușeni District",
+  "country_id": 7,
+  "state_code": "DO"
+ },
+ {
+  "id": 147,
+  "name": "Drochia District",
+  "country_id": 7,
+  "state_code": "DR"
+ },
+ {
+  "id": 148,
+  "name": "Dubăsari District",
+  "country_id": 7,
+  "state_code": "DU"
+ },
+ {
+  "id": 149,
+  "name": "Edineț District",
+  "country_id": 7,
+  "state_code": "ED"
+ },
+ {
+  "id": 150,
+  "name": "Fălești District",
+  "country_id": 7,
+  "state_code": "FA"
+ },
+ {
+  "id": 151,
+  "name": "Florești District",
+  "country_id": 7,
+  "state_code": "FL"
+ },
+ {
+  "id": 152,
+  "name": "Gagauzia",
+  "country_id": 7,
+  "state_code": "GA"
+ },
+ {
+  "id": 153,
+  "name": "Glodeni District",
+  "country_id": 7,
+  "state_code": "GL"
+ },
+ {
+  "id": 154,
+  "name": "Hîncești District",
+  "country_id": 7,
+  "state_code": "HI"
+ },
+ {
+  "id": 155,
+  "name": "Ialoveni District",
+  "country_id": 7,
+  "state_code": "IA"
+ },
+ {
+  "id": 156,
+  "name": "Nisporeni District",
+  "country_id": 7,
+  "state_code": "NI"
+ },
+ {
+  "id": 157,
+  "name": "Ocnița District",
+  "country_id": 7,
+  "state_code": "OC"
+ },
+ {
+  "id": 158,
+  "name": "Orhei District",
+  "country_id": 7,
+  "state_code": "OR"
+ },
+ {
+  "id": 159,
+  "name": "Rezina District",
+  "country_id": 7,
+  "state_code": "RE"
+ },
+ {
+  "id": 160,
+  "name": "Rîșcani District",
+  "country_id": 7,
+  "state_code": "RI"
+ },
+ {
+  "id": 161,
+  "name": "Sîngerei District",
+  "country_id": 7,
+  "state_code": "SI"
+ },
+ {
+  "id": 162,
+  "name": "Șoldănești District",
+  "country_id": 7,
+  "state_code": "SD"
+ },
+ {
+  "id": 163,
+  "name": "Soroca District",
+  "country_id": 7,
+  "state_code": "SO"
+ },
+ {
+  "id": 164,
+  "name": "Ștefan Vodă District",
+  "country_id": 7,
+  "state_code": "SV"
+ },
+ {
+  "id": 165,
+  "name": "Strășeni District",
+  "country_id": 7,
+  "state_code": "ST"
+ },
+ {
+  "id": 166,
+  "name": "Taraclia District",
+  "country_id": 7,
+  "state_code": "TA"
+ },
+ {
+  "id": 167,
+  "name": "Telenești District",
+  "country_id": 7,
+  "state_code": "TE"
+ },
+ {
+  "id": 168,
+  "name": "Transnistria autonomous territorial unit",
+  "country_id": 7,
+  "state_code": "SN"
+ },
+ {
+  "id": 169,
+  "name": "Ungheni District",
+  "country_id": 7,
+  "state_code": "UN"
+ },
+ {
+  "id": 170,
+  "name": "Altai Krai",
+  "country_id": 8,
+  "state_code": "ALT"
+ },
+ {
+  "id": 171,
+  "name": "Altai Republic",
+  "country_id": 8,
+  "state_code": "AL"
+ },
+ {
+  "id": 172,
+  "name": "Amur Oblast",
+  "country_id": 8,
+  "state_code": "AMU"
+ },
+ {
+  "id": 173,
+  "name": "Arkhangelsk",
+  "country_id": 8,
+  "state_code": "ARK"
+ },
+ {
+  "id": 174,
+  "name": "Astrakhan Oblast",
+  "country_id": 8,
+  "state_code": "AST"
+ },
+ {
+  "id": 175,
+  "name": "Belgorod Oblast",
+  "country_id": 8,
+  "state_code": "BEL"
+ },
+ {
+  "id": 176,
+  "name": "Bryansk Oblast",
+  "country_id": 8,
+  "state_code": "BRY"
+ },
+ {
+  "id": 177,
+  "name": "Chechen Republic",
+  "country_id": 8,
+  "state_code": "CE"
+ },
+ {
+  "id": 178,
+  "name": "Chelyabinsk Oblast",
+  "country_id": 8,
+  "state_code": "CHE"
+ },
+ {
+  "id": 179,
+  "name": "Chukotka Autonomous Okrug",
+  "country_id": 8,
+  "state_code": "CHU"
+ },
+ {
+  "id": 180,
+  "name": "Chuvash Republic",
+  "country_id": 8,
+  "state_code": "CU"
+ },
+ {
+  "id": 181,
+  "name": "Irkutsk",
+  "country_id": 8,
+  "state_code": "IRK"
+ },
+ {
+  "id": 182,
+  "name": "Ivanovo Oblast",
+  "country_id": 8,
+  "state_code": "IVA"
+ },
+ {
+  "id": 183,
+  "name": "Jewish Autonomous Oblast",
+  "country_id": 8,
+  "state_code": "YEV"
+ },
+ {
+  "id": 184,
+  "name": "Kabardino-Balkar Republic",
+  "country_id": 8,
+  "state_code": "KB"
+ },
+ {
+  "id": 185,
+  "name": "Kaliningrad",
+  "country_id": 8,
+  "state_code": "KGD"
+ },
+ {
+  "id": 186,
+  "name": "Kaluga Oblast",
+  "country_id": 8,
+  "state_code": "KLU"
+ },
+ {
+  "id": 187,
+  "name": "Kamchatka Krai",
+  "country_id": 8,
+  "state_code": "KAM"
+ },
+ {
+  "id": 188,
+  "name": "Karachay-Cherkess Republic",
+  "country_id": 8,
+  "state_code": "KC"
+ },
+ {
+  "id": 189,
+  "name": "Kemerovo Oblast",
+  "country_id": 8,
+  "state_code": "KEM"
+ },
+ {
+  "id": 190,
+  "name": "Khabarovsk Krai",
+  "country_id": 8,
+  "state_code": "KHA"
+ },
+ {
+  "id": 191,
+  "name": "Khanty-Mansi Autonomous Okrug",
+  "country_id": 8,
+  "state_code": "KHM"
+ },
+ {
+  "id": 192,
+  "name": "Kirov Oblast",
+  "country_id": 8,
+  "state_code": "KIR"
+ },
+ {
+  "id": 193,
+  "name": "Komi Republic",
+  "country_id": 8,
+  "state_code": "KO"
+ },
+ {
+  "id": 194,
+  "name": "Kostroma Oblast",
+  "country_id": 8,
+  "state_code": "KOS"
+ },
+ {
+  "id": 195,
+  "name": "Krasnodar Krai",
+  "country_id": 8,
+  "state_code": "KDA"
+ },
+ {
+  "id": 196,
+  "name": "Krasnoyarsk Krai",
+  "country_id": 8,
+  "state_code": "KYA"
+ },
+ {
+  "id": 197,
+  "name": "Kurgan Oblast",
+  "country_id": 8,
+  "state_code": "KGN"
+ },
+ {
+  "id": 198,
+  "name": "Kursk Oblast",
+  "country_id": 8,
+  "state_code": "KRS"
+ },
+ {
+  "id": 199,
+  "name": "Leningrad Oblast",
+  "country_id": 8,
+  "state_code": "LEN"
+ },
+ {
+  "id": 200,
+  "name": "Lipetsk Oblast",
+  "country_id": 8,
+  "state_code": "LIP"
+ },
+ {
+  "id": 201,
+  "name": "Magadan Oblast",
+  "country_id": 8,
+  "state_code": "MAG"
+ },
+ {
+  "id": 202,
+  "name": "Mari El Republic",
+  "country_id": 8,
+  "state_code": "ME"
+ },
+ {
+  "id": 203,
+  "name": "Moscow",
+  "country_id": 8,
+  "state_code": "MOW"
+ },
+ {
+  "id": 204,
+  "name": "Moscow Oblast",
+  "country_id": 8,
+  "state_code": "MOS"
+ },
+ {
+  "id": 205,
+  "name": "Murmansk Oblast",
+  "country_id": 8,
+  "state_code": "MUR"
+ },
+ {
+  "id": 206,
+  "name": "Nenets Autonomous Okrug",
+  "country_id": 8,
+  "state_code": "NEN"
+ },
+ {
+  "id": 207,
+  "name": "Nizhny Novgorod Oblast",
+  "country_id": 8,
+  "state_code": "NIZ"
+ },
+ {
+  "id": 208,
+  "name": "Novgorod Oblast",
+  "country_id": 8,
+  "state_code": "NGR"
+ },
+ {
+  "id": 209,
+  "name": "Novosibirsk",
+  "country_id": 8,
+  "state_code": "NVS"
+ },
+ {
+  "id": 210,
+  "name": "Omsk Oblast",
+  "country_id": 8,
+  "state_code": "OMS"
+ },
+ {
+  "id": 211,
+  "name": "Orenburg Oblast",
+  "country_id": 8,
+  "state_code": "ORE"
+ },
+ {
+  "id": 212,
+  "name": "Oryol Oblast",
+  "country_id": 8,
+  "state_code": "ORL"
+ },
+ {
+  "id": 213,
+  "name": "Penza Oblast",
+  "country_id": 8,
+  "state_code": "PNZ"
+ },
+ {
+  "id": 214,
+  "name": "Perm Krai",
+  "country_id": 8,
+  "state_code": "PER"
+ },
+ {
+  "id": 215,
+  "name": "Primorsky Krai",
+  "country_id": 8,
+  "state_code": "PRI"
+ },
+ {
+  "id": 216,
+  "name": "Pskov Oblast",
+  "country_id": 8,
+  "state_code": "PSK"
+ },
+ {
+  "id": 217,
+  "name": "Republic of Adygea",
+  "country_id": 8,
+  "state_code": "AD"
+ },
+ {
+  "id": 218,
+  "name": "Republic of Bashkortostan",
+  "country_id": 8,
+  "state_code": "BA"
+ },
+ {
+  "id": 219,
+  "name": "Republic of Buryatia",
+  "country_id": 8,
+  "state_code": "BU"
+ },
+ {
+  "id": 220,
+  "name": "Republic of Dagestan",
+  "country_id": 8,
+  "state_code": "DA"
+ },
+ {
+  "id": 221,
+  "name": "Republic of Ingushetia",
+  "country_id": 8,
+  "state_code": "IN"
+ },
+ {
+  "id": 222,
+  "name": "Republic of Kalmykia",
+  "country_id": 8,
+  "state_code": "KL"
+ },
+ {
+  "id": 223,
+  "name": "Republic of Karelia",
+  "country_id": 8,
+  "state_code": "KR"
+ },
+ {
+  "id": 224,
+  "name": "Republic of Khakassia",
+  "country_id": 8,
+  "state_code": "KK"
+ },
+ {
+  "id": 225,
+  "name": "Republic of Mordovia",
+  "country_id": 8,
+  "state_code": "MO"
+ },
+ {
+  "id": 226,
+  "name": "Republic of North Ossetia-Alania",
+  "country_id": 8,
+  "state_code": "SE"
+ },
+ {
+  "id": 227,
+  "name": "Republic of Tatarstan",
+  "country_id": 8,
+  "state_code": "TA"
+ },
+ {
+  "id": 228,
+  "name": "Rostov Oblast",
+  "country_id": 8,
+  "state_code": "ROS"
+ },
+ {
+  "id": 229,
+  "name": "Ryazan Oblast",
+  "country_id": 8,
+  "state_code": "RYA"
+ },
+ {
+  "id": 230,
+  "name": "Saint Petersburg",
+  "country_id": 8,
+  "state_code": "SPE"
+ },
+ {
+  "id": 231,
+  "name": "Sakha Republic",
+  "country_id": 8,
+  "state_code": "SA"
+ },
+ {
+  "id": 232,
+  "name": "Sakhalin",
+  "country_id": 8,
+  "state_code": "SAK"
+ },
+ {
+  "id": 233,
+  "name": "Samara Oblast",
+  "country_id": 8,
+  "state_code": "SAM"
+ },
+ {
+  "id": 234,
+  "name": "Saratov Oblast",
+  "country_id": 8,
+  "state_code": "SAR"
+ },
+ {
+  "id": 235,
+  "name": "Sevastopol",
+  "country_id": 8,
+  "state_code": "UA-40"
+ },
+ {
+  "id": 236,
+  "name": "Smolensk Oblast",
+  "country_id": 8,
+  "state_code": "SMO"
+ },
+ {
+  "id": 237,
+  "name": "Stavropol Krai",
+  "country_id": 8,
+  "state_code": "STA"
+ },
+ {
+  "id": 238,
+  "name": "Sverdlovsk",
+  "country_id": 8,
+  "state_code": "SVE"
+ },
+ {
+  "id": 239,
+  "name": "Tambov Oblast",
+  "country_id": 8,
+  "state_code": "TAM"
+ },
+ {
+  "id": 240,
+  "name": "Tomsk Oblast",
+  "country_id": 8,
+  "state_code": "TOM"
+ },
+ {
+  "id": 241,
+  "name": "Tula Oblast",
+  "country_id": 8,
+  "state_code": "TUL"
+ },
+ {
+  "id": 242,
+  "name": "Tuva Republic",
+  "country_id": 8,
+  "state_code": "TY"
+ },
+ {
+  "id": 243,
+  "name": "Tver Oblast",
+  "country_id": 8,
+  "state_code": "TVE"
+ },
+ {
+  "id": 244,
+  "name": "Tyumen Oblast",
+  "country_id": 8,
+  "state_code": "TYU"
+ },
+ {
+  "id": 245,
+  "name": "Udmurt Republic",
+  "country_id": 8,
+  "state_code": "UD"
+ },
+ {
+  "id": 246,
+  "name": "Ulyanovsk Oblast",
+  "country_id": 8,
+  "state_code": "ULY"
+ },
+ {
+  "id": 247,
+  "name": "Vladimir Oblast",
+  "country_id": 8,
+  "state_code": "VLA"
+ },
+ {
+  "id": 248,
+  "name": "Volgograd Oblast",
+  "country_id": 8,
+  "state_code": "VGG"
+ },
+ {
+  "id": 249,
+  "name": "Vologda Oblast",
+  "country_id": 8,
+  "state_code": "VLG"
+ },
+ {
+  "id": 250,
+  "name": "Voronezh Oblast",
+  "country_id": 8,
+  "state_code": "VOR"
+ },
+ {
+  "id": 251,
+  "name": "Yamalo-Nenets Autonomous Okrug",
+  "country_id": 8,
+  "state_code": "YAN"
+ },
+ {
+  "id": 252,
+  "name": "Yaroslavl Oblast",
+  "country_id": 8,
+  "state_code": "YAR"
+ },
+ {
+  "id": 253,
+  "name": "Zabaykalsky Krai",
+  "country_id": 8,
+  "state_code": "ZAB"
+ },
+ {
+  "id": 254,
+  "name": "districts of Republican Subordination",
+  "country_id": 9,
+  "state_code": "RA"
+ },
+ {
+  "id": 255,
+  "name": "Gorno-Badakhshan Autonomous Province",
+  "country_id": 9,
+  "state_code": "GB"
+ },
+ {
+  "id": 256,
+  "name": "Khatlon Province",
+  "country_id": 9,
+  "state_code": "KT"
+ },
+ {
+  "id": 257,
+  "name": "Sughd Province",
+  "country_id": 9,
+  "state_code": "SU"
+ },
+ {
+  "id": 258,
+  "name": "Ahal Region",
+  "country_id": 10,
+  "state_code": "A"
+ },
+ {
+  "id": 259,
+  "name": "Ashgabat",
+  "country_id": 10,
+  "state_code": "S"
+ },
+ {
+  "id": 260,
+  "name": "Balkan Region",
+  "country_id": 10,
+  "state_code": "B"
+ },
+ {
+  "id": 261,
+  "name": "Daşoguz Region",
+  "country_id": 10,
+  "state_code": "D"
+ },
+ {
+  "id": 262,
+  "name": "Lebap Region",
+  "country_id": 10,
+  "state_code": "L"
+ },
+ {
+  "id": 263,
+  "name": "Mary Region",
+  "country_id": 10,
+  "state_code": "M"
+ },
+ {
+  "id": 264,
+  "name": "Autonomous Republic of Crimea",
+  "country_id": 11,
+  "state_code": "43"
+ },
+ {
+  "id": 265,
+  "name": "Cherkasy Oblast",
+  "country_id": 11,
+  "state_code": "71"
+ },
+ {
+  "id": 266,
+  "name": "Chernihiv Oblast",
+  "country_id": 11,
+  "state_code": "74"
+ },
+ {
+  "id": 267,
+  "name": "Chernivtsi Oblast",
+  "country_id": 11,
+  "state_code": "77"
+ },
+ {
+  "id": 268,
+  "name": "Dnipropetrovsk Oblast",
+  "country_id": 11,
+  "state_code": "12"
+ },
+ {
+  "id": 269,
+  "name": "Donetsk Oblast",
+  "country_id": 11,
+  "state_code": "14"
+ },
+ {
+  "id": 270,
+  "name": "Ivano-Frankivsk Oblast",
+  "country_id": 11,
+  "state_code": "26"
+ },
+ {
+  "id": 271,
+  "name": "Kharkiv Oblast",
+  "country_id": 11,
+  "state_code": "63"
+ },
+ {
+  "id": 272,
+  "name": "Kherson Oblast",
+  "country_id": 11,
+  "state_code": "65"
+ },
+ {
+  "id": 273,
+  "name": "Khmelnytsky Oblast",
+  "country_id": 11,
+  "state_code": "68"
+ },
+ {
+  "id": 274,
+  "name": "Kiev",
+  "country_id": 11,
+  "state_code": "30"
+ },
+ {
+  "id": 275,
+  "name": "Kirovohrad Oblast",
+  "country_id": 11,
+  "state_code": "35"
+ },
+ {
+  "id": 276,
+  "name": "Kyiv Oblast",
+  "country_id": 11,
+  "state_code": "32"
+ },
+ {
+  "id": 277,
+  "name": "Luhansk Oblast",
+  "country_id": 11,
+  "state_code": "09"
+ },
+ {
+  "id": 278,
+  "name": "Lviv Oblast",
+  "country_id": 11,
+  "state_code": "46"
+ },
+ {
+  "id": 279,
+  "name": "Mykolaiv Oblast",
+  "country_id": 11,
+  "state_code": "48"
+ },
+ {
+  "id": 280,
+  "name": "Odessa Oblast",
+  "country_id": 11,
+  "state_code": "51"
+ },
+ {
+  "id": 281,
+  "name": "Rivne Oblast",
+  "country_id": 11,
+  "state_code": "56"
+ },
+ {
+  "id": 282,
+  "name": "Sumy Oblast",
+  "country_id": 11,
+  "state_code": "59"
+ },
+ {
+  "id": 283,
+  "name": "Ternopil Oblast",
+  "country_id": 11,
+  "state_code": "61"
+ },
+ {
+  "id": 284,
+  "name": "Vinnytsia Oblast",
+  "country_id": 11,
+  "state_code": "05"
+ },
+ {
+  "id": 285,
+  "name": "Volyn Oblast",
+  "country_id": 11,
+  "state_code": "07"
+ },
+ {
+  "id": 286,
+  "name": "Zakarpattia Oblast",
+  "country_id": 11,
+  "state_code": "21"
+ },
+ {
+  "id": 287,
+  "name": "Zaporizhzhya Oblast",
+  "country_id": 11,
+  "state_code": "23"
+ },
+ {
+  "id": 288,
+  "name": "Zhytomyr Oblast",
+  "country_id": 11,
+  "state_code": "18"
+ },
+ {
+  "id": 289,
+  "name": "Andijan Region",
+  "country_id": 12,
+  "state_code": "AN"
+ },
+ {
+  "id": 290,
+  "name": "Bukhara Region",
+  "country_id": 12,
+  "state_code": "BU"
+ },
+ {
+  "id": 291,
+  "name": "Fergana Region",
+  "country_id": 12,
+  "state_code": "FA"
+ },
+ {
+  "id": 292,
+  "name": "Jizzakh Region",
+  "country_id": 12,
+  "state_code": "JI"
+ },
+ {
+  "id": 293,
+  "name": "Karakalpakstan",
+  "country_id": 12,
+  "state_code": "QR"
+ },
+ {
+  "id": 294,
+  "name": "Namangan Region",
+  "country_id": 12,
+  "state_code": "NG"
+ },
+ {
+  "id": 295,
+  "name": "Navoiy Region",
+  "country_id": 12,
+  "state_code": "NW"
+ },
+ {
+  "id": 296,
+  "name": "Qashqadaryo Region",
+  "country_id": 12,
+  "state_code": "QA"
+ },
+ {
+  "id": 297,
+  "name": "Samarqand Region",
+  "country_id": 12,
+  "state_code": "SA"
+ },
+ {
+  "id": 298,
+  "name": "Sirdaryo Region",
+  "country_id": 12,
+  "state_code": "SI"
+ },
+ {
+  "id": 299,
+  "name": "Surxondaryo Region",
+  "country_id": 12,
+  "state_code": "SU"
+ },
+ {
+  "id": 300,
+  "name": "Tashkent",
+  "country_id": 12,
+  "state_code": "TK"
+ },
+ {
+  "id": 301,
+  "name": "Tashkent Region",
+  "country_id": 12,
+  "state_code": "TO"
+ },
+ {
+  "id": 302,
+  "name": "Xorazm Region",
+  "country_id": 12,
+  "state_code": "XO"
+ }
+]
