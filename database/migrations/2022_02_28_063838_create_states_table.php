@@ -15,6 +15,9 @@ class CreateStatesTable extends Migration
     {
         Schema::create('states', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('country_id')->constrained();
+            $table->string('name');
+            $table->char('state_code', 5);
             $table->timestamps();
         });
     }
