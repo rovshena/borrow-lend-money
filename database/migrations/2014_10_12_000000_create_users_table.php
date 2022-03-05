@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('company')->nullable();
             $table->string('password');
-            $table->unsignedTinyInteger('type')->default(User::TYPE_USER);
+            $table->unsignedTinyInteger('type')->default(User::TYPE_ACCOUNT);
             $table->rememberToken();
             $table->timestamps();
         });
