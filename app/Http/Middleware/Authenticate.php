@@ -35,8 +35,8 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
 
             foreach ($guards as $guard) {
-                if ($guard === 'web') {
-                    return route('web.login');
+                if ($guard === 'account') {
+                    return route('account.login');
                 }
                 if ($guard === 'admin') {
                     return route('admin.login');
