@@ -2,26 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
+
+    const TYPE_ADMIN = 1;
+    const TYPE_ACCOUNT = 0;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are guarded.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -33,12 +30,13 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function scopeAdmin($query)
+    {
+        return $query->where('type', self::TYPE_ADMIN);
+    }
+
+    public function scopeAccount($query)
+    {
+        return $query->where('type', self::TYPE_ACCOUNT);
+    }
 }
