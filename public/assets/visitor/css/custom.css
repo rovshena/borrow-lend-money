@@ -1,0 +1,157 @@
+/**
+* ------------------------------------------------------------------------
+* DataTable
+* ------------------------------------------------------------------------
+*/
+
+@media (max-width: 992px) {
+    div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_length {
+        text-align: center;
+    }
+}
+
+#datatable tbody tr td:not(:last-child) {
+    cursor: pointer;
+}
+
+/**
+* ------------------------------------------------------------------------
+* Toastr.js
+* ------------------------------------------------------------------------
+*/
+
+#toast-container > div {
+    width: 300px !important;
+}
+
+/**
+* ------------------------------------------------------------------------
+* Preloader
+* ------------------------------------------------------------------------
+*/
+
+#preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(255, 255, 255, 0.50);*/
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000000;
+    /*background-color: rgba(0, 0, 0, 0.05);*/
+    /*backdrop-filter: blur(3px);*/
+    /*opacity: 1;*/
+    /*visibility: visible;*/
+    /*transition: 0.5s;*/
+}
+
+#preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#preloader img {
+    max-width: 100px;
+}
+
+/**
+* ------------------------------------------------------------------------
+* Lazy load and Image
+* ------------------------------------------------------------------------
+*/
+
+/*.lazy {*/
+/*    transition: 500ms ease-in-out;*/
+/*    opacity: 0;*/
+/*}*/
+
+/*.lazy.loaded {*/
+/*    opacity: 1;*/
+/*}*/
+
+.custom-img-shadow {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.custom-img-outer {
+    background-color: #ededed;
+}
+
+/**
+* ------------------------------------------------------------------------
+* Font awesome icon pulse animation
+* ------------------------------------------------------------------------
+*/
+
+.fa-pulse {
+    display: inline-block;
+    -moz-animation: pulse 2s infinite linear;
+    -o-animation: pulse 2s infinite linear;
+    -webkit-animation: pulse 2s infinite linear;
+    animation: pulse 2s infinite linear;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,31 @@
+{
+	"sDecimal":        ",",
+	"sEmptyTable":     "Tablisada maglumat ýok",
+	"sInfo":           "_TOTAL_ maglumatdan _START_ - _END_ arasyndaky ýazgylar görkezilýär",
+	"sInfoEmpty":      "Ýazgy ýok",
+	"sInfoFiltered":   "(_MAX_ maglumatdan tapylan)",
+	"sInfoPostFix":    "",
+	"sInfoThousands":  ".",
+	"sLengthMenu":     "Sahypada _MENU_ ýazgy görkez",
+	"sLoadingRecords": "Ýüklenilýär...",
+	"sProcessing":     "Işlenilýär...",
+	"sSearch":         "Gözle :",
+	"sZeroRecords":    "Ýazgy tapylmady",
+	"oPaginate": {
+		"sFirst":    "İlk",
+		"sLast":     "Son",
+		"sPrevious": "<i class='fas fa-lg fa-angle-left'></i>",
+		"sNext":		 "<i class='fas fa-lg fa-angle-right'></i>"
+	},
+	"oAria": {
+		"sSortAscending":  ": artýan sütün tertiplemesini işjeňleşdir",
+		"sSortDescending": ": azalýan sütün tertiplemesini işjeňleşdir"
+	},
+	"select": {
+		"rows": {
+			"_": "%d ýazgy saýlandy",
+			"0": "",
+			"1": "1 ýazgy saýlandy"
+		}
+	}
+}

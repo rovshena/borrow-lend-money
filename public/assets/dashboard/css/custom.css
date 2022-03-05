@@ -1,0 +1,126 @@
+/**
+* ------------------------------------------------------------------------
+* Breadcrumb
+* ------------------------------------------------------------------------
+*/
+
+.custom-breadcrumb .breadcrumb {
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+    white-space: nowrap;
+    display: block;
+}
+
+.custom-breadcrumb .breadcrumb li {
+    display: inline !important;
+}
+
+/**
+* ------------------------------------------------------------------------
+* DataTable
+* ------------------------------------------------------------------------
+*/
+
+@media (max-width: 992px) {
+    div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_length {
+        text-align: center;
+    }
+}
+
+#datatable tbody tr td:not(:last-child) {
+    cursor: pointer;
+}
+
+/**
+* ------------------------------------------------------------------------
+* Toastr.js
+* ------------------------------------------------------------------------
+*/
+
+#toast-container>div {
+    width: 300px !important;
+}
+
+/**
+* ------------------------------------------------------------------------
+* Preloader
+* ------------------------------------------------------------------------
+*/
+
+.preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(255, 255, 255, 0.50);*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000000;
+    background-color: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(3px);
+}
+
+.preloader img {
+    max-width: 120px;
+}
+
+/**
+* ------------------------------------------------------------------------
+* Lazy load images
+* ------------------------------------------------------------------------
+*/
+
+.lazy {
+    transition: 500ms ease-in-out;
+    opacity: 0;
+}
+
+.lazy.loaded {
+    opacity: 1;
+}
+
+/**
+* ------------------------------------------------------------------------
+* Font awesome icon pulse animation
+* ------------------------------------------------------------------------
+*/
+
+.fa-pulse {
+    display: inline-block;
+    -moz-animation: pulse 2s infinite linear;
+    -o-animation: pulse 2s infinite linear;
+    -webkit-animation: pulse 2s infinite linear;
+    animation: pulse 2s infinite linear;
+}
+
+@-webkit-keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-moz-keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-o-keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@-ms-keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.select2-container {
+    width: 100% !important;
+}

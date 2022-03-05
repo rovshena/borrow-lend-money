@@ -1,0 +1,29 @@
+#toast-container > .toast {
+    background-image: none !important;
+}
+
+#toast-container > .toast::before {
+    font-family: "Font Awesome 5 Free";
+    font-size: 24px;
+    line-height: 18px;
+    float: left;
+    color: #ffffff;
+    padding-right: 0.5em;
+    align-self: center;
+}
+
+#toast-container > .toast-warning::before {
+    content: "\f0f3";
+}
+
+#toast-container > .toast-error::before {
+    content: "\f057";
+}
+
+#toast-container > .toast-info::before {
+    content: "\f02e";
+}
+
+#toast-container > .toast-success::before {
+    content: "\f058";
+}
