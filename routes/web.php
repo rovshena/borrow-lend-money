@@ -3,8 +3,10 @@
 use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\Auth\AdminAuthenticationController;
 use App\Http\Controllers\Auth\AdminProfileController;
+use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\SiteController;
@@ -29,6 +31,10 @@ Route::get('/terms-of-use', [SiteController::class, 'terms'])->name('terms');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
 Route::view('/contact', 'visitor.site.contact')->name('contact');
 Route::put('/contact', [SiteController::class, 'contact'])->name('contact.post')->middleware('throttle:contact');
+Route::get('/countries/{country}/states', [AnnouncementController::class, 'getStates'])->name('country.states');
+Route::get('/borrow-money', [AnnouncementController::class, 'showBorrowMoneyForm'])->name('borrow.money');
+Route::post('/borrow-money', [AnnouncementController::class, 'storeBorrowMoney'])->name('borrow.money.store');
+Route::get('/reload-captcha', [CaptchaController::class, 'reloadCaptcha'])->name('reload-captcha');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 

@@ -13,14 +13,14 @@
 @section('content')
     <section class="container mt-5 mb-5 pt-5 pb-2 pb-md-4 pb-lg-5">
         <div class="row align-items-center gy-4">
-            <div class="col-lg-5 col-md-6">
-                <div class="mx-md-0 mx-auto mb-md-5 mb-4 pb-md-4 text-md-start text-center" style="max-width: 416px;">
+            <div class="col-md-6">
+                <div class="mx-md-0 mx-auto mb-md-5 mb-4 pb-md-4 text-center">
                     <h1 class="mb-4">Get in touch!</h1>
                     <p class="mb-0 fs-lg text-muted">Fill out the form and out team will try to get back to you within 24 hours.</p>
                 </div>
-                <img class="d-block mx-auto" src="{{ asset('assets/images/illustrations/contact.svg') }}" alt="Illustration">
+                <img class="d-block mx-auto" style="max-height: 300px;" src="{{ asset('assets/images/illustrations/contact.gif') }}" alt="Illustration">
             </div>
-            <div class="col-md-6 offset-lg-1">
+            <div class="col-md-6">
                 <div class="card border-0 bg-secondary p-sm-3 p-2">
                     <div class="card-body m-1">
                         <form method="post" action="{{ route('contact.post') }}" onsubmit="disableSubmitButton();">
@@ -48,7 +48,7 @@
                                 <span class="input-group-text">
                                     <i class="fas fa-mobile-alt fa-fw"></i>
                                 </span>
-                                <input type="text" class="form-control @error('contact_phone') is-invalid @enderror" id="contact_phone" value="{{ old('contact_phone') }}" name="contact_phone">
+                                <input type="text" class="form-control @error('contact_phone') is-invalid @enderror" id="contact_phone" value="{{ old('contact_phone') }}" name="contact_phone" maxlength="15">
                                 @error('contact_phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
