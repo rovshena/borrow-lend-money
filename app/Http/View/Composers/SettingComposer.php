@@ -10,7 +10,20 @@ class SettingComposer
     public function compose(View $view)
     {
         $variables = Setting::enabled()
-            ->whereIn('key', ['title', 'description', 'keyword', 'author', 'address', 'phone', 'fax', 'email'])
+            ->whereIn('key', [
+                'title',
+                'description',
+                'keyword',
+                'author',
+                'address',
+                'phone',
+                'fax',
+                'email',
+                'facebook_link',
+                'twitter_link',
+                'telegram_link',
+                'messenger_link',
+            ])
             ->get(['key', 'value']);
 
         $settings = [];
