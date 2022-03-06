@@ -2,11 +2,11 @@ function CookieQuestion(message_text, dismiss_text, link_text, privacy_link) {
     window.cookieconsent.initialise({
         palette: {
             popup: {
-                background: "#d0f6ea",
-                text: "#0cbc87",
+                background: "#f6e2d0",
+                text: "#fd5631",
             },
             button: {
-                background: "#0cbc87",
+                background: "#fd5631",
                 text: "#ffffff"
             },
         },
