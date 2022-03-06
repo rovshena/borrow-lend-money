@@ -112,7 +112,39 @@ class SettingSeeder extends Seeder
                 'type' => 'editor',
                 'created_at' => $now,
                 'updated_at' => $now
-            ]
+            ],
+            [
+                'key' => 'facebook_link',
+                'description' => 'Facebook Link',
+                'value' => null,
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'twitter_link',
+                'description' => 'Twitter Link',
+                'value' => null,
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'telegram_link',
+                'description' => 'Telegram Link',
+                'value' => null,
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'messenger_link',
+                'description' => 'Messenger Link',
+                'value' => null,
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
         ]);
     }
 }
