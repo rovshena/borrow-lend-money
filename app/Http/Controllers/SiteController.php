@@ -22,8 +22,8 @@ class SiteController extends Controller
 
     public function about()
     {
-        $text = Setting::where('key', 'about_us')->firstOrFail();
-        return view('visitor.site.about', ['text' => $text]);
+        $settings = Setting::whereIn('key', ['about_us', 'about_us_excerpt'])->get();
+        return view('visitor.site.about', compact('settings'));
     }
 
     public function contact(InquiryRequest $request)
@@ -35,6 +35,6 @@ class SiteController extends Controller
             'content' => $request->contact_content
         ]);
 
-        return redirect()->back()->with('success', 'Your message has been sent successfully. Thanks for contacting with us!');
+        return redirect()->route('contact')->with('success', 'Your message has been sent successfully. Thanks for contacting with us!');
     }
 }

@@ -11,10 +11,10 @@
             <i class="fi-user me-2"></i>Sign in
         </a>
         <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="javascript:void(0);">
-            <i class="fas fa-handshake me-2"></i>Взять деньги
+            <i class="fas fa-handshake fa-fw me-2"></i>Borrow money
         </a>
         <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="javascript:void(0);">
-            <i class="fas fa-plus me-2"></i>Дать деньги
+            <i class="fas fa-plus fa-fw me-2"></i>Lend money
         </a>
         <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
             <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
@@ -25,12 +25,12 @@
                     <ul class="dropdown-menu">
                         <li>
                             <a class="dropdown-item" href="javascript:void(0);">
-                                <i class="fas fa-handshake fs-base opacity-50 me-2"></i>Взять деньги
+                                <i class="fas fa-handshake fa-fw fs-base opacity-50 me-2"></i>Borrow money
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="javascript:void(0);">
-                                <i class="fas fa-plus fs-base opacity-50 me-2"></i>Дать деньги
+                                <i class="fas fa-plus fa-fw fs-base opacity-50 me-2"></i>Lend money
                             </a>
                         </li>
                     </ul>

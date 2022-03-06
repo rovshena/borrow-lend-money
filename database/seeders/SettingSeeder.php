@@ -84,7 +84,7 @@ class SettingSeeder extends Seeder
             [
                 'key' => 'about_us',
                 'description' => 'About Us text',
-                'value' => 'Borrow Lend Money',
+                'value' => 'Приветствуем Вас на сайте доске объявлений, где каждый человек или же организация может взять или дать деньги в долг другому частному лицу или предприятию. Как правило, людям деньги требуются срочно и займы составляют от 500 гривен и, до нескольких сотен тысяч.',
                 'type' => 'editor',
                 'created_at' => $now,
                 'updated_at' => $now
@@ -92,7 +92,7 @@ class SettingSeeder extends Seeder
             [
                 'key' => 'about_us_excerpt',
                 'description' => 'Short extract from about us text',
-                'value' => 'Borrow Lend Money',
+                'value' => 'Приветствуем Вас на сайте доске объявлений, где каждый человек или же организация может взять или дать деньги в долг другому частному лицу или предприятию. Как правило, людям деньги требуются срочно и займы составляют от 500 гривен и, до нескольких сотен тысяч.',
                 'type' => 'textarea',
                 'created_at' => $now,
                 'updated_at' => $now
