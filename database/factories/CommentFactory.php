@@ -21,7 +21,7 @@ class CommentFactory extends Factory
             'announcement_id' => $this->faker->randomElement(Announcement::pluck('id')),
             'name' => $this->faker->name,
             'email' => $this->faker->freeEmail,
-            'content' => $this->faker->realText(3000),
+            'content' => $this->faker->realText(500),
             'created_at' => $this->faker->dateTimeThisMonth('now', config('app.timezone'))
         ];
     }
