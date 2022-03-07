@@ -20,8 +20,11 @@ class FactorySeeder extends Seeder
         Announcement::factory()->count(60)->create();
         Comment::factory()
             ->has(Comment::factory()
-                ->has(Comment::factory()->count(2))
-                ->count(3))
+                ->count(3)
+                ->state(function (array $attributes, Comment $comment) {
+                    return ['announcement_id' => $comment->announcement_id];
+                })
+            )
             ->count(100)
             ->create();
     }

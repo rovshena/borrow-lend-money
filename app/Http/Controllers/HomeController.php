@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $announcements = Announcement::with(['comments', 'country'])
+        $announcements = Announcement::with(['comments', 'country', 'mainComments'])
             ->select(['id', 'title', 'content', 'company', 'type', 'country_id', 'state_id', 'created_at'])
             ->latest()
             ->paginate(12, ['*'], __('page'))
