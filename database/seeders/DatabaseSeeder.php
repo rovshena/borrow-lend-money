@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             SettingSeeder::class,
             CountrySeeder::class,
             StateSeeder::class,
-            // FactorySeeder::class,
+            FactorySeeder::class,
         ]);
     }
 }
