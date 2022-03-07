@@ -19,7 +19,9 @@ class FactorySeeder extends Seeder
         Inquiry::factory()->count(20)->create();
         Announcement::factory()->count(60)->create();
         Comment::factory()
-            ->hasComments(3)
+            ->has(Comment::factory()
+                ->has(Comment::factory()->count(2))
+                ->count(3))
             ->count(100)
             ->create();
     }
