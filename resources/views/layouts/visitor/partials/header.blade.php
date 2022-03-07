@@ -13,7 +13,7 @@
         <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="{{ route('borrow.money') }}">
             <i class="fas fa-plus fa-fw me-2"></i>Borrow money
         </a>
-        <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="javascript:void(0);">
+        <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" href="{{ route('lend.money') }}">
             <i class="fas fa-handshake fa-fw me-2"></i>Lend money
         </a>
         <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
@@ -29,7 +29,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="javascript:void(0);">
+                            <a class="dropdown-item" href="{{ route('lend.money') }}">
                                 <i class="fas fa-handshake fa-fw fs-base opacity-50 me-2"></i>Lend money
                             </a>
                         </li>

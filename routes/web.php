@@ -34,7 +34,11 @@ Route::put('/contact', [SiteController::class, 'contact'])->name('contact.post')
 Route::get('/countries/{country}/states', [AnnouncementController::class, 'getStates'])->name('country.states');
 Route::get('/borrow-money', [AnnouncementController::class, 'showBorrowMoneyForm'])->name('borrow.money');
 Route::post('/borrow-money', [AnnouncementController::class, 'storeBorrowMoney'])->name('borrow.money.store');
+Route::get('/lend-money', [AnnouncementController::class, 'showLendMoneyForm'])->name('lend.money');
+Route::post('/lend-money', [AnnouncementController::class, 'storeLendMoney'])->name('lend.money.store');
 Route::get('/reload-captcha', [CaptchaController::class, 'reloadCaptcha'])->name('reload-captcha');
+
+Route::get('/announcements/{announcement}/{slug?}', [HomeController::class, 'show'])->name('announcement.show');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 

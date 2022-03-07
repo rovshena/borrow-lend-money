@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BorrowMoneyRequest;
+use App\Http\Requests\LendMoneyRequest;
 use App\Models\Announcement;
 use App\Models\Country;
 use Illuminate\Http\Request;
@@ -14,6 +15,12 @@ class AnnouncementController extends Controller
     {
         $countries = Country::orderBy('name', 'asc')->get(['id', 'name']);
         return view('visitor.announcement.borrow', compact('countries'));
+    }
+
+    public function showLendMoneyForm()
+    {
+        $countries = Country::orderBy('name', 'asc')->get(['id', 'name']);
+        return view('visitor.announcement.lend', compact('countries'));
     }
 
     public function getStates(Country $country)
@@ -31,5 +38,17 @@ class AnnouncementController extends Controller
 
         Announcement::create($validated);
         return redirect()->route('borrow.money')->with('success', __('Your announcement created successfully.'));
+    }
+
+    public function storeLendMoney(LendMoneyRequest $request)
+    {
+        $validated = $request->validated();
+        $validated['type'] = Announcement::TYPE_LEND;
+        if (Auth::check()) {
+            $validated['user_id'] = Auth::guard('account')->id();
+        }
+
+        Announcement::create($validated);
+        return redirect()->route('lend.money')->with('success', __('Your announcement created successfully.'));
     }
 }

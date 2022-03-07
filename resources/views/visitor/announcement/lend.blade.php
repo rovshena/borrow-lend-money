@@ -1,14 +1,14 @@
 @extends('layouts.visitor.app')
 
-@section('title', __('Borrow Money') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('title', __('Lend Money') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
 
-@section('meta.description', __('Borrow Money') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('meta.description', __('Lend Money') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
-@section('meta.keywords', __('Borrow Money') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
+@section('meta.keywords', __('Lend Money') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
 
-@section('og.title', __('Borrow Money') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('og.title', __('Lend Money') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
 
-@section('og.description', __('Borrow Money') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('og.description', __('Lend Money') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
 @section('content')
     <div class="container mt-5 mb-md-4 py-5">
@@ -16,11 +16,11 @@
             <div class="col-lg-11 col-xl-10 mt-5">
                 <div class="text-center pb-4 mb-3 mt-2">
                     <h1 class="h2 mb-4">
-                        Подать бесплатное объявление (Взять деньги)
+                        Подать бесплатное объявление (Дать деньги)
                     </h1>
                 </div>
-                <div class="bg-faded-success rounded-3 p-4 p-md-5 mb-3">
-                    <form action="{{ route('borrow.money.store') }}" method="post" onsubmit="disableSubmitButton();">
+                <div class="bg-faded-info rounded-3 p-4 p-md-5 mb-3">
+                    <form action="{{ route('lend.money.store') }}" method="post" onsubmit="disableSubmitButton();">
                         @csrf
                         <div class="row">
                             <div class="col-sm-6 mb-4">
@@ -110,6 +110,21 @@
                                     <input class="form-control form-control-lg @error('phone') is-invalid @enderror" type="text" id="phone" name="phone" value="{{ old('phone') }}" maxlength="15">
                                 @endauth
                                 @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label class="form-label" for="company">
+                                    Company <abbr class="text-danger" title="Required">*</abbr>
+                                </label>
+                                @auth('account')
+                                    <input class="form-control form-control-lg @error('company') is-invalid @enderror" type="text" id="company" name="company" value="{{ auth('account')->user()->company }}" disabled required>
+                                @else
+                                    <input class="form-control form-control-lg @error('company') is-invalid @enderror" type="text" id="company" name="company" value="{{ old('company') }}" required>
+                                @endauth
+                                @error('company')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

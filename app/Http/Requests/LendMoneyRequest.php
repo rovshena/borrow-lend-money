@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BorrowMoneyRequest extends FormRequest
+class LendMoneyRequest extends FormRequest
 {
     protected $stopOnFirstFailure = true;
 
@@ -32,6 +32,7 @@ class BorrowMoneyRequest extends FormRequest
             'title' => 'required|string|max:250',
             'content' => 'required|string|min:20',
             'name' => 'required|string|max:250',
+            'company' => 'required|string|max:250',
             'email' => 'nullable|email',
             'phone' => 'nullable|string|max:15',
         ];
@@ -59,6 +60,7 @@ class BorrowMoneyRequest extends FormRequest
             'title' => 'Title',
             'content' => 'Content',
             'name' => 'Name',
+            'company' => 'Company',
             'email' => 'Email',
             'phone' => 'Phone',
         ];
