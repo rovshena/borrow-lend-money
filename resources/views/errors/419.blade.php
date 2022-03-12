@@ -1,5 +1,5 @@
 @extends('errors::minimal')
 
-@section('title', __('Page Expired'))
+@section('title', __('Ошибка проверки CSRF'))
 @section('code', '419')
-@section('message', __('Page Expired'))
+@section('message', __('Ошибка проверки CSRF'))

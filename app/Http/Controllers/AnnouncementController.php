@@ -6,7 +6,6 @@ use App\Http\Requests\BorrowMoneyRequest;
 use App\Http\Requests\LendMoneyRequest;
 use App\Models\Announcement;
 use App\Models\Country;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AnnouncementController extends Controller
@@ -23,32 +22,21 @@ class AnnouncementController extends Controller
         return view('visitor.announcement.lend', compact('countries'));
     }
 
-    public function getStates(Country $country)
-    {
-        return $country->states()->orderBy('name')->get(['id', 'name']);
-    }
-
     public function storeBorrowMoney(BorrowMoneyRequest $request)
     {
         $validated = $request->validated();
         $validated['type'] = Announcement::TYPE_BORROW;
-        if (Auth::check()) {
-            $validated['user_id'] = Auth::guard('account')->id();
-        }
 
         Announcement::create($validated);
-        return redirect()->route('borrow.money')->with('success', __('Your announcement created successfully.'));
+        return redirect()->route('borrow.money')->with('success', 'Ваше объявление успешно создано.');
     }
 
     public function storeLendMoney(LendMoneyRequest $request)
     {
         $validated = $request->validated();
         $validated['type'] = Announcement::TYPE_LEND;
-        if (Auth::check()) {
-            $validated['user_id'] = Auth::guard('account')->id();
-        }
 
         Announcement::create($validated);
-        return redirect()->route('lend.money')->with('success', __('Your announcement created successfully.'));
+        return redirect()->route('lend.money')->with('success', 'Ваше объявление успешно создано.');
     }
 }

@@ -78,11 +78,7 @@
                                 <label class="form-label" for="name">
                                     Name <abbr class="text-danger" title="Required">*</abbr>
                                 </label>
-                                @auth('account')
-                                    <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" id="name" name="name" value="{{ auth('account')->user()->name }}" disabled required>
-                                @else
-                                    <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" id="name" name="name" value="{{ old('name') }}" required>
-                                @endauth
+                                <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" id="name" name="name" value="{{ old('name') }}" required>
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -91,11 +87,7 @@
                             </div>
                             <div class="col-md-4 mb-4">
                                 <label class="form-label" for="email">Email address</label>
-                                @auth('account')
-                                    <input class="form-control form-control-lg @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ auth('account')->user()->email }}" disabled>
-                                @else
-                                    <input class="form-control form-control-lg @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ old('email') }}">
-                                @endauth
+                                <input class="form-control form-control-lg @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ old('email') }}">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -104,11 +96,7 @@
                             </div>
                             <div class="col-md-4 mb-4">
                                 <label class="form-label" for="phone">Phone</label>
-                                @auth('account')
-                                    <input class="form-control form-control-lg @error('phone') is-invalid @enderror" type="text" id="phone" name="phone" value="{{ auth('account')->user()->phone }}" maxlength="15" disabled>
-                                @else
-                                    <input class="form-control form-control-lg @error('phone') is-invalid @enderror" type="text" id="phone" name="phone" value="{{ old('phone') }}" maxlength="15">
-                                @endauth
+                                <input class="form-control form-control-lg @error('phone') is-invalid @enderror" type="text" id="phone" name="phone" value="{{ old('phone') }}" maxlength="15">
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

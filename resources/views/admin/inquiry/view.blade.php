@@ -1,10 +1,10 @@
 @extends('layouts.admin.app')
 
-@section('title', __('View Inquiry'))
+@section('title', __('Посмотреть сообщение'))
 
 @php
-    $breadcrumbs[] = ['label' => __('Home'), 'url' => route('admin.index')];
-    $breadcrumbs[] = ['label' => __('Inquiries'), 'url' => route('admin.inquiries')];
+    $breadcrumbs[] = ['label' => __('Главная'), 'url' => route('admin.index')];
+    $breadcrumbs[] = ['label' => __('Сообщения'), 'url' => route('admin.inquiries')];
     $breadcrumbs[] = ['label' => $inquiry->id];
 @endphp
 
@@ -13,7 +13,7 @@
         @include('plugins.breadcrumb', ['breadcrumbs' => $breadcrumbs])
         <h1 class="page-title text-truncate">
             <i class="far fa-envelope-open fa-fw mr-2 text-muted"></i>
-            {{ __('Inquiry ID:') . " " . $inquiry->id }}
+            {{ __('Сообщения ID:') . " " . $inquiry->id }}
         </h1>
     </header>
     <div class="page-section">
@@ -27,23 +27,23 @@
                                 <td> {{ $inquiry->id }} </td>
                             </tr>
                             <tr>
-                                <th> {{ __('Name') }} </th>
+                                <th> {{ __('Полное имя') }} </th>
                                 <td> {{ $inquiry->name }} </td>
                             </tr>
                             <tr>
-                                <th> {{ __('Phone') }} </th>
+                                <th> {{ __('Телефон') }} </th>
                                 <td> {{ $inquiry->phone }} </td>
                             </tr>
                             <tr>
-                                <th> {{ __('Email') }} </th>
+                                <th> {{ __('Электронная почта') }} </th>
                                 <td> {{ $inquiry->email }} </td>
                             </tr>
                             <tr>
-                                <th> {{ __('Send at') }} </th>
+                                <th> {{ __('Отправить в') }} </th>
                                 <td> {{ optional($inquiry->created_at)->format('d.m.Y H:i:s') }} </td>
                             </tr>
                             <tr>
-                                <th> {{ __('Updated at') }} </th>
+                                <th> {{ __('Изменено в') }} </th>
                                 <td> {{ optional($inquiry->updated_at)->format('d.m.Y H:i:s') }} </td>
                             </tr>
                             <tr>

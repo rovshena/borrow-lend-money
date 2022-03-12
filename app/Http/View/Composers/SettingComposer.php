@@ -19,8 +19,7 @@ class SettingComposer
                 'phone',
                 'fax',
                 'email',
-                'facebook_link',
-                'twitter_link',
+                'vk_link',
                 'telegram_link',
                 'messenger_link',
             ])

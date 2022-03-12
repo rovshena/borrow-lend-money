@@ -3,12 +3,12 @@
         $('body').on('click', '.delete-item', function () {
             url = $(this).attr('data-href');
             swal.fire({
-                title: "{{ __('Are you sure?') }}",
-                text: "{{ __('Are you sure that you want to delete the selected item') }}",
+                title: "{{ __('Вы уверены?') }}",
+                text: "{{ __('Вы уверены, что хотите удалить выбранный элемент') }}",
                 type: "question",
                 showCancelButton: true,
-                confirmButtonText: "{{ __('Yes') }}",
-                cancelButtonText: "{{ __('No') }}",
+                confirmButtonText: "{{ __('Да') }}",
+                cancelButtonText: "{{ __('Нет') }}",
                 onOpen: () => Swal.getCancelButton().focus()
             }).then((result) => {
                 if (result.value) {

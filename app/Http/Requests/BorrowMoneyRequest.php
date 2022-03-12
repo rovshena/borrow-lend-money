@@ -40,8 +40,8 @@ class BorrowMoneyRequest extends FormRequest
     public function messages()
     {
         return [
-            'captcha.required' => 'Captcha is required',
-            'captcha.captcha' => 'Invalid captcha code',
+            'captcha.required' => 'Введите код с картинки',
+            'captcha.captcha' => 'Неверный код с картинки',
         ];
     }
 
@@ -53,14 +53,14 @@ class BorrowMoneyRequest extends FormRequest
     public function attributes()
     {
         return [
-            'captcha' => 'Captcha',
-            'country_id' => 'Country',
-            'state_id' => 'State',
-            'title' => 'Title',
-            'content' => 'Content',
-            'name' => 'Name',
-            'email' => 'Email',
-            'phone' => 'Phone',
+            'captcha' => 'Код с картинки',
+            'country_id' => 'Страна',
+            'state_id' => 'Область',
+            'title' => 'Заголовок',
+            'content' => 'Условия займа и сроки возврата',
+            'name' => 'Имя',
+            'email' => 'Электронная почта',
+            'phone' => 'Телефон',
         ];
     }
 }

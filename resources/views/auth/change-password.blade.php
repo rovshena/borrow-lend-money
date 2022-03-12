@@ -1,10 +1,10 @@
 @extends('layouts.admin.app')
 
-@section('title', __('Change Password'))
+@section('title', __('Изменить пароль'))
 
 @php
-    $breadcrumbs[] = ['label' => __('Home'), 'url' => route('admin.index')];
-    $breadcrumbs[] = ['label' => __('Change Password')];
+    $breadcrumbs[] = ['label' => __('Главная'), 'url' => route('admin.index')];
+    $breadcrumbs[] = ['label' => __('Изменить пароль')];
 @endphp
 
 @section('content')
@@ -12,7 +12,7 @@
         @include('plugins.breadcrumb', ['breadcrumbs' => $breadcrumbs])
         <h1 class="page-title text-truncate">
             <i class="fas fa-key fa-fw mr-2 text-muted"></i>
-            {{ __('Change Password') }}
+            {{ __('Изменить пароль') }}
         </h1>
     </header>
     <div class="page-section">
@@ -25,7 +25,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="current_password">
-                                    {{ __('Password') }} <abbr title="{{ __('Your current password') }}">*</abbr>
+                                    {{ __('Пароль') }} <abbr title="{{ __('Ваш текущий пароль') }}">*</abbr>
                                 </label>
                                 <input type="password" class="form-control @error('current_password') is-invalid @enderror" id="current_password" name="current_password" required autofocus>
                                 @error('current_password')
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">
-                                    {{ __('New Password') }} <abbr title="{{ __('Required') }}">*</abbr>
+                                    {{ __('Новый пароль') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
                                 </label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
                                 @error('password')
@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password-confirm">
-                                    {{ __('New Password Confirmation') }} <abbr title="{{ __('Required') }}">*</abbr>
+                                    {{ __('Подтверждение нового пароля') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
                                 </label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation" required>
                                 @error('password')
@@ -59,7 +59,7 @@
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center" id="submit-button">
                                     <span id="loading" class="spinner-border spinner-border-sm d-none mr-2" role="status" aria-hidden="true"></span>
-                                    {{ __('Update') }}
+                                    {{ __('Сохранить') }}
                                 </button>
                             </div>
                         </form>

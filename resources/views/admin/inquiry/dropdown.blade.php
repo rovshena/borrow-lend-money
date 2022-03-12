@@ -5,9 +5,9 @@
     <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
         <div class="dropdown-arrow"></div>
         <h6 class="dropdown-header stop-propagation">
-            <span>{{ __('Inquiries') }}</span>
+            <span>{{ __('Сообщения') }}</span>
             @if($inquiries->count() > 0)
-                <a href="{{ route('admin.inquiries.mark-all-as-read') }}"> {{ __('Mark all as read') }} </a>
+                <a href="{{ route('admin.inquiries.mark-all-as-read') }}"> {{ __('Отметить все как прочитанное') }} </a>
             @endif
         </h6>
         <div class="dropdown-scroll perfect-scrollbar">
@@ -24,12 +24,12 @@
                 </a>
             @empty
                 <div class="dropdown-item">
-                    <i>{{ __('No unread inquiry.') }}</i>
+                    <i>{{ __('Нет непрочитанных сообщений.') }}</i>
                 </div>
             @endforelse
         </div>
         <a href="{{ route('admin.inquiries') }}" class="dropdown-footer">
-            {{ __('All inquiries') }}<i class="fas fa-fw fa-long-arrow-alt-right"></i>
+            {{ __('Все сообщения') }}<i class="fas fa-fw fa-long-arrow-alt-right"></i>
         </a>
     </div>
 </li>

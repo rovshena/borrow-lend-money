@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- SEO -->
-    <title> @yield('title', __('Sign In | Dashboard')) </title>
+    <title> @yield('title', __('Войти | Панель администратора')) </title>
     <link rel="canonical" href="{{ url('/') }}">
 
     <!-- Chrome, Firefox OS and Opera -->
@@ -54,8 +54,8 @@
 
 <main class="auth justify-content-center">
     <div class="text-center">
-        <img src="{{ asset('assets/images/favicons/android-chrome-192x192.png') }}" alt="{{ __('Logo') }}" style="max-height: 120px;">
-        <h5 class="my-md-3">{{ __('Sign In | Dashboard') }}</h5>
+        <img src="{{ asset('assets/images/favicons/android-chrome-192x192.png') }}" alt="{{ __('Логотип') }}" style="max-height: 120px;">
+        <h5 class="my-md-3">{{ __('Войти | Панель администратора') }}</h5>
     </div>
     <form class="auth-form" action="{{ route('admin.login') }}" method="POST" onsubmit="disableSubmitButton();">
         @csrf
@@ -63,7 +63,7 @@
             <div class="form-label-group">
                 <input type="text" id="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
                 <label for="username">
-                    {{ __('Username') }} <abbr title="{{ __('Required') }}">*</abbr>
+                    {{ __('Имя пользователя') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
                 </label>
                 @error('username')
                 <span class="invalid-feedback" role="alert">
@@ -76,7 +76,7 @@
             <div class="form-label-group">
                 <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                 <label for="password">
-                    {{ __('Password') }} <abbr title="{{ __('Required') }}">*</abbr>
+                    {{ __('Пароль') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
                 </label>
                 @error('password')
                 <span class="invalid-feedback" role="alert">
@@ -88,7 +88,7 @@
         <div class="form-group">
             <button class="btn btn-lg btn-primary btn-block d-flex align-items-center justify-content-center" type="submit" id="submit-button">
                 <span id="loading" class="spinner-border spinner-border-sm d-none mr-2" role="status" aria-hidden="true"></span>
-                {{ __('Sign In') }}
+                {{ __('Войти') }}
             </button>
         </div>
     </form>

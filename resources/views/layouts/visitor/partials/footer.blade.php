@@ -6,28 +6,25 @@
                 {{ $shared_settings['author'] }}
                 @endif
                 &copy;
-                @if (date('Y')==2022)
+                @if (date('Y') == 2022)
                     2022
                 @else
                     2022 - {{ date('Y') }}
                 @endif
-                All rights reserved.
+                Все права защищены.
             </p>
             <div class="d-flex flex-lg-row flex-column align-items-center order-lg-2 order-1 ms-lg-4 mb-lg-0 mb-4">
                 <div class="d-flex flex-wrap fs-sm mb-lg-0 mb-4 pe-lg-4">
-                    <a class="nav-link-light px-2 mx-1" href="{{ route('about') }}">About Us</a>
-                    <a class="nav-link-light px-2 mx-1" href="{{ route('contact') }}">Contact Us</a>
-                    <a class="nav-link-light px-2 mx-1" href="{{ route('privacy') }}">Privacy Policy</a>
-                    <a class="nav-link-light px-2 mx-1" href="{{ route('terms') }}">Terms of Use</a>
-{{--                    <a class="nav-link-light px-2 mx-1" href="{{ route('sitemap') }}">Sitemap</a>--}}
+                    <a class="nav-link-light px-2 mx-1" href="{{ route('about') }}">О нас</a>
+                    <a class="nav-link-light px-2 mx-1" href="{{ route('contact') }}">Связаться с нами</a>
+                    <a class="nav-link-light px-2 mx-1" href="{{ route('privacy') }}">Политика конфиденциальности</a>
+                    <a class="nav-link-light px-2 mx-1" href="{{ route('terms') }}">Условия использования</a>
+{{--                    <a class="nav-link-light px-2 mx-1" href="{{ route('sitemap') }}">Карта сайта</a>--}}
                 </div>
                 <div class="d-flex align-items-center">
                     <div class="ms-4 ps-lg-2 text-nowrap">
-                        <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="{{ isset($shared_settings['facebook_link']) ? $shared_settings['facebook_link'] : 'javascript:void(0);' }}">
-                            <i class="fi-facebook"></i>
-                        </a>
-                        <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="{{ isset($shared_settings['twitter_link']) ? $shared_settings['twitter_link'] : 'javascript:void(0);' }}">
-                            <i class="fi-twitter"></i>
+                        <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="{{ isset($shared_settings['vk_link']) ? $shared_settings['vk_link'] : 'javascript:void(0);' }}">
+                            <i class="fi-vk"></i>
                         </a>
                         <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="{{ isset($shared_settings['telegram_link']) ? $shared_settings['telegram_link'] : 'javascript:void(0);' }}">
                             <i class="fi-telegram"></i>

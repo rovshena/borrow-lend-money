@@ -47,15 +47,15 @@ class InquiryController extends Controller
     public function destroy(Inquiry $inquiry)
     {
         if ($inquiry->delete()) {
-            return response()->json(['success' => 'The inquiry deleted successfully!']);
+            return response()->json(['success' => 'Сообщение успешно удалено!']);
         } else {
-            return response()->json(['error' => 'Can not delete the inquiry!']);
+            return response()->json(['error' => 'Не могу удалить сообщение!']);
         }
     }
 
     public function markAllAsRead()
     {
         Inquiry::unread()->update(['is_read' => 1]);
-        return back()->with('success', 'All inquiries marked as read');
+        return back()->with('success', 'Все сообщения отмечены как прочитанные');
     }
 }

@@ -1,10 +1,10 @@
 @extends('layouts.admin.app')
 
-@section('title', __('My Account'))
+@section('title', __('Мой учетная запись'))
 
 @php
-    $breadcrumbs[] = ['label' => __('Home'), 'url' => route('admin.index')];
-    $breadcrumbs[] = ['label' => __('My Account')];
+    $breadcrumbs[] = ['label' => __('Главная'), 'url' => route('admin.index')];
+    $breadcrumbs[] = ['label' => __('Мой учетная запись')];
 @endphp
 
 @section('content')
@@ -25,7 +25,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="username">
-                                    {{ __('Username') }} <abbr title="{{ __('Required') }}">*</abbr>
+                                    {{ __('Имя пользователя') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
                                 </label>
                                 <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="{{ Auth::user()->username }}" name="username" required autofocus>
                                 @error('username')
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">
-                                    {{ __('Name') }} <abbr title="{{ __('Required') }}">*</abbr>
+                                    {{ __('Полное имя') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
                                 </label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ Auth::user()->name }}" name="name" required>
                                 @error('name')
@@ -48,7 +48,7 @@
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center" id="submit-button">
                                     <span id="loading" class="spinner-border spinner-border-sm d-none mr-2" role="status" aria-hidden="true"></span>
-                                    {{ __('Update') }}
+                                    {{ __('Сохранить') }}
                                 </button>
                             </div>
                         </form>

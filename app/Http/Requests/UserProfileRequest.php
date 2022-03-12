@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AdminProfileRequest extends FormRequest
+class UserProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,11 +28,11 @@ class AdminProfileRequest extends FormRequest
             'name' => 'required|string|max:250'
         ];
 
-        if ($this->user('admin')->username != 'administrator') {
+        if ($this->user()->username != 'administrator') {
             $rules = array_merge($rules, [
                 'username' => [
                     'required', 'string', 'max:250', 'min:3',
-                    Rule::unique('users', 'username')->ignore($this->user('admin')->id)
+                    Rule::unique('users', 'username')->ignore($this->user()->id)
                 ],
             ]);
         }
@@ -43,8 +43,8 @@ class AdminProfileRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Name',
-            'username' => 'Username',
+            'name' => 'Полное имя',
+            'username' => 'Имя пользователя',
         ];
     }
 }

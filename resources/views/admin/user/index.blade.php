@@ -1,10 +1,10 @@
 @extends('layouts.admin.app')
 
-@section('title', __('Users'))
+@section('title', __('Пользователи'))
 
 @php
-    $breadcrumbs[] = ['label' => __('Home'), 'url' => route('admin.index')];
-    $breadcrumbs[] = ['label' => __('Users')];
+    $breadcrumbs[] = ['label' => __('Главная'), 'url' => route('admin.index')];
+    $breadcrumbs[] = ['label' => __('Пользователи')];
 @endphp
 
 @section('content')
@@ -12,22 +12,21 @@
         @include('plugins.breadcrumb', ['breadcrumbs' => $breadcrumbs])
         <h1 class="page-title text-truncate">
             <i class="fas fa-user-friends fa-fw mr-2 text-muted"></i>
-            {{ __('Users') }}
+            {{ __('Пользователи') }}
         </h1>
     </header>
     <div class="page-section">
         <div class="section-block">
             <div class="card card-body">
-                <a href="{{ route('admin.users.create') }}" class="btn btn-primary mr-auto">{{ __('Add User') }}</a>
+                <a href="{{ route('admin.users.create') }}" class="btn btn-primary mr-auto">{{ __('Добавить пользователя') }}</a>
                 <hr>
                 <table id="datatable" class="table table-hover align-middle">
                     <thead>
                         <tr>
                             <th> ID </th>
-                            <th> {{ __('Username') }} </th>
-                            <th> {{ __('Name') }} </th>
-                            <th> {{ __('Type') }} </th>
-                            <th style="width:160px; min-width:160px;"> {{ __('Actions') }} </th>
+                            <th> {{ __('Имя пользователя') }} </th>
+                            <th> {{ __('Полное имя') }} </th>
+                            <th style="width:160px; min-width:160px;"> {{ __('Действия') }} </th>
                         </tr>
                     </thead>
                 </table>
@@ -43,7 +42,6 @@
     {data: 'id'},
     {data: 'username'},
     {data: 'name'},
-    {data: 'type'},
     {
     data: 'actions',
     className: 'text-right',

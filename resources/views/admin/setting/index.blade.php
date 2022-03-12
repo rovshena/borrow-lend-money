@@ -1,10 +1,10 @@
 @extends('layouts.admin.app')
 
-@section('title', __('Settings'))
+@section('title', __('Настройки'))
 
 @php
     $breadcrumbs[] = ['label' => __('Home'), 'url' => route('admin.index')];
-    $breadcrumbs[] = ['label' => __('Settings')];
+    $breadcrumbs[] = ['label' => __('Настройки')];
 @endphp
 
 @section('content')
@@ -12,7 +12,7 @@
         @include('plugins.breadcrumb', ['breadcrumbs' => $breadcrumbs])
         <h1 class="page-title text-truncate">
             <i class="fas fa-cogs fa-fw mr-2 text-muted"></i>
-            {{ __('Settings') }}
+            {{ __('Настройки') }}
         </h1>
     </header>
     <div class="page-section">
@@ -22,10 +22,10 @@
                     <thead>
                         <tr>
                             <th> ID</th>
-                            <th> {{ __('Key') }} </th>
-                            <th> {{ __('Description') }} </th>
-                            <th> {{ __('Status') }} </th>
-                            <th style="width:120px; min-width:120px;">{{ __('Actions') }} </th>
+                            <th> {{ __('Ключ') }} </th>
+                            <th> {{ __('Описание') }} </th>
+                            <th> {{ __('Статус') }} </th>
+                            <th style="width:120px; min-width:120px;">{{ __('Действия') }} </th>
                         </tr>
                     </thead>
                 </table>

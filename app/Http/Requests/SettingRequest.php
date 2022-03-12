@@ -59,10 +59,10 @@ class SettingRequest extends FormRequest
     public function attributes()
     {
         return [
-            'description' => 'Description',
-            'status' => 'Status',
-            'value' => 'Value',
-            'image' => 'Image',
+            'description' => 'Описание',
+            'status' => 'Статус',
+            'value' => 'Значение',
+            'image' => 'Изображение',
         ];
     }
 }

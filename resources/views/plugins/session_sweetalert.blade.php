@@ -1,7 +1,7 @@
 @if (session()->has('success'))
     <script>
         swal.fire({
-            title: "{{ __('Success!') }}",
+            title: "{{ __('Успех!') }}",
             text: "{{ session('success') }}",
             type: "success"
         });
@@ -11,7 +11,7 @@
 @if (session()->has('error'))
     <script>
         swal.fire({
-            title: "{{ __('Error!') }}",
+            title: "{{ __('Ошибка!') }}",
             text: "{{ session('error') }}",
             type: "error"
         });
@@ -21,7 +21,7 @@
 @if (session()->has('info'))
     <script>
         swal.fire({
-            title: "{{ __('Attention!') }}",
+            title: "{{ __('Внимание!') }}",
             text: "{{ session('info') }}",
             type: "info"
         });
@@ -31,7 +31,7 @@
 @if ($errors->any())
     <script>
         swal.fire({
-            title: "{{ __('Error!') }}",
+            title: "{{ __('Ошибка!') }}",
             text: "{{ implode(" ", $errors->all()) }}",
             type: "error"
         });

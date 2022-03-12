@@ -35,6 +35,6 @@ class SiteController extends Controller
             'content' => $request->contact_content
         ]);
 
-        return redirect()->route('contact')->with('success', 'Your message has been sent successfully. Thanks for contacting with us!');
+        return redirect()->route('contact')->with('success', 'Ваше сообщение было успешно отправлено. Спасибо, что связались с нами!');
     }
 }

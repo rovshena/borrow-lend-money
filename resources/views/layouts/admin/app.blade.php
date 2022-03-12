@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- SEO -->
-    <title> @yield('title', __('Dashboard')) </title>
+    <title> @yield('title', 'Панель администратора') </title>
     <link rel="canonical" href="{{ url('/') }}">
 
     <!-- Chrome, Firefox OS and Opera -->

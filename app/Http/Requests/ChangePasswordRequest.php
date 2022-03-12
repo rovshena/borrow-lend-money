@@ -42,7 +42,7 @@ class ChangePasswordRequest extends FormRequest
     public function attributes()
     {
         return [
-            'password' => 'Password'
+            'password' => 'Пароль'
         ];
     }
 }

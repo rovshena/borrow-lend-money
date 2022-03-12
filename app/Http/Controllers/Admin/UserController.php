@@ -14,21 +14,14 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $users = User::all(['id', 'username', 'name', 'type']);
+            $users = User::all(['id', 'username', 'name']);
             return DataTables::of($users)
                 ->addColumn('actions', function ($row) {
                     $edit = '<a href="' . route('admin.users.edit', $row) . '" class="btn btn-subtle-success btn-sm mr-2"><i class="fas fa-edit fa-fw"></i></a>';
                     $delete = '<a href="javascript:void(0);" data-href="' . route('admin.users.destroy', $row) . '" class="btn btn-subtle-danger btn-sm mr-2 delete-item"><i class="fas fa-trash-alt fa-fw"></i></a>';
                     return $row->username == 'administrator' ? '' : ($edit . $delete);
                 })
-                ->editColumn('type', function ($row) {
-                    if ($row->type === User::TYPE_ADMIN) {
-                        return '<span class="badge badge-success">admin</span>';
-                    } else {
-                        return 'user';
-                    }
-                })
-                ->rawColumns(['type', 'actions'])
+                ->rawColumns(['actions'])
                 ->toJson();
         }
 
@@ -42,20 +35,17 @@ class UserController extends Controller
 
     public function store(UserRequest $request)
     {
-        User::create([
-            'username' => $request->username,
-            'name' => $request->name,
-            'password' => Hash::make($request->password),
-            'type' => User::TYPE_ADMIN,
-        ]);
+        $validated = $request->validated();
+        $validated['password'] = Hash::make($request->password);
+        User::create($validated);
 
-        return redirect()->route('admin.users.index')->with('success', 'The user created successfully!');
+        return redirect()->route('admin.users.index')->with('success', 'Пользователь успешно создан!');
     }
 
     public function edit(User $user)
     {
         if ($user->username == 'administrator') {
-            return redirect()->back()->with('error', 'You can not edit the administrator!');
+            return redirect()->back()->with('error', 'Нельзя редактировать администратора!');
         }
 
         return view('admin.user.edit', ['user' => $user]);
@@ -64,7 +54,7 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         if ($user->username == 'administrator') {
-            return redirect()->back()->with('error', 'You can not edit the administrator!');
+            return redirect()->back()->with('error', 'Нельзя редактировать администратора!');
         }
 
         $user->username = $request->username;
@@ -75,22 +65,22 @@ class UserController extends Controller
         }
 
         if ($user->save()) {
-            return redirect()->route('admin.users.index')->with('success', 'The user updated successfully!');
+            return redirect()->route('admin.users.index')->with('success', 'Пользователь успешно обновлен!');
         } else {
-            return back()->with('error', 'Can not update the user details!');
+            return back()->with('error', 'Не могу обновить данные пользователя!');
         }
     }
 
     public function destroy(User $user)
     {
         if ($user->username == 'administrator') {
-            return response()->json(['error' => 'You can not delete the administrator!']);
+            return response()->json(['error' => 'Нельзя удалять администратора!']);
         }
 
         if ($user->delete()) {
-            return response()->json(['success' => 'The user deleted successfully!']);
+            return response()->json(['success' => 'Пользователь успешно удален!']);
         } else {
-            return response()->json(['error' => 'Can not delete the user!']);
+            return response()->json(['error' => 'Не могу удалить пользователя!']);
         }
     }
 }

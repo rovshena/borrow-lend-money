@@ -34,10 +34,10 @@ class InquiryRequest extends FormRequest
     public function attributes()
     {
         return [
-            'contact_name' => 'Name',
-            'contact_email' => 'Email',
-            'contact_phone' => 'Phone',
-            'contact_content' => 'Content',
+            'contact_name' => 'Имя',
+            'contact_email' => 'Электронная почта',
+            'contact_phone' => 'Телефон',
+            'contact_content' => 'Письмо',
         ];
     }
 }

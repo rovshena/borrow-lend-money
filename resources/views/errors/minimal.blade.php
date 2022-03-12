@@ -38,14 +38,14 @@
                 <h3 class="state-header"> @yield('code') </h3>
                 <p class="state-description lead"> @yield('message') </p>
                 <div class="state-action">
-                    <a href="{{ url('/') }}" class="btn btn-lg btn-subtle-primary m-2" title="{{ __('Home') }}">
+                    <a href="{{ url('/') }}" class="btn btn-lg btn-subtle-primary m-2" title="{{ __('Главная') }}">
                         <i class="fas fa-home fa-fw mr-sm-1"></i>
-                        <span class="d-none d-sm-inline">{{ __('Home') }}</span>
+                        <span class="d-none d-sm-inline">{{ __('Главная') }}</span>
                     </a>
                     <a href="javascript:void(0);" id="previous-link" class="btn btn-lg btn-subtle-success m-2"
-                       title="{{ __('Back') }}">
+                       title="{{ __('Назад') }}">
                         <i class="fas fa-reply fa-fw mr-sm-1"></i>
-                        <span class="d-none d-sm-inline">{{ __('Back') }}</span>
+                        <span class="d-none d-sm-inline">{{ __('Назад') }}</span>
                     </a>
                 </div>
             </div>

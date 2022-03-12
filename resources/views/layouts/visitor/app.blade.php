@@ -81,7 +81,7 @@
 
 <!-- Back to top -->
 <a class="btn-scroll-top" href="#top" data-scroll="" data-fixed-element="">
-    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Верхняя</span>
     <i class="btn-scroll-top-icon fas fa-angle-up"></i>
 </a>
 
@@ -104,9 +104,9 @@
 <script src="{{ asset('assets/visitor/js/layout.js') }}"></script>
 <script>
     CookieQuestion(
-        "{{ __('This website stores cookies on your computer. To find out more about the cookies we use, see our ') }}",
+        "{{ __('Этот веб-сайт хранит файлы cookie на вашем компьютере. Чтобы узнать больше о файлах cookie, которые мы используем, ознакомьтесь с нашей ') }}",
         "{{ __('OK') }}",
-        "{{ __('Privacy Policy') }}",
+        "{{ __('Политика конфиденциальности') }}",
         "{{ route('privacy') }}"
     );
 </script>

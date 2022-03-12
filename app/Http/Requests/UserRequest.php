@@ -56,9 +56,9 @@ class UserRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Name',
-            'username' => 'Username',
-            'password' => 'Password'
+            'name' => 'Полное имя',
+            'username' => 'Имя пользователя',
+            'password' => 'Пароль'
         ];
     }
 }

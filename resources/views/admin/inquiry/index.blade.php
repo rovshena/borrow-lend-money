@@ -1,10 +1,10 @@
 @extends('layouts.admin.app')
 
-@section('title', __('Inquiries'))
+@section('title', __('Сообщения'))
 
 @php
-    $breadcrumbs[] = ['label' => __('Baş sahypa'), 'url' => route('admin.index')];
-    $breadcrumbs[] = ['label' => __('Inquiries')];
+    $breadcrumbs[] = ['label' => __('Главная'), 'url' => route('admin.index')];
+    $breadcrumbs[] = ['label' => __('Сообщения')];
 @endphp
 
 @section('content')
@@ -12,7 +12,7 @@
         @include('plugins.breadcrumb', ['breadcrumbs' => $breadcrumbs])
         <h1 class="page-title text-truncate">
             <i class="fas fa-inbox fa-fw mr-2 text-muted"></i>
-            {{ __('Inquiries') }}
+            {{ __('Сообщения') }}
         </h1>
     </header>
     <div class="page-section">
@@ -24,11 +24,11 @@
                             <th style="width:60px; min-width:60px;"></th>
                             <th style="width:60px; min-width:60px;"></th>
                             <th> ID </th>
-                            <th> {{ __('Name') }} </th>
-                            <th> {{ __('Phone') }} </th>
-                            <th> {{ __('Email') }} </th>
-                            <th> {{ __('Send at') }} </th>
-                            <th style="width:120px; min-width:120px;"> {{ __('Actions') }} </th>
+                            <th> {{ __('Полное имя') }} </th>
+                            <th> {{ __('Телефон') }} </th>
+                            <th> {{ __('Электронная почта') }} </th>
+                            <th> {{ __('Отправить в') }} </th>
+                            <th style="width:120px; min-width:120px;"> {{ __('Действия') }} </th>
                         </tr>
                     </thead>
                 </table>

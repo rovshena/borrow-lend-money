@@ -1,11 +1,11 @@
 @extends('layouts.admin.app')
 
-@section('title', __('Edit User'))
+@section('title', __('Изменить пользователя'))
 
 @php
-    $breadcrumbs[] = ['label' => __('Home'), 'url' => route('admin.index')];
-    $breadcrumbs[] = ['label' => __('Users'), 'url' => route('admin.users.index')];
-    $breadcrumbs[] = ['label' => __('Update')];
+    $breadcrumbs[] = ['label' => __('Главная'), 'url' => route('admin.index')];
+    $breadcrumbs[] = ['label' => __('Пользователи'), 'url' => route('admin.users.index')];
+    $breadcrumbs[] = ['label' => __('Изменить')];
 @endphp
 
 @section('content')
@@ -13,7 +13,7 @@
         @include('plugins.breadcrumb', ['breadcrumbs' => $breadcrumbs])
         <h1 class="page-title text-truncate">
             <i class="fas fa-user-friends fa-fw mr-2 text-muted"></i>
-            {{ __('User ID:') . " " . $user->id }}
+            {{ __('Пользователь ID:') . " " . $user->id }}
         </h1>
     </header>
     <div class="page-section">
@@ -26,7 +26,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="username">
-                                    {{ __('Username') }} <abbr title="{{ __('Required') }}">*</abbr>
+                                    {{ __('Имя пользователя') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
                                 </label>
                                 <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="{{ $user->username }}" name="username" required autofocus>
                                 @error('username')
@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">
-                                    {{ __('Name') }} <abbr title="{{ __('Required') }}">*</abbr>
+                                    {{ __('Полное имя') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
                                 </label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ $user->name }}" name="name" required>
                                 @error('name')
@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password">
-                                    {{ __('Password') }}
+                                    {{ __('Пароль') }}
                                 </label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
                                 @error('password')
@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password-confirm">
-                                    {{ __('Password Confirmation') }}
+                                    {{ __('Подтверждение пароля') }}
                                 </label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password-confirm" name="password_confirmation">
                                 @error('password')
@@ -71,7 +71,7 @@
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center" id="submit-button">
                                     <span id="loading" class="spinner-border spinner-border-sm d-none mr-2" role="status" aria-hidden="true"></span>
-                                    {{ __('Update') }}
+                                    {{ __('Сохранить') }}
                                 </button>
                             </div>
                         </form>

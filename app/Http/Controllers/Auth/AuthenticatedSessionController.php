@@ -3,33 +3,31 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminLoginRequest;
+use App\Http\Requests\LoginRequest;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 
-class AdminAuthenticationController extends Controller
+class AuthenticatedSessionController extends Controller
 {
     /**
      * Display the login view.
      *
-     * @return View
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        return view('auth.admin.login');
+        return view('auth.login');
     }
 
     /**
      * Handle an incoming authentication request.
      *
-     * @param AdminLoginRequest $request
-     * @return RedirectResponse
+     * @param  \App\Http\Requests\LoginRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(AdminLoginRequest $request)
+    public function store(LoginRequest $request)
     {
         $request->authenticate();
 
@@ -39,30 +37,30 @@ class AdminAuthenticationController extends Controller
 
         $this->deleteOtherSessionRecords($request);
 
-        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
      * Destroy an authenticated session.
      *
-     * @param Request $request
-     * @return RedirectResponse
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request)
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('admin.login');
+        return redirect('/');
     }
 
     /**
      * Delete the other browser session records from storage.
      *
-     * @param Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return void
      */
     protected function deleteOtherSessionRecords(Request $request)
@@ -72,7 +70,7 @@ class AdminAuthenticationController extends Controller
         }
 
         DB::table(config('session.table', 'sessions'))
-            ->where('user_id', $request->user('admin')->getAuthIdentifier())
+            ->where('user_id', $request->user()->getAuthIdentifier())
             ->where('id', '!=', $request->session()->getId())
             ->delete();
     }

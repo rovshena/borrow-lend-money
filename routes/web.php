@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\Auth\AdminAuthenticationController;
-use App\Http\Controllers\Auth\AdminProfileController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\UserProfileController;
 use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
@@ -31,7 +32,7 @@ Route::get('/terms-of-use', [SiteController::class, 'terms'])->name('terms');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
 Route::view('/contact', 'visitor.site.contact')->name('contact');
 Route::put('/contact', [SiteController::class, 'contact'])->name('contact.post')->middleware('throttle:contact');
-Route::get('/countries/{country}/states', [AnnouncementController::class, 'getStates'])->name('country.states');
+Route::get('/countries/{country}/states', [CountryController::class, 'states'])->name('country.states');
 Route::get('/borrow-money', [AnnouncementController::class, 'showBorrowMoneyForm'])->name('borrow.money');
 Route::post('/borrow-money', [AnnouncementController::class, 'storeBorrowMoney'])->name('borrow.money.store');
 Route::get('/lend-money', [AnnouncementController::class, 'showLendMoneyForm'])->name('lend.money');
@@ -42,17 +43,17 @@ Route::get('/announcements/{announcement}/{slug?}', [HomeController::class, 'sho
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
-    Route::middleware('guest:admin')->group(function () {
-        Route::get('/login', [AdminAuthenticationController::class, 'create'])->name('login');
-        Route::post('/login', [AdminAuthenticationController::class, 'store'])->name('login.store');
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+        Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
     });
 
-    Route::middleware('auth:admin')->group(function () {
-        Route::post('/logout', [AdminAuthenticationController::class, 'destroy'])->name('logout');
-        Route::get('/change-password', [AdminProfileController::class, 'showChangePasswordForm'])->name('change-password');
-        Route::put('/change-password', [AdminProfileController::class, 'changePassword'])->name('change-password.update');
-        Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile');
-        Route::put('/profile', [AdminProfileController::class, 'update'])->name('profile.update');
+    Route::middleware('auth')->group(function () {
+        Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+        Route::get('/change-password', [UserProfileController::class, 'showChangePasswordForm'])->name('change-password');
+        Route::put('/change-password', [UserProfileController::class, 'changePassword'])->name('change-password.update');
+        Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile');
+        Route::put('/profile', [UserProfileController::class, 'update'])->name('profile.update');
         Route::view('/', 'admin.index')->name('index');
         Route::get('/inquiries', [InquiryController::class, 'index'])->name('inquiries');
         Route::get('/inquiries/{inquiry}/', [InquiryController::class, 'show'])->name('inquiries.show');

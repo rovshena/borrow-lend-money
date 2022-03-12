@@ -7,7 +7,7 @@
 				</span>
             </button>
             <a href="{{ route('admin.index') }}" class="">
-                <h6 class="mb-0">{{ __('Dashboard') }}</h6>
+                <h6 class="mb-0">{{ __('Панель администратора') }}</h6>
             </a>
         </div>
         <div class="top-bar-list">
@@ -26,7 +26,7 @@
                                 <span class="fas fa-search fa-fw"></span>
                             </span>
                         </div>
-                        <input type="text" class="form-control" aria-label="Search" placeholder="{{ __('Search') }}">
+                        <input type="text" class="form-control" aria-label="Search" placeholder="{{ __('Поиск') }}">
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                                         <span class="tile tile-lg bg-dropbox">
                                             <i class="fas fa-home"></i>
                                         </span>
-                                        <span class="tile-peek">{{ __('Home') }}</span>
+                                        <span class="tile-peek">{{ __('Главная') }}</span>
                                     </a>
                                 </div>
                                 <div class="dropdown-sheet-item">
@@ -53,7 +53,7 @@
                                         <span class="tile tile-lg bg-flickr">
                                             <i class="far fa-user-circle"></i>
                                         </span>
-                                        <span class="tile-peek">{{ __('My Account') }}</span>
+                                        <span class="tile-peek">{{ __('Мой учетная запись') }}</span>
                                     </a>
                                 </div>
                                 <div class="dropdown-sheet-item">
@@ -61,7 +61,7 @@
                                         <span class="tile tile-lg bg-amazon">
                                             <i class="fas fa-cogs"></i>
                                         </span>
-                                        <span class="tile-peek">{{ __('Settings') }}</span>
+                                        <span class="tile-peek">{{ __('Настройки') }}</span>
                                     </a>
                                 </div>
                             </div>
@@ -92,13 +92,13 @@
                         <div class="dropdown-arrow d-lg-none" x-arrow=""></div>
                         <div class="dropdown-arrow ml-3 d-none d-lg-block"></div>
                         <a href="{{ route('admin.profile') }}" class="dropdown-item">
-                            <span class="dropdown-icon far fa-user-circle"></span>{{ __('My Account') }}
+                            <span class="dropdown-icon far fa-user-circle"></span>{{ __('Мой учетная запись') }}
                         </a>
                         <a href="{{ route('admin.change-password') }}" class="dropdown-item">
-                            <span class="dropdown-icon fas fa-key"></span>{{ __('Change Password') }}
+                            <span class="dropdown-icon fas fa-key"></span>{{ __('Изменить пароль') }}
                         </a>
                         <a class="dropdown-item" href="javascript:void(0);" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <span class="dropdown-icon fas fa-sign-out-alt"></span>{{ __('Sign out') }}
+                            <span class="dropdown-icon fas fa-sign-out-alt"></span>{{ __('Выход') }}
                         </a>
                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                             @csrf

@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $announcements = Announcement::with(['comments', 'country', 'mainComments'])
+        $announcements = Announcement::with(['comments', 'country', 'masterComments'])
             ->select(['id', 'title', 'content', 'company', 'type', 'country_id', 'state_id', 'created_at'])
             ->latest()
             ->paginate(12, ['*'], __('page'))

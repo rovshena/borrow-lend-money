@@ -16,14 +16,14 @@
             <div id="dropdown-aside" class="dropdown-aside collapse">
                 <div class="pb-3">
                     <a class="dropdown-item" href="{{ route('admin.profile') }}">
-                        <span class="dropdown-icon far fa-user-circle fa-fw"></span>{{ __('My Account') }}
+                        <span class="dropdown-icon far fa-user-circle fa-fw"></span>{{ __('Мой учетная запись') }}
                     </a>
                     <a class="dropdown-item" href="{{ route('admin.change-password') }}" >
-                        <span class="dropdown-icon fas fa-key fa-fw"></span>{{ __('Change Password') }}
+                        <span class="dropdown-icon fas fa-key fa-fw"></span>{{ __('Изменить пароль') }}
                     </a>
                     <a class="dropdown-item" href="javascript:void(0);"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <span class="dropdown-icon fas fa-sign-out-alt fa-fw"></span>{{ __('Sign out') }}
+                        <span class="dropdown-icon fas fa-sign-out-alt fa-fw"></span>{{ __('Выход') }}
                     </a>
                     @foreach (config('app.available_locales', ['en' => 'English']) as $locale=>$value)
                         <a class="dropdown-item py-1" href="{{ route('locale', ['locale' => $locale]) }}">
@@ -42,37 +42,37 @@
                     <li class="menu-item {{ Route::is('admin.index') ? 'has-active' : '' }}">
                         <a href="{{ route('admin.index') }}" class="menu-link">
                             <span class="menu-icon fas fa-home"></span>
-                            <span class="menu-text">{{ __('Home') }}</span>
+                            <span class="menu-text">{{ __('Главная') }}</span>
                         </a>
                     </li>
                     <li class="menu-item {{ Route::is('admin.profile') ? 'has-active' : '' }}">
                         <a href="{{ route('admin.profile') }}" class="menu-link">
                             <span class="menu-icon far fa-user-circle"></span>
-                            <span class="menu-text">{{ __('My Account') }}</span>
+                            <span class="menu-text">{{ __('Мой учетная запись') }}</span>
                         </a>
                     </li>
                     <li class="menu-item {{ Route::is('admin.inquiries*') ? 'has-active' : '' }}">
                         <a href="{{ route('admin.inquiries') }}" class="menu-link">
                             <span class="menu-icon fas fa-inbox"></span>
-                            <span class="menu-text">{{ __('Inquiries') }}</span>
+                            <span class="menu-text">{{ __('Сообщения') }}</span>
                         </a>
                     </li>
                     <li class="menu-item {{ Route::is('admin.settings*') ? 'has-active' : '' }}">
                         <a href="{{ route('admin.settings.index') }}" class="menu-link">
                             <span class="menu-icon fas fa-cogs"></span>
-                            <span class="menu-text">{{ __('Settings') }}</span>
+                            <span class="menu-text">{{ __('Настройки') }}</span>
                         </a>
                     </li>
                     <li class="menu-item {{ Route::is('admin.users*') ? 'has-active' : '' }}">
                         <a href="{{ route('admin.users.index') }}" class="menu-link">
                             <span class="menu-icon fas fa-user-friends"></span>
-                            <span class="menu-text">{{ __('Users') }}</span>
+                            <span class="menu-text">{{ __('Пользователи') }}</span>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="javascript:void(0);" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="menu-link">
                             <span class="menu-icon fas fa-sign-out-alt"></span>
-                            <span class="menu-text">{{ __('Sign out') }}</span>
+                            <span class="menu-text">{{ __('Выход') }}</span>
                         </a>
                     </li>
                 </ul>
@@ -80,7 +80,7 @@
         </div>
         <footer class="aside-footer border-top p-2">
             <button class="btn btn-light btn-block text-primary" data-toggle="skin">
-                <span class="d-compact-menu-none">{{ __('Dark mode') }}</span>
+                <span class="d-compact-menu-none">{{ __('Темный режим') }}</span>
                 <i class="fas fa-moon ml-1"></i>
             </button>
         </footer>
