@@ -21,6 +21,8 @@
         "friendsofphp/php-cs-fixer": "^3.6",
         "laravel/breeze": "^1.8",
         "laravel/sail": "^1.0.1",
+        "menarasolutions/geographer": "^0.3.13",
+        "menarasolutions/geographer-ru": "^0.2.2",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "phpunit/phpunit": "^9.5.10"
