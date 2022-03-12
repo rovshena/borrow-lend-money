@@ -9,8 +9,6 @@ class State extends Model
 {
     use HasFactory;
 
-    const STATE_DATASET = 'database/states.json';
-
     protected $guarded = ['id'];
 
     public function country()

@@ -9,7 +9,9 @@ class Country extends Model
 {
     use HasFactory;
 
-    const COUNTRY_DATASET = 'database/countries.json';
+    const CIS_COUNTRIES = [
+        'AZ', 'AM', 'BY', 'GE', 'KZ', 'KG', 'MD', 'RU', 'TJ', 'TM', 'UZ', 'UA'
+    ];
 
     protected $guarded = ['id'];
 

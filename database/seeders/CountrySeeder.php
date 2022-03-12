@@ -4,8 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Country;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use MenaraSolutions\Geographer\Country as EarthCountry;
 
 class CountrySeeder extends Seeder
 {
@@ -16,25 +15,22 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        $file = Country::COUNTRY_DATASET;
-        if (Storage::exists($file)) {
-            $countries = Storage::get($file);
-            $countries = json_decode($countries, true);
+        $cis_countries = Country::CIS_COUNTRIES;
+        foreach ($cis_countries as $code) {
+            $earth_country = EarthCountry::build($code)->setLocale('ru');
+            $country = Country::create([
+                'name' => $earth_country->name,
+                'iso3' => $earth_country->code3,
+                'iso2' => $earth_country->code,
+            ]);
 
-            $data = [];
-            $now = now();
-            foreach ($countries as $country) {
-                $data[] = [
-                    'id' => $country['id'],
-                    'name' => $country['name'],
-                    'iso3' => $country['iso3'],
-                    'iso2' => $country['iso2'],
-                    'created_at' => $now,
-                    'updated_at' => $now,
-                ];
+            $earth_states = $earth_country->getStates()->setLocale('ru');
+            foreach ($earth_states as $state) {
+                $country->states()->create([
+                    'name' => $state->name,
+                    'iso_code' => $state->isoCode
+                ]);
             }
-
-            DB::table('countries')->insert($data);
         }
     }
 }
