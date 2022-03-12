@@ -20,7 +20,7 @@ class SettingSeeder extends Seeder
             [
                 'key' => 'title',
                 'description' => 'Title',
-                'value' => 'Borrow Lend Money',
+                'value' => 'Title',
                 'type' => 'text',
                 'created_at' => $now,
                 'updated_at' => $now
@@ -28,7 +28,7 @@ class SettingSeeder extends Seeder
             [
                 'key' => 'description',
                 'description' => 'Description',
-                'value' => 'Borrow Lend Money',
+                'value' => 'Description',
                 'type' => 'textarea',
                 'created_at' => $now,
                 'updated_at' => $now
@@ -36,7 +36,7 @@ class SettingSeeder extends Seeder
             [
                 'key' => 'keyword',
                 'description' => 'Keywords',
-                'value' => 'borrow, lend, money, credit',
+                'value' => 'keywords',
                 'type' => 'textarea',
                 'created_at' => $now,
                 'updated_at' => $now
@@ -76,14 +76,14 @@ class SettingSeeder extends Seeder
             [
                 'key' => 'email',
                 'description' => 'E-mail',
-                'value' => 'borrowlend@money.com',
+                'value' => 'email@email.com',
                 'type' => 'text',
                 'created_at' => $now,
                 'updated_at' => $now
             ],
             [
                 'key' => 'about_us',
-                'description' => 'About Us text',
+                'description' => 'О нас текст',
                 'value' => 'Приветствуем Вас на сайте доске объявлений, где каждый человек или же организация может взять или дать деньги в долг другому частному лицу или предприятию. Как правило, людям деньги требуются срочно и займы составляют от 500 гривен и, до нескольких сотен тысяч.',
                 'type' => 'editor',
                 'created_at' => $now,
@@ -91,7 +91,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'about_us_excerpt',
-                'description' => 'Short extract from about us text',
+                'description' => 'Краткая выдержка из текста о нас',
                 'value' => 'Приветствуем Вас на сайте доске объявлений, где каждый человек или же организация может взять или дать деньги в долг другому частному лицу или предприятию. Как правило, людям деньги требуются срочно и займы составляют от 500 гривен и, до нескольких сотен тысяч.',
                 'type' => 'textarea',
                 'created_at' => $now,
@@ -99,31 +99,23 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'privacy_policy',
-                'description' => 'Privacy Policy text',
-                'value' => 'Privacy Policy',
+                'description' => 'Текст Политики конфиденциальности',
+                'value' => 'Текст Политики конфиденциальности',
                 'type' => 'editor',
                 'created_at' => $now,
                 'updated_at' => $now
             ],
             [
                 'key' => 'terms_of_use',
-                'description' => 'Terms of Use text',
-                'value' => 'Terms of Use',
+                'description' => 'Текст условий использования',
+                'value' => 'Текст условий использования',
                 'type' => 'editor',
                 'created_at' => $now,
                 'updated_at' => $now
             ],
             [
-                'key' => 'facebook_link',
-                'description' => 'Facebook Link',
-                'value' => null,
-                'type' => 'text',
-                'created_at' => $now,
-                'updated_at' => $now
-            ],
-            [
-                'key' => 'twitter_link',
-                'description' => 'Twitter Link',
+                'key' => 'vk_link',
+                'description' => 'Ссылка на ВКонтакте',
                 'value' => null,
                 'type' => 'text',
                 'created_at' => $now,
@@ -131,7 +123,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'telegram_link',
-                'description' => 'Telegram Link',
+                'description' => 'Ссылка на Telegram',
                 'value' => null,
                 'type' => 'text',
                 'created_at' => $now,
@@ -139,7 +131,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'messenger_link',
-                'description' => 'Messenger Link',
+                'description' => 'Ссылка на Messenger',
                 'value' => null,
                 'type' => 'text',
                 'created_at' => $now,

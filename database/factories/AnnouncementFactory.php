@@ -21,7 +21,7 @@ class AnnouncementFactory extends Factory
         return [
             'country_id' => $this->faker->randomElement(Country::pluck('id')),
             'state_id' => function(array $attributes) {
-                return State::where('country_id', $attributes['country_id'])->get()->random()->id;
+                return State::where('country_id', $attributes['country_id'])->inRandomOrder()->first()->id;
             },
             'name' => $this->faker->name,
             'email' => $this->faker->freeEmail,

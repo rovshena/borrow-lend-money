@@ -20,7 +20,7 @@ class InquiryFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->freeEmail,
             'phone' => $this->faker->e164PhoneNumber,
-            'content' => $this->faker->paragraphs(20, true),
+            'content' => $this->faker->realText(1500),
             'is_read' => $this->faker->numberBetween(0, 1),
             'created_at' => $this->faker->dateTimeThisMonth('now', config('app.timezone'))
         ];

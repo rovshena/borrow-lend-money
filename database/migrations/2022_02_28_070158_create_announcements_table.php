@@ -15,7 +15,6 @@ class CreateAnnouncementsTable extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->index()->constrained();
             $table->foreignId('country_id')->constrained();
             $table->foreignId('state_id')->constrained();
             $table->string('title')->fulltext();
