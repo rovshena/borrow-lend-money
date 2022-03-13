@@ -61,5 +61,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/inquiries/mark-all/as-read', [InquiryController::class, 'markAllAsRead'])->name('inquiries.mark-all-as-read');
         Route::resource('settings', SettingController::class)->except(['create', 'store', 'destroy']);
         Route::resource('users', UserController::class)->except(['show']);
+        Route::resource('countries', CountryController::class)->except(['show']);
     });
 });
