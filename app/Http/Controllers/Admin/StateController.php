@@ -3,108 +3,74 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\NewsRequest;
-use App\Models\News;
-use App\Traits\UploadImages;
+use App\Http\Requests\StateRequest;
+use App\Models\Country;
+use App\Models\State;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Yajra\DataTables\Facades\DataTables;
 
-class NewsController extends Controller
+class StateController extends Controller
 {
-    use UploadImages;
-
-    protected $imagesFolder = 'news';
-
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $news = News::all(['id', 'title_tk', 'title_ru', 'status']);
-            return DataTables::of($news)
-                ->editColumn('status', function ($row) {
-                    return $row->status_badge;
-                })
+            $states = State::all(['id', 'name', 'iso_code', 'country_id']);
+            return DataTables::of($states)
                 ->addColumn('actions', function ($row) {
-                    $view = '<a href="' . route('admin.news.show', $row) . '" class="btn btn-subtle-primary btn-sm mr-2"><i class="fas fa-eye fa-fw"></i></a>';
-                    $edit = '<a href="' . route('admin.news.edit', $row) . '" class="btn btn-subtle-success btn-sm mr-2"><i class="fas fa-edit fa-fw"></i></a>';
-                    $delete = '<a href="javascript:void(0);" data-href="' . route('admin.news.destroy', $row) . '" class="btn btn-subtle-danger btn-sm mr-2 delete-item"><i class="fas fa-trash-alt fa-fw"></i></a>';
-                    return $view . $edit . $delete;
+                    $edit = '<a href="' . route('admin.states.edit', $row) . '" class="btn btn-subtle-success btn-sm mr-2"><i class="fas fa-edit fa-fw"></i></a>';
+                    $delete = '<a href="javascript:void(0);" data-href="' . route('admin.states.destroy', $row) . '" class="btn btn-subtle-danger btn-sm mr-2 delete-item"><i class="fas fa-trash-alt fa-fw"></i></a>';
+                    return $edit . $delete;
                 })
-                ->rawColumns(['status', 'actions'])
+                ->editColumn('country_id', function ($row) {
+                    return $row->country->name ?? '';
+                })
+                ->rawColumns(['actions'])
                 ->toJson();
         }
 
-        return view('admin.news.index');
+        return view('admin.state.index');
     }
 
     public function create()
     {
-        return view('admin.news.create');
+        return view('admin.state.create', [
+            'countries' => Country::orderBy('name')->pluck('name', 'id')
+        ]);
     }
 
-    public function store(NewsRequest $request)
+    public function store(StateRequest $request)
     {
-        $news = News::create(Arr::except($request->validated(), ['status', 'image']));
-
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-
-            $filename = $this->uploadImages($request->file('image'));
-
-            $news->update(['image' => $filename]);
-        }
-
-        return redirect()->route('admin.news.index')->with('success', __('Täzelik üstünlikli goşuldy.'));
+        State::create($request->validated());
+        return redirect()->route('admin.states.index')->with('success', __('Новый регион успешно добавлен.'));
     }
 
-    public function show(News $news)
+    public function edit(State $state)
     {
-        return view('admin.news.view', ['news' => $news]);
+        return view('admin.state.edit', [
+            'countries' => Country::orderBy('name')->pluck('name', 'id'),
+            'state' => $state
+        ]);
     }
 
-    public function edit(News $news)
+    public function update(StateRequest $request, State $state)
     {
-        return view('admin.news.edit', ['news' => $news]);
-    }
-
-    public function update(NewsRequest $request, News $news)
-    {
-        if ($news->update(Arr::except($request->validated(), 'image'))) {
-
-            if ($request->hasFile('image') && $request->file('image')->isValid()) {
-
-                $filename = $this->uploadImages($request->file('image'));
-
-                $news->update(['image' => $filename]);
-
-                if ($request->filled('old_file')) {
-                    $this->removeOldFiles($request->old_file);
-                }
-            }
-
-            return redirect()->route('admin.news.index')->with('success', __('Täzelik üstünlikli üýtgedildi.'));
+        if ($state->update($request->validated())) {
+            return redirect()->route('admin.states.index')->with('success', __('Регион успешно обновлен.'));
         } else {
-            return back()->with('error', __('Täzelik üýtgedilmedi.'));
+            return back()->with('error', __('Не могу обновить регион.'));
         }
     }
 
-    public function destroy(Request $request, News $news)
+    public function destroy(Request $request, State $state)
     {
         if ($request->ajax()) {
-
-            $image = filled($news->image) ? $news->image : null;
-
-            if ($news->delete()) {
-
-                if ($image !== null) {
-                    $this->removeOldFiles($image);
-                }
-
-                return response()->json(['success' => __('Täzelik üstünlikli pozuldy.')]);
+            if ($state->delete()) {
+                return response()->json(['success' => __('Регион успешно удален.')]);
             } else {
-                return response()->json(['error' => __('Täzelik pozulmady.')]);
+                return response()->json(['error' => __('Не могу удалить регион.')]);
             }
         } else {
-            return response()->json(['error' => __('Rugsat berilmeýär.')]);
+            return response()->json(['error' => __('Запрещено')]);
         }
     }
 }

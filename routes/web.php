@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -62,5 +63,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('settings', SettingController::class)->except(['create', 'store', 'destroy']);
         Route::resource('users', UserController::class)->except(['show']);
         Route::resource('countries', CountryController::class)->except(['show']);
+        Route::resource('states', StateController::class)->except(['show']);
     });
 });

@@ -64,7 +64,7 @@
                         <div class="col-12 form-actions">
                             <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center" id="submit-button">
                                 <span id="loading" class="spinner-border spinner-border-sm d-none mr-2" role="status" aria-hidden="true"></span>
-                                {{ __('Изменить страну') }}
+                                {{ __('Сохранить') }}
                             </button>
                         </div>
                     </div>
