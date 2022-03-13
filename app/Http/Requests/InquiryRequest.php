@@ -25,7 +25,7 @@ class InquiryRequest extends FormRequest
     {
         return [
             'contact_name' => 'required|string|max:250',
-            'contact_email' => 'email|max:250|nullable',
+            'contact_email' => 'required|email:rfc,dns',
             'contact_phone' => 'string|max:15|nullable',
             'contact_content' => 'required|string|max:20000'
         ];

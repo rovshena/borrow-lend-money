@@ -118,6 +118,13 @@ return [
             'driver' => 'single',
             'path' => storage_path('logs/php-deprecation-warnings.log'),
         ],
+
+        'mailer' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/mail.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 30,
+        ],
     ],
 
 ];

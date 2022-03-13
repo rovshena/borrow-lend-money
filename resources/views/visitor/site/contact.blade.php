@@ -59,12 +59,13 @@
                             </div>
                             <label for="contact_email" class="form-label">
                                 {{ __('Электронная почта') }}
+                                <abbr class="text-danger" title="{{ __('Обязательный') }}">*</abbr>
                             </label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">
                                     <i class="far fa-envelope fa-fw"></i>
                                 </span>
-                                <input type="email" class="form-control @error('contact_email') is-invalid @enderror" id="contact_email" value="{{ old('contact_email') }}" name="contact_email">
+                                <input type="email" class="form-control @error('contact_email') is-invalid @enderror" id="contact_email" value="{{ old('contact_email') }}" name="contact_email" required>
                                 @error('contact_email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

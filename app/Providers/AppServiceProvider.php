@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Setting;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,5 +27,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+
+        $mail = Setting::where('key', 'mail_to_email')->first();
+
+        if (filled($mail->value)) {
+            Mail::alwaysTo($mail->value, 'Website Mailer');
+        }
     }
 }

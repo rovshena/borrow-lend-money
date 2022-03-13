@@ -137,6 +137,14 @@ class SettingSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now
             ],
+            [
+                'key' => 'mail_to_email',
+                'description' => 'Contact Form Mailer mail',
+                'value' => null,
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
         ]);
     }
 }
