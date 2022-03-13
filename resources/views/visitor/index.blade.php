@@ -15,10 +15,10 @@
         <div class="container pt-5 pb-3">
             <div class="mx-auto text-center" style="max-width: 856px;">
                 <h1 class="mb-2 pb-1">
-                    Деньги <span class="text-primary">срочно!</span>
+                    {{ $settings->where('key', 'home_page_title')->first()->value }}
                 </h1>
                 <p class="mb-3">
-                    Приветствуем Вас на сайте доске объявлений, где каждый человек или же организация может взять или дать деньги в долг другому частному лицу или предприятию. Как правило, людям деньги требуются срочно и займы составляют от 500 гривен и, до нескольких сотен тысяч.
+                    {{ $settings->where('key', 'home_page_excerpt')->first()->value }}
                 </p>
                 <form class="form-group form-group-lg rounded-pill">
                     <input class="form-control" type="text" placeholder="What are you looking for?">
