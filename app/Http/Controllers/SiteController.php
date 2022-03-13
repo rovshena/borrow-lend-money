@@ -14,13 +14,13 @@ class SiteController extends Controller
     public function privacy()
     {
         $policy = Setting::where('key', 'privacy_policy')->firstOrFail();
-        return view('visitor.site.privacy', ['policy' => $policy]);
+        return view('visitor.site.privacy', compact('policy'));
     }
 
     public function terms()
     {
         $terms = Setting::where('key', 'terms_of_use')->firstOrFail();
-        return view('visitor.site.terms', ['terms' => $terms]);
+        return view('visitor.site.terms', compact('terms'));
     }
 
     public function about()

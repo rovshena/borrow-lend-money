@@ -1,21 +1,21 @@
 @extends('layouts.visitor.app')
 
-@section('title', __('About Us') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('title', __('О нас') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
 
-@section('meta.description', __('About Us') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('meta.description', __('О нас') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
-@section('meta.keywords', __('About Us') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
+@section('meta.keywords', __('О нас') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
 
-@section('og.title', __('About Us') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('og.title', __('О нас') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
 
-@section('og.description', __('About Us') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('og.description', __('О нас') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
 @section('content')
     <section class="py-5">
         <div class="container pt-5">
             <div class="mb-lg-5 mx-auto text-center" style="max-width: 856px;">
                 <h1 class="display-6 mb-4 pb-lg-2">
-                    Деньги <span class="text-primary">срочно!</span>
+                    О нас
                 </h1>
                 <p class="lead">
                     {{ $settings->where('key', 'about_us_excerpt')->first()->value }}

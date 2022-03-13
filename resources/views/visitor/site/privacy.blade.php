@@ -1,21 +1,21 @@
 @extends('layouts.visitor.app')
 
-@section('title', __('Privacy Policy') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('title', __('Политика конфиденциальности') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
 
-@section('meta.description', __('Privacy Policy') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('meta.description', __('Политика конфиденциальности') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
-@section('meta.keywords', __('Privacy Policy') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
+@section('meta.keywords', __('Политика конфиденциальности') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
 
-@section('og.title', __('Privacy Policy') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('og.title', __('Политика конфиденциальности') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
 
-@section('og.description', __('Privacy Policy') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('og.description', __('Политика конфиденциальности') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
 @section('content')
     <section class="pt-5">
         <div class="container pt-5">
             <div class="mx-auto text-center" style="max-width: 856px;">
                 <h1 class="display-6 mb-4 pb-lg-2">
-                    Privacy Policy
+                    Политика конфиденциальности
                 </h1>
             </div>
         </div>
