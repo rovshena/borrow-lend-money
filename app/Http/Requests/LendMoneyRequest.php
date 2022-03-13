@@ -59,7 +59,7 @@ class LendMoneyRequest extends FormRequest
             'state_id' => 'Область',
             'title' => 'Заголовок',
             'content' => 'Условия займа и сроки возврата',
-            'name' => 'Имя',
+            'name' => 'Полное имя',
             'company' => 'Название компании',
             'email' => 'Электронная почта',
             'phone' => 'Телефон',

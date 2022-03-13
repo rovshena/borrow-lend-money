@@ -69,10 +69,10 @@
                 <div class="mb-5" style="text-align: justify">
                     {{ $announcement->content }}
                 </div>
-                @if($announcement->mainComments->isNotEmpty())
+                @if($announcement->masterComments->isNotEmpty())
                     <div class="mt-4 mb-4 mb-md-5" id="comments">
                         <h4 class="mb-4 pb-2">{{ $announcement->comments()->count() }} comments</h4>
-                        @foreach($announcement->mainComments as $comment)
+                        @foreach($announcement->masterComments as $comment)
                         <div class="border-bottom pb-4 mb-4">
                             <p>{{ $comment->content }}</p>
                             <div class="d-flex justify-content-between align-items-center">

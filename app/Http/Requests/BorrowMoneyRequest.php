@@ -57,8 +57,8 @@ class BorrowMoneyRequest extends FormRequest
             'country_id' => 'Страна',
             'state_id' => 'Область',
             'title' => 'Заголовок',
-            'content' => 'Условия займа и сроки возврата',
-            'name' => 'Имя',
+            'content' => 'Цели займа и сроки возврата',
+            'name' => 'Полное имя',
             'email' => 'Электронная почта',
             'phone' => 'Телефон',
         ];

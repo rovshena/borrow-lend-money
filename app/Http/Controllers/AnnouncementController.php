@@ -6,7 +6,6 @@ use App\Http\Requests\BorrowMoneyRequest;
 use App\Http\Requests\LendMoneyRequest;
 use App\Models\Announcement;
 use App\Models\Country;
-use Illuminate\Support\Facades\Auth;
 
 class AnnouncementController extends Controller
 {
