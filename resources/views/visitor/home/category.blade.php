@@ -11,6 +11,9 @@
 @section('og.description', $settings['title']->value . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
 @section('content')
+    @if(!request()->route()->hasParameter('state'))
+        {!! $settings['header']->value !!}
+    @endif
     <section class="pt-5">
         <div class="container pt-5">
             <div class="mx-auto text-center" style="max-width: 856px;">
@@ -20,37 +23,66 @@
             </div>
         </div>
     </section>
-    @if(!request()->route()->hasParameter('state'))
-        {!! $settings['header']->value !!}
+    @if(request()->route()->hasParameter('country') || request()->route()->hasParameter('state'))
+        <section class="container mb-5">
+            <div class="col-md-10 mx-md-auto mx-3 mt-sm-0 mt-5 py-sm-5 py-4 px-0 rounded-3 bg-light shadow-sm">
+                <div class="col-md-10 mx-md-auto mx-3 py-lg-4 px-0">
+                    {!! $settings['content']->value !!}
+                </div>
+            </div>
+        </section>
     @endif
-    <section class="container">
-        <div class="row g-4 mb-3 pb-3 justify-content-center">
-            @forelse($announcements as $announcement)
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card shadow-sm card-hover border-0 h-100">
-                        <div class="card-body pb-3">
-                            <h4 class="mb-1">{!! $announcement->type_value !!}</h4>
-                            <h3 class="h6 mb-2 fs-base">
-                                <a class="nav-link stretched-link" href="{{ route('announcement.show', [$announcement->id, $announcement->slug]) }}">
-                                    {{ $announcement->title }}
-                                </a>
-                            </h3>
-                            <p class="mb-2 fs-sm text-muted">
-                                {{ Str::limit($announcement->content, 150) }}
-                            </p>
-                            @if($announcement->type === \App\Models\Announcement::TYPE_LEND)
-                                <div class="fs-sm">
-                                    <i class="fi-building mt-n1 me-2"></i>
-                                    {{ $announcement->company }}
-                                </div>
-                            @endif
-                            <div class="fs-sm">
-                                <i class="fi-map-pin mt-n1 me-2"></i>
-                                {{ $announcement->country->name }} / {{ $announcement->state->name }}
+    @if(request()->route()->parameter('category') == 'geo' && !request()->route()->hasParameter('state'))
+        <section class="container">
+            <div class="row g-4 mb-3 pb-3 justify-content-center">
+                @forelse($announcements as $announcement)
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card shadow-sm card-hover border-0 h-100">
+                            <div class="card-body pb-3">
+                                <h3 class="h6 mb-2 fs-base">
+                                    <a class="nav-link stretched-link" href="{{ route('category', ['geo', request()->route()->parameter('country'), $announcement->id]) }}">
+                                        {{ $announcement->name }}
+                                    </a>
+                                </h3>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <div class="text-body fs-sm">
+                    </div>
+                @empty
+                @endforelse
+            </div>
+            <div class="d-flex mb-4 justify-content-center text-center">
+                {{ $announcements->links() }}
+            </div>
+        </section>
+    @else
+        <section class="container">
+            <div class="row g-4 mb-3 pb-3 justify-content-center">
+                @forelse($announcements as $announcement)
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card shadow-sm card-hover border-0 h-100">
+                            <div class="card-body pb-3">
+                                <h4 class="mb-1">{!! $announcement->type_value !!}</h4>
+                                <h3 class="h6 mb-2 fs-base">
+                                    <a class="nav-link stretched-link" href="{{ route('announcement.show', [$announcement->id, $announcement->slug]) }}">
+                                        {{ $announcement->title }}
+                                    </a>
+                                </h3>
+                                <p class="mb-2 fs-sm text-muted">
+                                    {{ Str::limit($announcement->content, 150) }}
+                                </p>
+                                @if($announcement->type === \App\Models\Announcement::TYPE_LEND)
+                                    <div class="fs-sm">
+                                        <i class="fi-building mt-n1 me-2"></i>
+                                        {{ $announcement->company }}
+                                    </div>
+                                @endif
+                                <div class="fs-sm">
+                                    <i class="fi-map-pin mt-n1 me-2"></i>
+                                    {{ $announcement->country->name }} / {{ $announcement->state->name }}
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-body fs-sm">
                                 <span class="me-2 pe-1">
                                     <i class="fi-calendar-alt opacity-60 mt-n1 me-1"></i>
                                     @if(optional($announcement->created_at)->diffInDays(now()) >= 7)
@@ -59,20 +91,21 @@
                                         {{ optional($announcement->created_at)->diffForHumans() }}
                                     @endif
                                 </span>
-                                <span>
+                                    <span>
                                     <i class="fi-chat-circle opacity-60 mt-n1 me-1"></i>
                                     {{ $announcement->comments()->count() }}
                                 </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @empty
-            @endforelse
-        </div>
-        <div class="d-flex mb-4 justify-content-center text-center">
-            {{ $announcements->links() }}
-        </div>
-    </section>
+                @empty
+                @endforelse
+            </div>
+            <div class="d-flex mb-4 justify-content-center text-center">
+                {{ $announcements->links() }}
+            </div>
+        </section>
+    @endif
     {!! $settings['footer']->value !!}
 @endsection
