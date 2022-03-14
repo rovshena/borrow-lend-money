@@ -66,9 +66,11 @@ class HomeController extends Controller
                         ->paginate(12, ['*'], __('страница'))
                         ->onEachSide(2);
                     $settings['title'] = Setting::where('key', 'category_state_title')->firstOrFail();
-                    $settings['title']->value = str_replace('{{state}}', $country->name . ' / ' . $state->name, $settings['title']->value);
+                    $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
+                    $settings['title']->value = str_replace('{{state}}', $state->name, $settings['title']->value);
                     $settings['content'] = Setting::where('key', 'category_state_content')->firstOrFail();
-                    $settings['content']->value = str_replace('{{state}}', $country->name . ' / ' . $state->name, $settings['content']->value);
+                    $settings['content']->value = str_replace('{{country}}', $country->name, $settings['content']->value);
+                    $settings['content']->value = str_replace('{{state}}', $state->name, $settings['content']->value);
                     $settings['header'] = Setting::where('key', 'category_state_header_code')->firstOrFail();
                     $settings['footer'] = Setting::where('key', 'category_state_footer_code')->firstOrFail();
                 } else {
