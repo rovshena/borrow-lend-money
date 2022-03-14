@@ -77,6 +77,20 @@
                         </div>
                     @endif
 
+                    @if($setting->type == 'code')
+                        <div class="form-group">
+                            <label for="value">
+                                {{ __('Значение') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
+                            </label>
+                            <textarea name="value" rows="10" id="value" class="code-mirror form-control @error('value') is-invalid @enderror">{{ $setting->value }}</textarea>
+                            @error('value')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    @endif
+
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input @error('status') is-invalid @enderror" name="status" id="status" {{ $setting->status ? 'checked' : '' }}>
@@ -101,10 +115,15 @@
 
 @include('plugins.summernote')
 
+@push('head.js')
+    <link rel="stylesheet" href="{{ mix('assets/dashboard/css/code-mirror.css') }}">
+@endpush
+
 @push('page.js')
     @if ($errors->any())
         <script>
             $('.invalid-feedback').show();
         </script>
     @endif
+    <script src="{{ mix('assets/dashboard/js/code-mirror.js') }}"></script>
 @endpush

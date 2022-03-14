@@ -17,7 +17,7 @@ class FactorySeeder extends Seeder
     public function run()
     {
         Inquiry::factory()->count(20)->create();
-        Announcement::factory()->count(60)->create();
+        Announcement::factory()->count(200)->create();
         Comment::factory()
             ->has(Comment::factory()
                 ->count(3)

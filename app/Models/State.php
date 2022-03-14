@@ -15,4 +15,9 @@ class State extends Model
     {
         return $this->belongsTo(Country::class);
     }
+
+    public function announcements()
+    {
+        return $this->hasMany(Announcement::class);
+    }
 }

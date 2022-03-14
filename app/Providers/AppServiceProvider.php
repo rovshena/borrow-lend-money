@@ -28,10 +28,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        $mail = Setting::where('key', 'mail_to_email')->first();
+        if (!$this->app->runningInConsole()) {
+            $mail = Setting::where('key', 'mail_to_email')->first();
 
-        if (filled($mail->value)) {
-            Mail::alwaysTo($mail->value, 'Website Mailer');
+            if (filled($mail->value)) {
+                Mail::alwaysTo($mail->value, 'Website Mailer');
+            }
         }
     }
 }

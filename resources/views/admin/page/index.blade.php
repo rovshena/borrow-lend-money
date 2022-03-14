@@ -1,18 +1,18 @@
 @extends('layouts.admin.app')
 
-@section('title', __('Настройки'))
+@section('title', __('Страницы'))
 
 @php
     $breadcrumbs[] = ['label' => __('Главная'), 'url' => route('admin.index')];
-    $breadcrumbs[] = ['label' => __('Настройки')];
+    $breadcrumbs[] = ['label' => __('Страницы')];
 @endphp
 
 @section('content')
     <header class="page-title-bar">
         @include('plugins.breadcrumb', ['breadcrumbs' => $breadcrumbs])
         <h1 class="page-title text-truncate">
-            <i class="fas fa-cogs fa-fw mr-2 text-muted"></i>
-            {{ __('Настройки') }}
+            <i class="fas fa-file-alt fa-fw mr-2 text-muted"></i>
+            {{ __('Страницы') }}
         </h1>
     </header>
     <div class="page-section">
@@ -21,10 +21,9 @@
                 <table id="datatable" class="table table-hover align-middle">
                     <thead>
                         <tr>
-                            <th> ID</th>
+                            <th> # </th>
                             <th> {{ __('Ключ') }} </th>
                             <th> {{ __('Описание') }} </th>
-                            <th> {{ __('Статус') }} </th>
                             <th style="width:120px; min-width:120px;">{{ __('Действия') }} </th>
                         </tr>
                     </thead>
@@ -36,12 +35,11 @@
 
 @section('datatable')
     order: [0, 'asc'],
-    ajax: "{{ route('admin.settings.index') }}",
+    ajax: "{{ route('admin.pages.index') }}",
     columns: [
     {data: 'id'},
     {data: 'key'},
-    {data: 'description'},
-    {data: 'status'},
+    {data: 'name'},
     {
     data: 'actions',
     className: 'text-right',
@@ -53,7 +51,7 @@
 
 @section('datatable-select-event')
     datatable.on('select', function(e, dt, type, indexes){
-    var itemID = datatable.rows(indexes).data()[0].id;
+    var itemID = datatable.rows(indexes).data()[0].key;
     window.location.href = "{{ url()->current() }}" + "/" + itemID + "/edit";
     });
 @endsection

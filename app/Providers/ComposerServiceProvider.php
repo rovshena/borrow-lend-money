@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\View\Composers\CountryComposer;
 use App\Http\View\Composers\InquiryComposer;
 use App\Http\View\Composers\SettingComposer;
 use Illuminate\Support\Facades\View;
@@ -28,5 +29,6 @@ class ComposerServiceProvider extends ServiceProvider
     {
         View::composer('admin.inquiry.dropdown', InquiryComposer::class);
         View::composer(['visitor.*'], SettingComposer::class);
+        View::composer(['layouts.visitor.partials.header'], CountryComposer::class);
     }
 }

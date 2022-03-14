@@ -11,7 +11,5 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js('resources/js/code-mirror.js', 'public/assets/dashboard/js').version();
+mix.postCss('resources/css/code-mirror.css', 'public/assets/dashboard/css').version();

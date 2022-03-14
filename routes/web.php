@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\UserController;
@@ -40,6 +41,9 @@ Route::get('/lend-money', [AnnouncementController::class, 'showLendMoneyForm'])-
 Route::post('/lend-money', [AnnouncementController::class, 'storeLendMoney'])->name('lend.money.store');
 Route::get('/reload-captcha', [CaptchaController::class, 'reloadCaptcha'])->name('reload-captcha');
 
+Route::get('/credit-calculator', [HomeController::class, 'creditCalculator'])->name('credit-calculator');
+Route::get('/category/{category}/{country?}/{state?}', [HomeController::class, 'category'])->name('category');
+
 Route::get('/announcements/{announcement}/{slug?}', [HomeController::class, 'show'])->name('announcement.show');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -61,6 +65,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::delete('/inquiries/{inquiry}/destroy', [InquiryController::class, 'destroy'])->name('inquiries.destroy');
         Route::get('/inquiries/mark-all/as-read', [InquiryController::class, 'markAllAsRead'])->name('inquiries.mark-all-as-read');
         Route::resource('settings', SettingController::class)->except(['create', 'store', 'destroy']);
+        Route::get('/pages', [PageController::class, 'index'])->name('pages.index');
+        Route::get('/pages/{page}/edit', [PageController::class, 'edit'])->name('pages.edit');
+        Route::put('/pages/{page}/update', [PageController::class, 'update'])->name('pages.update');
         Route::resource('users', UserController::class)->except(['show']);
         Route::resource('countries', CountryController::class)->except(['show']);
         Route::resource('states', StateController::class)->except(['show']);

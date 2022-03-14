@@ -1,35 +1,28 @@
 @extends('layouts.visitor.app')
 
-@section('title', Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : '')
+@section('title', $settings['title']->value . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
 
-@section('meta.description', Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : '')
+@section('meta.description', $settings['title']->value . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
-@section('meta.keywords', Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : '')
+@section('meta.keywords', $settings['title']->value . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
 
-@section('og.title', Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : '')
+@section('og.title', $settings['title']->value . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
 
-@section('og.description', Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : '')
+@section('og.description', $settings['title']->value . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
 @section('content')
-    <section class="py-5">
-        <div class="container pt-5 pb-3">
+    <section class="pt-5">
+        <div class="container pt-5">
             <div class="mx-auto text-center" style="max-width: 856px;">
-                <h1 class="mb-2 pb-1">
-                    {{ $settings->where('key', 'home_page_title')->first()->value }}
+                <h1 class="display-6 mb-4 pb-lg-2">
+                    {{ $settings['title']->value }}
                 </h1>
-                <p class="mb-3">
-                    {{ $settings->where('key', 'home_page_excerpt')->first()->value }}
-                </p>
-                <form class="form-group form-group-lg rounded-pill">
-                    <input class="form-control" type="text" placeholder="Что вы ищете?">
-                    <button class="btn btn-lg btn-primary rounded-pill px-sm-4 px-3" type="button">
-                        <i class="fi-search me-sm-2"></i>
-                        <span class="d-sm-inline d-none">Поиск</span>
-                    </button>
-                </form>
             </div>
         </div>
     </section>
+    @if(!request()->route()->hasParameter('state'))
+        {!! $settings['header']->value !!}
+    @endif
     <section class="container">
         <div class="row g-4 mb-3 pb-3 justify-content-center">
             @forelse($announcements as $announcement)
@@ -81,4 +74,5 @@
             {{ $announcements->links() }}
         </div>
     </section>
+    {!! $settings['footer']->value !!}
 @endsection

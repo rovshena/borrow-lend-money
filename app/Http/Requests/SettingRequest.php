@@ -34,7 +34,7 @@ class SettingRequest extends FormRequest
             ]);
         }
 
-        if ($this->setting->type == 'textarea' || $this->setting->type == 'editor') {
+        if ($this->setting->type == 'textarea' || $this->setting->type == 'editor' || $this->setting->type == 'code') {
             $rules = array_merge($rules, [
                 'value' => 'required|string',
             ]);
