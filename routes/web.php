@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AnnouncementController as AdminAnnouncementController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\PageController;
@@ -71,5 +72,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('users', UserController::class)->except(['show']);
         Route::resource('countries', CountryController::class)->except(['show']);
         Route::resource('states', StateController::class)->except(['show']);
+        Route::resource('announcements', AdminAnnouncementController::class)->except(['create', 'store', 'destroy', 'show']);
     });
 });

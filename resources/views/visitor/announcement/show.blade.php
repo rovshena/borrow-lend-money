@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="mb-5" style="text-align: justify">
-                    {{ $announcement->content }}
+                    {!! $announcement->content !!}
                 </div>
                 @if($announcement->masterComments->isNotEmpty())
                     <div class="mt-4 mb-4 mb-md-5" id="comments">

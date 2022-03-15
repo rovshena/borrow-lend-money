@@ -48,7 +48,7 @@
                                 </a>
                             </h3>
                             <p class="mb-2 fs-sm text-muted">
-                                {{ Str::limit($announcement->content, 150) }}
+                                {{ Str::limit(strip_tags($announcement->content), 150) }}
                             </p>
                             @if($announcement->type === \App\Models\Announcement::TYPE_LEND)
                                 <div class="fs-sm">
