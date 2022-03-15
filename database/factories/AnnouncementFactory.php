@@ -23,6 +23,12 @@ class AnnouncementFactory extends Factory
             'state_id' => function(array $attributes) {
                 return State::where('country_id', $attributes['country_id'])->inRandomOrder()->first()->id;
             },
+            'country_name' => function(array $attributes) {
+                return Country::find($attributes['country_id'])->name;
+            },
+            'state_name' => function(array $attributes) {
+                return State::find($attributes['state_id'])->name;
+            },
             'name' => $this->faker->name,
             'email' => $this->faker->freeEmail,
             'phone' => $this->faker->e164PhoneNumber,

@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Announcement;
+use App\Models\Country;
+use App\Models\State;
+use App\Observers\AnnouncementObserver;
+use App\Observers\CountryObserver;
+use App\Observers\StateObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -27,6 +33,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Announcement::observe(AnnouncementObserver::class);
+        Country::observe(CountryObserver::class);
+        State::observe(StateObserver::class);
     }
 }

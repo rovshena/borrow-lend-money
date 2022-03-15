@@ -17,6 +17,8 @@ class CreateAnnouncementsTable extends Migration
             $table->id();
             $table->foreignId('country_id')->constrained();
             $table->foreignId('state_id')->constrained();
+            $table->string('country_name')->nullable()->fulltext();
+            $table->string('state_name')->nullable()->fulltext();
             $table->string('title')->fulltext();
             $table->text('content')->nullable()->fulltext();
             $table->string('name');
