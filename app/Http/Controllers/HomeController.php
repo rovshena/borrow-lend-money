@@ -13,9 +13,9 @@ class HomeController extends Controller
     public function index()
     {
         $settings = Setting::whereIn('key', ['home_page_title', 'home_page_excerpt'])->get();
-        $announcements = Announcement::with(['comments', 'country', 'masterComments'])
-            ->select(['id', 'title', 'content', 'company', 'type', 'country_id', 'state_id', 'created_at'])
-            ->latest()
+        $announcements = Announcement::with(['comments', 'country'])
+            ->select(['id', 'title', 'content', 'company', 'type', 'country_id', 'state_id', 'is_vip', 'created_at'])
+            ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
             ->paginate(12, ['*'], __('страница'))
             ->onEachSide(2);
         return view('visitor.index', compact(['announcements', 'settings']));
@@ -44,7 +44,7 @@ class HomeController extends Controller
             if ($category == 'borrow-money') {
                 $announcements = $query
                     ->where('type', Announcement::TYPE_BORROW)
-                    ->orderBy('is_vip')->orderBy('created_at', 'desc')
+                    ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
                     ->paginate(12, ['*'], __('страница'))
                     ->onEachSide(2);
                 $settings['title'] = Setting::where('key', 'borrow_money_title')->firstOrFail();
@@ -53,7 +53,7 @@ class HomeController extends Controller
             } elseif ($category == 'lend-money') {
                 $announcements = $query
                     ->where('type', Announcement::TYPE_LEND)
-                    ->orderBy('is_vip')->orderBy('created_at', 'desc')
+                    ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
                     ->paginate(12, ['*'], __('страница'))
                     ->onEachSide(2);
                 $settings['title'] = Setting::where('key', 'lend_money_title')->firstOrFail();
@@ -66,7 +66,7 @@ class HomeController extends Controller
                     $announcements = $query
                         ->where('country_id', $country_id)
                         ->where('state_id', $state_id)
-                        ->orderBy('is_vip')->orderBy('created_at', 'desc')
+                        ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
                         ->paginate(12, ['*'], __('страница'))
                         ->onEachSide(2);
                     $settings['title'] = Setting::where('key', 'category_state_title')->firstOrFail();

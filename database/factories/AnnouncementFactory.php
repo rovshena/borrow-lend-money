@@ -29,6 +29,7 @@ class AnnouncementFactory extends Factory
             'company' => $this->faker->company,
             'title' => $this->faker->realText(60),
             'content' => $this->faker->realText(3000),
+            'is_vip' => $this->faker->boolean(5),
             'type' => $this->faker->numberBetween(Announcement::TYPE_BORROW, Announcement::TYPE_LEND),
             'created_at' => $this->faker->dateTimeThisMonth('now', config('app.timezone'))
         ];

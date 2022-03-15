@@ -61,7 +61,12 @@
                     <div class="col-sm-6 col-xl-3">
                         <div class="card shadow-sm card-hover border-0 h-100">
                             <div class="card-body pb-3">
-                                <h4 class="mb-1">{!! $announcement->type_value !!}</h4>
+                                <h4 class="mb-1">
+                                    @if($announcement->is_vip)
+                                        <i class="star-rating-icon active fi-star-filled"></i>
+                                    @endif
+                                    {!! $announcement->type_value !!}
+                                </h4>
                                 <h3 class="h6 mb-2 fs-base">
                                     <a class="nav-link stretched-link" href="{{ route('announcement.show', [$announcement->id, $announcement->slug]) }}">
                                         {{ $announcement->title }}
