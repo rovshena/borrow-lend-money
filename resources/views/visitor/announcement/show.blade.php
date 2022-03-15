@@ -11,6 +11,7 @@
 @section('og.description', $announcement->title . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
 @section('content')
+    {!! $header->value !!}
     <div class="container mt-5 mb-md-4 py-5">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
@@ -147,4 +148,5 @@
             </div>
         </div>
     </div>
+    {!! $footer->value !!}
 @endsection

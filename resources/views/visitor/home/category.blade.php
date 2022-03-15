@@ -11,9 +11,6 @@
 @section('og.description', $settings['title']->value . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
 
 @section('content')
-    @if(!request()->route()->hasParameter('state'))
-        {!! $settings['header']->value !!}
-    @endif
     <section class="pt-5">
         <div class="container pt-5">
             <div class="mx-auto text-center" style="max-width: 856px;">
@@ -23,6 +20,9 @@
             </div>
         </div>
     </section>
+    @if(!request()->route()->hasParameter('state'))
+        {!! $settings['header']->value !!}
+    @endif
     @if(request()->route()->hasParameter('country') || request()->route()->hasParameter('state'))
         <section class="container mb-5">
             <div class="col-md-10 mx-md-auto mx-3 mt-sm-0 mt-5 py-sm-5 py-4 px-0 rounded-3 bg-light shadow-sm">

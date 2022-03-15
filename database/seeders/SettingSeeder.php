@@ -290,6 +290,22 @@ class SettingSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now
             ],
+            [
+                'key' => 'announcement_header_code',
+                'description' => 'Код заголовка',
+                'value' => '',
+                'type' => 'code',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'announcement_footer_code',
+                'description' => 'Код нижнего',
+                'value' => '',
+                'type' => 'code',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
         ]);
     }
 }

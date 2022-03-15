@@ -59,5 +59,10 @@ class Setting extends Model
             'key' => 'category_state',
             'name' => 'Категории «Деньги в городах»'
         ],
+        9 => [
+            'id' => 10,
+            'key' => 'announcement',
+            'name' => 'Страница объявлений'
+        ],
     ];
 }

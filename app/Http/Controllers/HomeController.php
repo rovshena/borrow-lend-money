@@ -27,7 +27,11 @@ class HomeController extends Controller
             return redirect()->route('announcement.show', [$announcement->id, $announcement->slug]);
         }
 
-        return view('visitor.announcement.show', ['announcement' => $announcement->load(['comments', 'comments.comments'])]);
+        return view('visitor.announcement.show', [
+            'announcement' => $announcement->load(['comments', 'comments.comments']),
+            'header' => Setting::where('key', 'announcement_header_code')->firstOrFail(),
+            'footer' => Setting::where('key', 'announcement_footer_code')->firstOrFail(),
+        ]);
     }
 
     public function category($category, $country_id = '', $state_id = '')
