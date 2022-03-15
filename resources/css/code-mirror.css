@@ -1,2 +1,5 @@
 @import '~codemirror/lib/codemirror.css';
 @import '~codemirror/theme/darcula.css';
+@import '~codemirror/addon/scroll/simplescrollbars.css';
+@import '~codemirror/addon/display/fullscreen.css';
+@import '~codemirror/addon/fold/foldgutter.css';
