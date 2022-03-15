@@ -5,15 +5,30 @@ namespace App\Models;
 use App\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Announcement extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, Searchable;
 
     const TYPE_BORROW = 1;
     const TYPE_LEND = 2;
 
     protected $guarded = ['id'];
+
+    protected static function booted()
+    {
+        static::created(function ($announcement) {
+            if (!app()->runningInConsole()) {
+                $country = Country::find($announcement->country_id);
+                $state = State::find($announcement->state_id);
+                $announcement->update([
+                    'country_name'=> $country->name,
+                    'state_name' => $state->name
+                ]);
+            }
+        });
+    }
 
     public function scopeBorrow($query)
     {
