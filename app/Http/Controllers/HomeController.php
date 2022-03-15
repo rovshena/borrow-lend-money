@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
+use App\Http\Requests\ReplyCommentRequest;
 use App\Models\Announcement;
+use App\Models\Comment;
 use App\Models\Country;
 use App\Models\Setting;
-use App\Models\State;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -29,6 +30,13 @@ class HomeController extends Controller
 
         return view('visitor.announcement.show', [
             'announcement' => $announcement->load(['comments', 'comments.comments']),
+            'comments' => $announcement->masterComments()
+                ->with(['comments' => function($query) {
+                    $query->orderBy('created_at', 'asc');
+                }])
+                ->orderBy('created_at', 'asc')
+                ->paginate(10, ['*'], __('страница'))
+                ->onEachSide(2),
             'header' => Setting::where('key', 'announcement_header_code')->firstOrFail(),
             'footer' => Setting::where('key', 'announcement_footer_code')->firstOrFail(),
         ]);
@@ -104,5 +112,20 @@ class HomeController extends Controller
     {
         $credit_calculator = Setting::where('key', 'credit_calculator')->firstOrFail();
         return view('visitor.home.credit-calculator', compact('credit_calculator'));
+    }
+
+    public function comment(CommentRequest $request, Announcement $announcement)
+    {
+        $announcement->masterComments()->create($request->validated());
+        return redirect()->route('announcement.show', [$announcement->id, $announcement->slug])->with('success', 'Ваш комментарий успешно добавлен.');
+    }
+
+    public function reply(ReplyCommentRequest $request, Announcement $announcement, Comment $comment)
+    {
+        $validated = $request->validated();
+        $validated['parent_id'] = $comment->id;
+        $announcement->comments()->create($validated);
+        return redirect()->route('announcement.show', [$announcement->id, $announcement->slug])
+            ->with('success', 'Ваш ответ на комментарий '. $comment->name .' успешно добавлен!');
     }
 }

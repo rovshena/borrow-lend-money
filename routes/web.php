@@ -46,6 +46,8 @@ Route::get('/credit-calculator', [HomeController::class, 'creditCalculator'])->n
 Route::get('/category/{category}/{country?}/{state?}', [HomeController::class, 'category'])->name('category');
 
 Route::get('/announcements/{announcement}/{slug?}', [HomeController::class, 'show'])->name('announcement.show');
+Route::post('/announcements/{announcement}/comment', [HomeController::class, 'comment'])->name('announcement.comment');
+Route::post('/announcements/{announcement}/comment/{comment}/reply', [HomeController::class, 'reply'])->name('announcement.comment.reply');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
