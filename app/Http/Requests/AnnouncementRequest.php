@@ -30,6 +30,7 @@ class AnnouncementRequest extends FormRequest
             'name' => 'required|string|max:250',
             'email' => 'nullable|email',
             'phone' => 'nullable|string|max:15',
+            'is_vip' => 'boolean|nullable',
         ];
 
         if ($this->announcement->type == Announcement::TYPE_LEND) {
@@ -43,6 +44,18 @@ class AnnouncementRequest extends FormRequest
         }
 
         return $rules;
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'is_vip' => $this->boolean('is_vip')
+        ]);
     }
 
     /**
