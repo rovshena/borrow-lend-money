@@ -10,12 +10,16 @@ new Vue({
             search: '',
             announcements: [],
             loading: false,
+            timer: undefined,
         }
     },
     watch: {
         search(value) {
-            if (value.length > 2) {
-                this.searchAnnouncements()
+            clearTimeout(this.timer)
+            if (value.length) {
+                this.timer =setTimeout(() => {
+                    this.searchAnnouncements()
+                }, 1000)
             } else {
                 this.announcements = []
             }
