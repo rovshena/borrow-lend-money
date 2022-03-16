@@ -13,3 +13,13 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/code-mirror.js', 'public/assets/dashboard/js').version();
 mix.postCss('resources/css/code-mirror.css', 'public/assets/dashboard/css').version();
+
+mix.js('resources/js/app.js', 'public/assets/visitor/js/app.min.js')
+    .vue()
+    .webpackConfig({
+        resolve: {
+            alias: {
+                'vue$': mix.inProduction() ? 'vue/dist/vue.min' : 'vue/dist/vue.js'
+            }
+        }
+    });

@@ -8,18 +8,56 @@ use App\Models\Announcement;
 use App\Models\Comment;
 use App\Models\Country;
 use App\Models\Setting;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $settings = Setting::whereIn('key', ['home_page_title', 'home_page_excerpt'])->get();
-        $announcements = Announcement::with(['comments', 'country'])
-            ->select(['id', 'title', 'content', 'company', 'type', 'country_id', 'state_id', 'is_vip', 'created_at'])
-            ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
-            ->paginate(12, ['*'], __('страница'))
-            ->onEachSide(2);
-        return view('visitor.index', compact(['announcements', 'settings']));
+        $countries = Country::has('announcements')->with(['states' => function($query) {
+            $query->has('announcements');
+        }])->get(['id', 'name']);
+        return view('visitor.index', compact(['countries', 'settings']));
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('search', '');
+        $countries = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'states.name as state'])
+            ->join('countries', 'countries.id', '=', 'announcements.country_id')
+            ->join('states', 'states.id', '=', 'announcements.state_id')
+            ->where('countries.name', 'like', "%{$keyword}%")
+            ->get();
+
+        $countries->map(function ($item) use ($keyword) {
+            $item['country'] = str_replace($keyword, '<span class="bg-faded-primary">'. $keyword .'</span>', $item['country']);
+            return $item;
+        });
+
+        $states = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'states.name as state'])
+            ->join('countries', 'countries.id', '=', 'announcements.country_id')
+            ->join('states', 'states.id', '=', 'announcements.state_id')
+            ->where('states.name', 'like', "%{$keyword}%")
+            ->get();
+
+        $states->map(function ($item) use ($keyword) {
+            $item['state'] = str_replace($keyword, '<span class="bg-faded-primary">'. $keyword .'</span>', $item['state']);
+            return $item;
+        });
+
+        $title = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'states.name as state'])
+            ->join('countries', 'countries.id', '=', 'announcements.country_id')
+            ->join('states', 'states.id', '=', 'announcements.state_id')
+            ->where('announcements.title', 'like', "%{$keyword}%")
+            ->get();
+
+        $title->map(function ($item) use ($keyword) {
+            $item['title'] = str_replace($keyword, '<span class="bg-faded-primary">'. $keyword .'</span>', $item['title']);
+            return $item;
+        });
+
+        return ($countries->merge($states))->merge($title);
     }
 
     public function show(Announcement $announcement, $slug = "")
