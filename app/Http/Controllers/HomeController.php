@@ -31,7 +31,9 @@ class HomeController extends Controller
             ->get();
 
         $countries->map(function ($item) use ($keyword) {
-            $item['country'] = str_replace($keyword, '<span class="bg-faded-primary">'. $keyword .'</span>', $item['country']);
+            if (mb_eregi($keyword, $item['country'], $matches)) {
+                $item['country'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['country']);
+            }
             return $item;
         });
 
@@ -42,7 +44,9 @@ class HomeController extends Controller
             ->get();
 
         $states->map(function ($item) use ($keyword) {
-            $item['state'] = str_replace($keyword, '<span class="bg-faded-primary">'. $keyword .'</span>', $item['state']);
+            if (mb_eregi($keyword, $item['state'], $matches)) {
+                $item['state'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['state']);
+            }
             return $item;
         });
 
@@ -53,7 +57,9 @@ class HomeController extends Controller
             ->get();
 
         $title->map(function ($item) use ($keyword) {
-            $item['title'] = str_replace($keyword, '<span class="bg-faded-primary">'. $keyword .'</span>', $item['title']);
+            if (mb_eregi($keyword, $item['title'], $matches)) {
+                $item['title'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['title']);
+            }
             return $item;
         });
 
