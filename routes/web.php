@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SitemapController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AnnouncementController;
@@ -76,5 +77,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('countries', CountryController::class)->except(['show']);
         Route::resource('states', StateController::class)->except(['show']);
         Route::resource('announcements', AdminAnnouncementController::class)->except(['create', 'store', 'destroy', 'show']);
+        Route::get('/generate-sitemap', SitemapController::class)->name('generate.sitemap');
     });
 });

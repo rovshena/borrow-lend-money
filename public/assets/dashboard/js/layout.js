@@ -14,6 +14,10 @@ $.ajaxSetup({
     }
 });
 
+$(document).on('click', '.show-preloader', function () {
+    $('.preloader').show();
+})
+
 // $(document).ajaxStart(function() {
 //     $('.preloader').show();
 // });

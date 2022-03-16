@@ -57,11 +57,11 @@
                                     </a>
                                 </div>
                                 <div class="dropdown-sheet-item">
-                                    <a href="{{ route('admin.settings.index') }}" class="tile-wrapper">
+                                    <a href="{{ route('admin.generate.sitemap') }}" class="tile-wrapper show-preloader">
                                         <span class="tile tile-lg bg-amazon">
                                             <i class="fas fa-cogs"></i>
                                         </span>
-                                        <span class="tile-peek">{{ __('Настройки') }}</span>
+                                        <span class="tile-peek">{{ __('Generate Sitemap') }}</span>
                                     </a>
                                 </div>
                             </div>
