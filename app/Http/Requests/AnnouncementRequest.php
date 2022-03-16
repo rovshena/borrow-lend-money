@@ -72,6 +72,7 @@ class AnnouncementRequest extends FormRequest
             'company' => 'Название компании',
             'email' => 'Электронная почта',
             'phone' => 'Телефон',
+            'is_vip' => 'VIP',
         ];
     }
 }
