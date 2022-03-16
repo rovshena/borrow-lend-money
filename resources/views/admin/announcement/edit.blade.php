@@ -113,7 +113,7 @@
                         <div class="col-12 form-group">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input @error('is_vip') is-invalid @enderror" name="is_vip" id="is_vip" {{ $announcement->is_vip ? 'checked' : '' }}>
-                                <label class="custom-control-label" for="status">{{ __('VIP') }}</label>
+                                <label class="custom-control-label" for="is_vip">{{ __('VIP') }}</label>
                                 @error('is_vip')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
