@@ -18,18 +18,6 @@
 					</span>
                 </button>
             </div>
-            <div class="top-bar-item top-bar-item-full">
-                <div class="top-bar-search">
-                    <div class="input-group input-group-search dropdown">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <span class="fas fa-search fa-fw"></span>
-                            </span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Search" placeholder="{{ __('Поиск') }}">
-                    </div>
-                </div>
-            </div>
             <div class="top-bar-item top-bar-item-right d-none d-sm-flex px-0">
                 <ul class="header-nav nav">
                     @include('admin.inquiry.dropdown')
