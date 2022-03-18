@@ -35,7 +35,13 @@ window.addEventListener("load", function () {
 });
 
 function disableSubmitButton() {
-    document.getElementById('submit-button').setAttribute('disabled', 'true');
-    document.getElementById('loading').classList.remove('d-none');
+    const button = document.getElementById('submit-button')
+    const loading = document.getElementById('loading')
+    if (button) {
+        button.setAttribute('disabled', 'true');
+    }
+    if (loading) {
+        loading.classList.remove('d-none');
+    }
     $('#preloader').show();
 }

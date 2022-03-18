@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class ReplyCommentRequest extends FormRequest
 {
     protected $errorBag = 'reply';
+    protected $stopOnFirstFailure = true;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +27,18 @@ class ReplyCommentRequest extends FormRequest
     public function rules()
     {
         return [
+            'captcha' => 'bail|required|captcha',
             'content' => 'required|string|min:5',
             'name' => 'nullable|string|max:250',
             'email' => 'nullable|email',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'captcha.required' => 'Введите код с картинки',
+            'captcha.captcha' => 'Неверный код с картинки',
         ];
     }
 
@@ -40,6 +50,7 @@ class ReplyCommentRequest extends FormRequest
     public function attributes()
     {
         return [
+            'captcha' => 'Код с картинки',
             'content' => 'Отзыв',
             'name' => 'Полное имя',
             'email' => 'Электронная почта'

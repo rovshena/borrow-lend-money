@@ -128,12 +128,12 @@
         <div class="card py-md-4 py-3 shadow-sm">
             <div class="card-body col-lg-8 col-md-10 mx-auto px-md-0 px-4">
                 <h3 class="mb-4 pb-sm-2">Добавить комментарий</h3>
-                <form class="needs-validation row gy-md-4 gy-3" action="{{ route('announcement.comment', $announcement) }}" method="post" onsubmit="disableSubmitButton();">
+                <form class="comment-form row gy-md-4 gy-3" action="{{ route('announcement.comment', $announcement) }}" method="post" onsubmit="disableSubmitButton();">
                     @csrf
                     <div class="col-sm-6">
                         <label class="form-label" for="name">Полное имя</label>
-                        <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" id="name" value="{{ old('name') }}" name="name">
-                        @error('name')
+                        <input class="form-control form-control-lg @error('name', 'comment') is-invalid @enderror" type="text" id="name" value="{{ old('name') }}" name="name">
+                        @error('name', 'comment')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -141,8 +141,8 @@
                     </div>
                     <div class="col-sm-6">
                         <label class="form-label" for="email">Электронная почта</label>
-                        <input class="form-control form-control-lg @error('email') is-invalid @enderror" type="email" id="email" value="{{ old('email') }}" name="email">
-                        @error('email')
+                        <input class="form-control form-control-lg @error('email', 'comment') is-invalid @enderror" type="email" id="email" value="{{ old('email') }}" name="email">
+                        @error('email', 'comment')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -152,12 +152,31 @@
                         <label class="form-label" for="content">
                             Отзыв <abbr class="text-danger" title="{{ __('Обязательный') }}">*</abbr>
                         </label>
-                        <textarea class="form-control form-control-lg @error('content') is-invalid @enderror" name="content" id="content" cols="30" rows="6" required>{{ old('content') }}</textarea>
-                        @error('content')
+                        <textarea class="form-control form-control-lg @error('content', 'comment') is-invalid @enderror" name="content" id="content" cols="30" rows="6" required>{{ old('content') }}</textarea>
+                        @error('content', 'comment')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label" for="captcha">
+                            Код с картинки <abbr class="text-danger" title="{{ __('Обязательный') }}">*</abbr>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <button type="button" class="btn btn-secondary btn-sm me-1 reload-captcha">
+                                    <i class="fas fa-sync"></i>
+                                </button>
+                                <span class="captcha"> {!! captcha_img() !!} </span>
+                            </span>
+                            <input id="captcha" class="form-control form-control-lg @error('captcha', 'comment') is-invalid @enderror" type="text" name="captcha" required>
+                            @error('captcha', 'comment')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="col-12 py-2">
                         <button class="btn btn-lg btn-primary" type="submit">Комментировать</button>
@@ -178,11 +197,13 @@
                 <div class="modal-body px-sm-5 px-4">
                     <form id="reply-comment-modal-form" action="{{ route('announcement.comment.reply', [$announcement, '?']) }}" method="post" onsubmit="disableSubmitButton();">
                         @csrf
+                        <input type="hidden" name="comment_parent" value="">
+                        <input type="hidden" name="comment_owner" value="">
                         <div class="row">
                             <div class="col-sm-6 mb-3">
                                 <label class="form-label" for="name">Полное имя</label>
-                                <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" id="name" value="{{ old('name') }}" name="name">
-                                @error('name')
+                                <input class="form-control form-control-lg @error('name', 'reply') is-invalid @enderror" type="text" id="name" value="{{ old('name') }}" name="name">
+                                @error('name', 'reply')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -190,8 +211,8 @@
                             </div>
                             <div class="col-sm-6 mb-3">
                                 <label class="form-label" for="email">Электронная почта</label>
-                                <input class="form-control form-control-lg @error('email') is-invalid @enderror" type="email" id="email" value="{{ old('email') }}" name="email">
-                                @error('email')
+                                <input class="form-control form-control-lg @error('email', 'reply') is-invalid @enderror" type="email" id="email" value="{{ old('email') }}" name="email">
+                                @error('email', 'reply')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -201,12 +222,31 @@
                                 <label class="form-label" for="content">
                                     Отзыв <abbr class="text-danger" title="{{ __('Обязательный') }}">*</abbr>
                                 </label>
-                                <textarea class="form-control form-control-lg @error('content') is-invalid @enderror" name="content" id="content" cols="30" rows="6" required>{{ old('content') }}</textarea>
-                                @error('content')
+                                <textarea class="form-control form-control-lg @error('content', 'reply') is-invalid @enderror" name="content" id="content" cols="30" rows="6" required>{{ old('content') }}</textarea>
+                                @error('content', 'reply')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label" for="captcha">
+                                    Код с картинки <abbr class="text-danger" title="{{ __('Обязательный') }}">*</abbr>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <button type="button" class="btn btn-secondary btn-sm me-1 reload-captcha">
+                                            <i class="fas fa-sync"></i>
+                                        </button>
+                                        <span class="captcha"></span>
+                                    </span>
+                                    <input id="captcha" class="form-control form-control-lg @error('captcha', 'reply') is-invalid @enderror" type="text" name="captcha" required>
+                                    @error('captcha', 'reply')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary mb-4" type="submit">Комментировать</button>
@@ -226,12 +266,24 @@
         const replyCommentModal = document.getElementById('replyCommentModal')
         replyCommentModal.addEventListener('show.bs.modal', function(event) {
             const button = event.relatedTarget
-            const replyTo = button.getAttribute('data-comment-owner')
-            const parentId = button.getAttribute('data-comment-parent')
             const modalTitle = replyCommentModal.querySelector('.modal-reply-to')
             const form = document.getElementById('reply-comment-modal-form')
-            form.action = (form.action).replace('?', parentId)
-            modalTitle.textContent = replyTo || ''
+            if (button) {
+                const replyTo = button.getAttribute('data-comment-owner')
+                const parentId = button.getAttribute('data-comment-parent')
+                form.action = (form.action).replace('?', parentId)
+                modalTitle.textContent = replyTo || ''
+                replyCommentModal.querySelector('input[name="comment_parent"]').value = parentId
+                replyCommentModal.querySelector('input[name="comment_owner"]').value = replyTo || ''
+            } else {
+                const replyTo = {{ \Illuminate\Support\Js::from(old('comment_owner')) }};
+                const parentId = {{ \Illuminate\Support\Js::from(old('comment_parent')) }};
+                form.action = (form.action).replace('?', parentId)
+                modalTitle.textContent = replyTo || ''
+                replyCommentModal.querySelector('input[name="comment_parent"]').value = parentId
+                replyCommentModal.querySelector('input[name="comment_owner"]').value = replyTo || ''
+            }
+            replyCommentModal.querySelector('button.reload-captcha').dispatchEvent(new Event('click'))
         })
 
         replyCommentModal.addEventListener('hidden.bs.modal', function(event) {
@@ -239,6 +291,46 @@
             modalTitle.textContent = ''
             const form = document.getElementById('reply-comment-modal-form')
             form.action = `{{ route('announcement.comment.reply', [$announcement, '?']) }}`;
+            replyCommentModal.querySelector('input[name="comment_parent"]').value = 'parentId'
+            replyCommentModal.querySelector('input[name="comment_owner"]').value = ''
+            document.querySelector('form.comment-form button.reload-captcha').dispatchEvent(new Event('click'))
+        })
+
+        $(function () {
+            $('.reload-captcha').click(function () {
+                const $icon = $(this).find('i')
+                const $button = $(this)
+                $icon.addClass('fa-spin')
+                $button.prop('disabled', true)
+                $.ajax({
+                    type: 'GET',
+                    url: '{{ route('reload-captcha') }}',
+                    success: function (data) {
+                        $button.siblings('.captcha').html(data.captcha);
+                    },
+                    complete: function () {
+                        setTimeout(function () {
+                            $icon.removeClass('fa-spin')
+                            $button.prop('disabled', false)
+                        }, 500)
+                    }
+                });
+            })
+
+            @if ($errors->reply->any())
+                const modal = new bootstrap.Modal(replyCommentModal)
+                modal.show()
+            @endif
         })
     </script>
+
+    @if ($errors->comment->any())
+        <script>
+            swal.fire({
+                title: "{{ __('Ошибка!') }}",
+                text: "{{ implode(" ", $errors->comment->all()) }}",
+                type: "error"
+            });
+        </script>
+    @endif
 @endpush
