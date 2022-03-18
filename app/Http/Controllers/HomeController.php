@@ -42,26 +42,12 @@ class HomeController extends Controller
             ->where('cities.status', 1)
             ->get();
 
-        $countries->map(function ($item) use ($keyword) {
-            if (mb_eregi($keyword, $item['country'], $matches)) {
-                $item['country'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['country']);
-            }
-            return $item;
-        });
-
         $cities = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
             ->join('countries', 'countries.id', '=', 'announcements.country_id')
             ->join('cities', 'cities.id', '=', 'announcements.city_id')
             ->where('cities.name', 'like', "%{$keyword}%")
             ->where('cities.status', 1)
             ->get();
-
-        $cities->map(function ($item) use ($keyword) {
-            if (mb_eregi($keyword, $item['city'], $matches)) {
-                $item['city'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['city']);
-            }
-            return $item;
-        });
 
         $title = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
             ->join('countries', 'countries.id', '=', 'announcements.country_id')
@@ -70,14 +56,22 @@ class HomeController extends Controller
             ->where('cities.status', 1)
             ->get();
 
-        $title->map(function ($item) use ($keyword) {
+        $all = ($countries->merge($cities))->merge($title);
+
+        $all->map(function ($item) use ($keyword) {
             if (mb_eregi($keyword, $item['title'], $matches)) {
                 $item['title'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['title']);
+            }
+            if (mb_eregi($keyword, $item['city'], $matches)) {
+                $item['city'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['city']);
+            }
+            if (mb_eregi($keyword, $item['country'], $matches)) {
+                $item['country'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['country']);
             }
             return $item;
         });
 
-        return ($countries->merge($cities))->merge($title);
+        return $all;
     }
 
     public function show(Announcement $announcement, $slug = "")
