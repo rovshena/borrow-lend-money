@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class InquiryRequest extends FormRequest
 {
+    protected $stopOnFirstFailure = true;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,6 +26,7 @@ class InquiryRequest extends FormRequest
     public function rules()
     {
         return [
+            'captcha' => 'bail|required|captcha',
             'contact_name' => 'required|string|max:250',
             'contact_email' => 'required|email:rfc,dns',
             'contact_phone' => 'string|max:15|nullable',
@@ -31,9 +34,18 @@ class InquiryRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'captcha.required' => 'Введите код с картинки',
+            'captcha.captcha' => 'Неверный код с картинки',
+        ];
+    }
+
     public function attributes()
     {
         return [
+            'captcha' => 'Код с картинки',
             'contact_name' => 'Полное имя',
             'contact_email' => 'Электронная почта',
             'contact_phone' => 'Телефон',

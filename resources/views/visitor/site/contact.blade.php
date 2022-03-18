@@ -87,6 +87,25 @@
                                 </span>
                                 @enderror
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="captcha">
+                                    Код с картинки <abbr class="text-danger" title="{{ __('Обязательный') }}">*</abbr>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <button id="reload-captcha" type="button" class="btn btn-secondary btn-sm me-1">
+                                            <i class="fas fa-sync"></i>
+                                        </button>
+                                        <span class="captcha"> {!! captcha_img() !!} </span>
+                                    </span>
+                                    <input id="captcha" class="form-control form-control-lg @error('captcha') is-invalid @enderror" type="text" name="captcha" required>
+                                    @error('captcha')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center" id="submit-button">
                                 <span id="loading" class="spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true"></span>
                                 <i class="far fa-paper-plane fa-fw me-1"></i>
@@ -142,3 +161,29 @@
         </div>
     </section>
 @endsection
+
+@push('page.js')
+    <script>
+        $(function () {
+            $('#reload-captcha').click(function () {
+                const $icon = $(this).find('i')
+                const $button = $(this)
+                $icon.addClass('fa-spin')
+                $button.prop('disabled', true)
+                $.ajax({
+                    type: 'GET',
+                    url: '{{ route('reload-captcha') }}',
+                    success: function (data) {
+                        $('.captcha').html(data.captcha);
+                    },
+                    complete: function () {
+                        setTimeout(function () {
+                            $icon.removeClass('fa-spin')
+                            $button.prop('disabled', false)
+                        }, 500)
+                    }
+                });
+            })
+        })
+    </script>
+@endpush
