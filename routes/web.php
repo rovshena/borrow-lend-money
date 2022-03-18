@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SitemapController;
-use App\Http\Controllers\Admin\StateController;
+use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -37,7 +37,7 @@ Route::get('/terms-of-use', [SiteController::class, 'terms'])->name('terms');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
 Route::view('/contact', 'visitor.site.contact')->name('contact');
 Route::put('/contact', [SiteController::class, 'contact'])->name('contact.post')->middleware('throttle:contact');
-Route::get('/countries/{country}/states', [CountryController::class, 'states'])->name('country.states');
+Route::get('/countries/{country}/cities', [CountryController::class, 'cities'])->name('country.cities');
 Route::get('/borrow-money', [AnnouncementController::class, 'showBorrowMoneyForm'])->name('borrow.money');
 Route::post('/borrow-money', [AnnouncementController::class, 'storeBorrowMoney'])->name('borrow.money.store');
 Route::get('/lend-money', [AnnouncementController::class, 'showLendMoneyForm'])->name('lend.money');
@@ -45,7 +45,7 @@ Route::post('/lend-money', [AnnouncementController::class, 'storeLendMoney'])->n
 Route::get('/reload-captcha', [CaptchaController::class, 'reloadCaptcha'])->name('reload-captcha');
 
 Route::get('/credit-calculator', [HomeController::class, 'creditCalculator'])->name('credit-calculator');
-Route::get('/category/{category}/{country?}/{state?}', [HomeController::class, 'category'])->name('category');
+Route::get('/category/{category}/{country?}/{city?}', [HomeController::class, 'category'])->name('category');
 
 Route::get('/announcements/{announcement}/{slug?}', [HomeController::class, 'show'])->name('announcement.show');
 Route::post('/announcements/{announcement}/comment', [HomeController::class, 'comment'])->name('announcement.comment');
@@ -75,7 +75,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::put('/pages/{page}/update', [PageController::class, 'update'])->name('pages.update');
         Route::resource('users', UserController::class)->except(['show']);
         Route::resource('countries', CountryController::class)->except(['show']);
-        Route::resource('states', StateController::class)->except(['show']);
+        Route::resource('cities', CityController::class)->except(['show']);
         Route::resource('announcements', AdminAnnouncementController::class)->except(['create', 'store', 'destroy', 'show']);
         Route::get('/generate-sitemap', SitemapController::class)->name('generate.sitemap');
     });

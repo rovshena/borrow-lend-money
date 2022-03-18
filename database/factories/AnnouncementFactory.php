@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Announcement;
 use App\Models\Country;
-use App\Models\State;
+use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AnnouncementFactory extends Factory
@@ -20,8 +20,8 @@ class AnnouncementFactory extends Factory
     {
         return [
             'country_id' => $this->faker->randomElement(Country::pluck('id')),
-            'state_id' => function(array $attributes) {
-                return State::where('country_id', $attributes['country_id'])->inRandomOrder()->first()->id;
+            'city_id' => function(array $attributes) {
+                return City::where('country_id', $attributes['country_id'])->inRandomOrder()->first()->id;
             },
             'name' => $this->faker->name,
             'email' => $this->faker->freeEmail,

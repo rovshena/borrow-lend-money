@@ -35,10 +35,10 @@
                             <input type="text" class="form-control" id="country" value="{{ $announcement->country->name }}" disabled>
                         </div>
                         <div class="col-12 col-md-6 form-group">
-                            <label for="state">
-                                {{ __('Область') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
+                            <label for="city">
+                                {{ __('Город') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
                             </label>
-                            <input type="text" class="form-control" id="state" value="{{ $announcement->state->name }}" disabled>
+                            <input type="text" class="form-control" id="city" value="{{ $announcement->city->name }}" disabled>
                         </div>
                         <div class="col-12 form-group">
                             <label for="title">

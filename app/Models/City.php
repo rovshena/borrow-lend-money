@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasStatusAttribute;
+use App\Traits\HasStatusScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class State extends Model
+class City extends Model
 {
-    use HasFactory;
+    use HasFactory, HasStatusAttribute, HasStatusScope;
 
     protected $guarded = ['id'];
 

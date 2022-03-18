@@ -56,7 +56,7 @@ class Setting extends Model
         ],
         8 => [
             'id' => 9,
-            'key' => 'category_state',
+            'key' => 'category_city',
             'name' => 'Категории «Деньги в городах»'
         ],
         9 => [

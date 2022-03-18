@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Announcement;
-use App\Models\Compatibility;
 use App\Models\Country;
-use App\Models\Translation;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
@@ -72,9 +70,7 @@ class SitemapController extends Controller
             ->setPriority(0.1)
         );
 
-        $countries = Country::has('announcements')->with(['states' => function($query) {
-            $query->has('announcements');
-        }])->get(['id']);
+        $countries = Country::with(['states'])->get(['id']);
 
         if ($countries->isNotEmpty()) {
             foreach ($countries as $country) {
@@ -84,25 +80,26 @@ class SitemapController extends Controller
                     ->setPriority(0.1)
                 );
 
-                if ($country->states->isNotEmpty()) {
-                    foreach ($country->states as $state) {
-                        $sitemap->add(Url::create(route('category', ['geo', $country->id, $state->id]))
+                if ($country->cities->isNotEmpty()) {
+                    foreach ($country->cities as $city) {
+                        $sitemap->add(Url::create(route('category', ['geo', $country->id, $city->id]))
                             ->setLastModificationDate(Carbon::today())
                             ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                             ->setPriority(0.1)
                         );
+
+                        if ($city->status && $city->announcements()->exists()) {
+                            foreach ($city->announcements as $announcement) {
+                                $sitemap->add(Url::create(route('announcement.show', [$announcement->id, $announcement->slug]))
+                                    ->setLastModificationDate(Carbon::today())
+                                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                                    ->setPriority(0.1)
+                                );
+                            }
+                        }
                     }
                 }
             }
-        }
-
-        $announcements = Announcement::all(['id', 'title']);
-        foreach ($announcements as $announcement) {
-            $sitemap->add(Url::create(route('announcement.show', [$announcement->id, $announcement->slug]))
-                ->setLastModificationDate(Carbon::today())
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                ->setPriority(0.1)
-            );
         }
 
         $path = public_path('sitemap.xml');

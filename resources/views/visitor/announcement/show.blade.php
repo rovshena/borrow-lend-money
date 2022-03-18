@@ -40,7 +40,7 @@
                         <li class="me-3 border-end"></li>
                         <li class="me-3">
                             <i class="fi-map-pin mt-n1 me-2"></i>
-                            {{ $announcement->country->name }} / {{ $announcement->state->name }}
+                            {{ $announcement->country->name }} / {{ $announcement->city->name }}
                         </li>
                     </ul>
                 </div>

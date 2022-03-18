@@ -40,13 +40,13 @@
                                 @enderror
                             </div>
                             <div class="col-sm-6 mb-4">
-                                <label class="form-label" for="state_id">
-                                    Область <abbr class="text-danger" title="{{ __('Обязательный') }}">*</abbr>
+                                <label class="form-label" for="city_id">
+                                    Город <abbr class="text-danger" title="{{ __('Обязательный') }}">*</abbr>
                                 </label>
-                                <select class="form-select form-select-lg @error('state_id') is-invalid @enderror" id="state_id" name="state_id" required disabled>
+                                <select class="form-select form-select-lg @error('city_id') is-invalid @enderror" id="city_id" name="city_id" required disabled>
                                     <option value="">Не выбрано</option>
                                 </select>
-                                @error('state_id')
+                                @error('city_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -177,29 +177,29 @@
 
             $('#country_id').change(async function () {
                 const country_id = this.value
-                const $stateSelectBox = $('#state_id')
+                const $citySelectBox = $('#city_id')
                 if (country_id !== '') {
-                    $stateSelectBox.prop('disabled', false)
-                    await loadStates(country_id, $stateSelectBox)
+                    $citySelectBox.prop('disabled', false)
+                    await loadCities(country_id, $citySelectBox)
                 } else {
-                    $stateSelectBox.children().remove()
-                    $stateSelectBox.append(`<option value="">Не выбрано</option>`)
-                    $stateSelectBox.prop('disabled', true)
+                    $citySelectBox.children().remove()
+                    $citySelectBox.append(`<option value="">Не выбрано</option>`)
+                    $citySelectBox.prop('disabled', true)
                 }
             })
 
-            async function loadStates(country_id, $stateSelectBox) {
+            async function loadCities(country_id, $citySelectBox) {
                 await $.ajax({
                     type: 'get',
-                    url: `{{ route('country.states', 'country') }}`.replace('country', country_id),
+                    url: `{{ route('country.cities', 'country') }}`.replace('country', country_id),
                     success: (response, textStatus, xhr) => {
                         if (response && Array.isArray(response) && response.length) {
-                            const oldStateId = {{ \Illuminate\Support\Js::from(old('state_id')) }}
-                            $stateSelectBox.children().remove()
-                            $stateSelectBox.append(`<option value="">Не выбрано</option>`)
-                            response.forEach((state) => {
-                                $stateSelectBox.append(`
-                                    <option value="${ state.id }" ${ parseInt(oldStateId) === state.id ? 'selected' : '' }>${ state.name }</option>
+                            const oldCityId = {{ \Illuminate\Support\Js::from(old('city_id')) }}
+                            $citySelectBox.children().remove()
+                            $citySelectBox.append(`<option value="">Не выбрано</option>`)
+                            response.forEach((city) => {
+                                $citySelectBox.append(`
+                                    <option value="${ city.id }" ${ parseInt(oldCityId) === city.id ? 'selected' : '' }>${ city.name }</option>
                                 `);
                             })
                         }

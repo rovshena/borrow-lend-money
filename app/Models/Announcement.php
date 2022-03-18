@@ -54,8 +54,8 @@ class Announcement extends Model
         return $this->belongsTo(Country::class);
     }
 
-    public function state()
+    public function city()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(City::class);
     }
 }

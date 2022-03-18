@@ -13,7 +13,7 @@ class AnnouncementController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $announcements = Announcement::all(['id', 'country_id', 'state_id', 'title', 'is_vip', 'type']);
+            $announcements = Announcement::all(['id', 'country_id', 'city_id', 'title', 'is_vip', 'type']);
             return DataTables::of($announcements)
                 ->editColumn('is_vip', function ($row) {
                     if ($row->is_vip == 1) {
@@ -30,8 +30,8 @@ class AnnouncementController extends Controller
                 ->editColumn('country_id', function ($row) {
                     return $row->country->name;
                 })
-                ->editColumn('state_id', function ($row) {
-                    return $row->state->name;
+                ->editColumn('city_id', function ($row) {
+                    return $row->city->name;
                 })
                 ->addColumn('actions', function ($row) {
                     $edit = '<a href="' . route('admin.announcements.edit', $row) . '" class="btn btn-subtle-success btn-sm mr-2"><i class="fas fa-edit fa-fw"></i></a>';
@@ -47,7 +47,7 @@ class AnnouncementController extends Controller
     public function edit(Announcement $announcement)
     {
         return view('admin.announcement.edit', [
-            'announcement' => $announcement->load(['country', 'state'])
+            'announcement' => $announcement->load(['country', 'city'])
         ]);
     }
 

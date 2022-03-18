@@ -65,8 +65,8 @@ class CountryController extends Controller
         }
     }
 
-    public function states(Country $country)
+    public function cities(Country $country)
     {
-        return $country->states()->orderBy('name')->get(['id', 'name']);
+        return $country->cities()->orderBy('name')->get(['id', 'name']);
     }
 }

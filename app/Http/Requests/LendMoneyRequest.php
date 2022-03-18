@@ -28,7 +28,7 @@ class LendMoneyRequest extends FormRequest
         return [
             'captcha' => 'bail|required|captcha',
             'country_id' => 'required|numeric|exists:countries,id',
-            'state_id' => 'required|numeric|exists:states,id',
+            'city_id' => 'required|numeric|exists:cities,id',
             'title' => 'required|string|max:250',
             'content' => 'required|string|min:20',
             'name' => 'required|string|max:250',
@@ -56,7 +56,7 @@ class LendMoneyRequest extends FormRequest
         return [
             'captcha' => 'Код с картинки',
             'country_id' => 'Страна',
-            'state_id' => 'Область',
+            'city_id' => 'Город',
             'title' => 'Заголовок',
             'content' => 'Условия займа и сроки возврата',
             'name' => 'Полное имя',

@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StateRequest extends FormRequest
+class CityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,21 +25,21 @@ class StateRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => 'required|max:250',
-            'country_id' => 'required|exists:countries,id'
+            'country_id' => 'required|exists:countries,id',
+            'status' => 'boolean|nullable',
         ];
 
         if ($this->isMethod('POST')) {
             $rules = array_merge($rules, [
-                'iso_code' => 'required|unique:states,iso_code|max:10',
+                'name' => 'required|string|unique:cities,name|max:250',
             ]);
         }
 
         if ($this->isMethod('PUT')) {
             $rules = array_merge($rules, [
-                'iso_code' => [
-                    'required', 'string', 'max:10',
-                    Rule::unique('states', 'iso_code')->ignore($this->state),
+                'name' => [
+                    'required', 'string', 'max:250',
+                    Rule::unique('cities', 'name')->ignore($this->city),
                 ],
             ]);
         }
@@ -47,11 +47,18 @@ class StateRequest extends FormRequest
         return $rules;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'status' => $this->isMethod('POST') ? true : $this->boolean('status')
+        ]);
+    }
+
     public function attributes()
     {
         return [
-            'name' => 'Название регион',
-            'iso_code' => 'Код ISO',
+            'name' => 'Название города',
+            'status' => 'Статус',
             'country_id' => 'Страна',
         ];
     }

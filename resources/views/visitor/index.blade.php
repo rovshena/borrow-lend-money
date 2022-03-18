@@ -23,10 +23,10 @@
                     </p>
                     <div class="form-group form-group-lg rounded-pill">
                         <input
-                            v-model="search"
                             class="form-control"
                             type="text"
                             placeholder="Что вы ищете?"
+                            @input="searchAnnouncements"
                         >
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                             </h3>
                             <div class="fs-sm">
                                 <i class="fi-map-pin mt-n1 me-2"></i>
-                                <span v-html="announcement.country"></span> / <span v-html="announcement.state"></span>
+                                <span v-html="announcement.country"></span> / <span v-html="announcement.city"></span>
                             </div>
                         </div>
                     </div>
@@ -60,28 +60,31 @@
         </section>
         <section v-else class="container">
             <div class="row g-4 mb-4 pb-3 justify-content-center">
-                @forelse($countries as $country)
-                    @forelse($country->states as $state)
-                        <div class="col-sm-6 col-xl-3">
-                            <div class="card shadow-sm card-hover border-0 h-100">
-                                <div class="card-body pb-3">
-                                    <h3 class="h6 mb-2 fs-base">
-                                        <a class="nav-link stretched-link" href="{{ route('category', ['geo', $country->id, $state->id]) }}">
-                                            {{ $country->name }} / {{ $state->name }}
-                                        </a>
-                                    </h3>
-                                </div>
+                @forelse($cities as $city)
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card shadow-sm card-hover border-0 h-100">
+                            <div class="card-body pb-3">
+                                <h3 class="h6 mb-2 fs-base">
+                                    <a class="nav-link stretched-link" href="{{ route('category', ['geo', $city->country_id, $city->city_id]) }}">
+                                        {{ $city->country }} / {{ $city->city }}
+                                    </a>
+                                </h3>
                             </div>
                         </div>
-                    @empty
-                    @endforelse
+                    </div>
                 @empty
                 @endforelse
+            </div>
+            <div class="d-flex mb-4 justify-content-center text-center">
+                {{ $cities->links() }}
             </div>
         </section>
     </div>
 @endsection
 
 @push('page.js')
+    <script>
+        window.searchApiUrl = {{ \Illuminate\Support\Js::from(route('search')) }};
+    </script>
     <script src="{{ mix('assets/visitor/js/app.min.js') }}"></script>
 @endpush

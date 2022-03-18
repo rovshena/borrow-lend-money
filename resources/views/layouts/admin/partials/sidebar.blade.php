@@ -75,10 +75,10 @@
                             <span class="menu-text">{{ __('Страны') }}</span>
                         </a>
                     </li>
-                    <li class="menu-item {{ Route::is('admin.states*') ? 'has-active' : '' }}">
-                        <a href="{{ route('admin.states.index') }}" class="menu-link">
+                    <li class="menu-item {{ Route::is('admin.cities*') ? 'has-active' : '' }}">
+                        <a href="{{ route('admin.cities.index') }}" class="menu-link">
                             <span class="menu-icon fas fa-globe"></span>
-                            <span class="menu-text">{{ __('Регионы') }}</span>
+                            <span class="menu-text">{{ __('Города') }}</span>
                         </a>
                     </li>
                     <li class="menu-item {{ Route::is('admin.pages.*') ? 'has-active' : '' }}">

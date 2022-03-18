@@ -26,10 +26,10 @@ class CountrySeeder extends Seeder
 
             $earth_states = $earth_country->getStates()->setLocale('ru');
             foreach ($earth_states as $state) {
-                $country->states()->create([
-                    'name' => $state->name,
-                    'iso_code' => $state->isoCode
-                ]);
+                $earth_cities = $state->getCities()->setLocale('ru');
+                foreach ($earth_cities as $city) {
+                    $country->cities()->create(['name' => $city->name]);
+                }
             }
         }
     }

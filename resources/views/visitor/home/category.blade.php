@@ -20,10 +20,10 @@
             </div>
         </div>
     </section>
-    @if(!request()->route()->hasParameter('state'))
+    @if(!request()->route()->hasParameter('city'))
         {!! $settings['header']->value !!}
     @endif
-    @if(request()->route()->hasParameter('country') || request()->route()->hasParameter('state'))
+    @if(request()->route()->hasParameter('country') || request()->route()->hasParameter('city'))
         <section class="container mb-5">
             <div class="col-md-10 mx-md-auto mx-3 mt-sm-0 mt-5 py-sm-5 py-4 px-0 rounded-3 bg-light shadow-sm">
                 <div class="col-md-10 mx-md-auto mx-3 py-lg-4 px-0">
@@ -32,7 +32,7 @@
             </div>
         </section>
     @endif
-    @if(request()->route()->parameter('category') == 'geo' && !request()->route()->hasParameter('state'))
+    @if(request()->route()->parameter('category') == 'geo' && !request()->route()->hasParameter('city'))
         <section class="container">
             <div class="row g-4 mb-3 pb-3 justify-content-center">
                 @forelse($announcements as $announcement)
@@ -83,7 +83,7 @@
                                 @endif
                                 <div class="fs-sm">
                                     <i class="fi-map-pin mt-n1 me-2"></i>
-                                    {{ $announcement->country->name }} / {{ $announcement->state->name }}
+                                    {{ $announcement->country->name }} / {{ $announcement->city->name }}
                                 </div>
                             </div>
                             <div class="card-footer">

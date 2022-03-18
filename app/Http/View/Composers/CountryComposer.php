@@ -9,7 +9,7 @@ class CountryComposer
 {
     public function compose(View $view)
     {
-        $countries = Country::has('announcements')->get(['id', 'name']);
+        $countries = Country::all(['id', 'name']);
         $view->with('countries', $countries);
     }
 }

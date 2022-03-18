@@ -15,9 +15,9 @@ class Country extends Model
 
     protected $guarded = ['id'];
 
-    public function states()
+    public function cities()
     {
-        return $this->hasMany(State::class);
+        return $this->hasMany(City::class);
     }
 
     public function announcements()
