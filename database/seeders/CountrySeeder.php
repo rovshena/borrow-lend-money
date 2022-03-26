@@ -66,7 +66,7 @@ class CountrySeeder extends Seeder
     {
         $slug = $value;
         while ($model->newQuery()->where('slug', $slug)->first()) {
-            $slug = $value . '_' . ++$next;
+            $slug = $value . '-' . ++$next;
         }
         return $slug;
     }
