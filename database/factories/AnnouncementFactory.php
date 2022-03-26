@@ -19,7 +19,7 @@ class AnnouncementFactory extends Factory
     public function definition()
     {
         return [
-            'country_id' => $this->faker->randomElement(Country::pluck('id')),
+            'country_id' => Country::where('iso2', 'RU')->first()->id,
             'city_id' => function(array $attributes) {
                 return City::where('country_id', $attributes['country_id'])->inRandomOrder()->first()->id;
             },
