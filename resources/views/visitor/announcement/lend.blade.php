@@ -1,14 +1,14 @@
 @extends('layouts.visitor.app')
 
-@section('title', __('Дать деньги') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('title', __('Дать деньги'))
 
-@section('meta.description', __('Дать деньги') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('meta.description', __('Дать деньги'))
 
-@section('meta.keywords', __('Дать деньги') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
+@section('meta.keywords', __('Дать деньги'))
 
-@section('og.title', __('Дать деньги') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('og.title', __('Дать деньги'))
 
-@section('og.description', __('Дать деньги') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('og.description', __('Дать деньги'))
 
 @section('content')
     <div class="container mt-5 mb-md-4 py-5">

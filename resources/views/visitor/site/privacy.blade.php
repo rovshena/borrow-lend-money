@@ -1,14 +1,14 @@
 @extends('layouts.visitor.app')
 
-@section('title', __('Политика конфиденциальности') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('title', __('Политика конфиденциальности'))
 
-@section('meta.description', __('Политика конфиденциальности') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('meta.description', __('Политика конфиденциальности'))
 
-@section('meta.keywords', __('Политика конфиденциальности') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
+@section('meta.keywords', __('Политика конфиденциальности'))
 
-@section('og.title', __('Политика конфиденциальности') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('og.title', __('Политика конфиденциальности'))
 
-@section('og.description', __('Политика конфиденциальности') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('og.description', __('Политика конфиденциальности'))
 
 @section('content')
     <section class="pt-5">

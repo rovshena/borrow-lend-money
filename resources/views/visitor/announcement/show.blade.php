@@ -1,14 +1,14 @@
 @extends('layouts.visitor.app')
 
-@section('title', $announcement->title . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('title', $announcement->title)
 
-@section('meta.description', $announcement->title . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('meta.description', $announcement->title)
 
-@section('meta.keywords', $announcement->title . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
+@section('meta.keywords', $announcement->title)
 
-@section('og.title', $announcement->title . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('og.title', $announcement->title)
 
-@section('og.description', $announcement->title . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('og.description', $announcement->title)
 
 @section('content')
     {!! $header->value !!}

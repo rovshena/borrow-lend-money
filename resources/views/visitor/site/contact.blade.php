@@ -1,14 +1,14 @@
 @extends('layouts.visitor.app')
 
-@section('title', __('Связаться с нами') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('title', __('Связаться с нами'))
 
-@section('meta.description', __('Связаться с нами') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('meta.description', __('Связаться с нами'))
 
-@section('meta.keywords', __('Связаться с нами') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
+@section('meta.keywords', __('Связаться с нами'))
 
-@section('og.title', __('Связаться с нами') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('og.title', __('Связаться с нами'))
 
-@section('og.description', __('Связаться с нами') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('og.description', __('Связаться с нами'))
 
 @section('content')
     <section class="container mt-5 mb-5 pt-5 pb-2 pb-md-4 pb-lg-5">

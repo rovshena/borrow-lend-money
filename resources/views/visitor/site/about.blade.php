@@ -1,14 +1,14 @@
 @extends('layouts.visitor.app')
 
-@section('title', __('О нас') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('title', __('О нас'))
 
-@section('meta.description', __('О нас') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('meta.description', __('О нас'))
 
-@section('meta.keywords', __('О нас') . ', ' . (Arr::exists($shared_settings, 'keyword') ? $shared_settings['keyword'] : ''))
+@section('meta.keywords', __('О нас'))
 
-@section('og.title', __('О нас') . ' | ' . (Arr::exists($shared_settings, 'title') ? $shared_settings['title'] : ''))
+@section('og.title', __('О нас'))
 
-@section('og.description', __('О нас') . ', ' . (Arr::exists($shared_settings, 'description') ? $shared_settings['description'] : ''))
+@section('og.description', __('О нас'))
 
 @section('content')
     <section class="py-5">
