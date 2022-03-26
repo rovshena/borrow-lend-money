@@ -35,6 +35,17 @@
                             </span>
                             @enderror
                         </div>
+                        <div class="col-12 col-md-6 form-group">
+                            <label for="slug">
+                                {{ __('Slug') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
+                            </label>
+                            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" value="{{ $country->slug }}" name="slug" required>
+                            @error('slug')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                         <div class="col-12 col-md-6">
                             <div class="row">
                                 <div class="col-md-6 form-group">
@@ -59,6 +70,20 @@
                                     </span>
                                     @enderror
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>
+                                {{ __('Статус') }}
+                            </label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input @error('status') is-invalid @enderror" name="status" id="status" {{ $country->status ? 'checked' : '' }}>
+                                <label class="custom-control-label" for="status">{{ __('Активный') }}</label>
+                                @error('status')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-12 form-actions">

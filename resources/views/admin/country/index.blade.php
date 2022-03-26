@@ -25,8 +25,10 @@
                         <tr>
                             <th> ID </th>
                             <th> {{ __('Название') }} </th>
+                            <th> {{ __('Slug') }} </th>
                             <th> {{ __('ISO 3') }} </th>
                             <th> {{ __('ISO 2') }} </th>
+                            <th> {{ __('Статус') }} </th>
                             <th style="width:160px; min-width:160px;"> {{ __('Действия') }} </th>
                         </tr>
                     </thead>
@@ -42,8 +44,10 @@
     columns: [
     {data: 'id'},
     {data: 'name'},
+    {data: 'slug'},
     {data: 'iso3'},
     {data: 'iso2'},
+    {data: 'status'},
     {
     data: 'actions',
     className: 'text-right',

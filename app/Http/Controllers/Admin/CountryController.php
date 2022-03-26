@@ -13,14 +13,17 @@ class CountryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $countries = Country::all(['id', 'name', 'iso3', 'iso2']);
+            $countries = Country::all(['id', 'name', 'slug', 'iso3', 'iso2', 'status']);
             return DataTables::of($countries)
                 ->addColumn('actions', function ($row) {
                     $edit = '<a href="' . route('admin.countries.edit', $row) . '" class="btn btn-subtle-success btn-sm mr-2"><i class="fas fa-edit fa-fw"></i></a>';
                     $delete = '<a href="javascript:void(0);" data-href="' . route('admin.countries.destroy', $row) . '" class="btn btn-subtle-danger btn-sm mr-2 delete-item"><i class="fas fa-trash-alt fa-fw"></i></a>';
                     return $edit . $delete;
                 })
-                ->rawColumns(['actions'])
+                ->editColumn('status', function ($row) {
+                    return $row->status_badge;
+                })
+                ->rawColumns(['actions', 'status'])
                 ->toJson();
         }
 

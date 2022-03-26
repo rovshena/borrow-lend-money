@@ -26,12 +26,14 @@ class CountryRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|max:250',
+            'status' => 'boolean|nullable',
         ];
 
         if ($this->isMethod('POST')) {
             $rules = array_merge($rules, [
                 'iso3' => 'required|unique:countries,iso3|max:3',
                 'iso2' => 'required|unique:countries,iso2|max:2',
+                'slug' => 'required|unique:countries,slug|max:250'
             ]);
         }
 
@@ -45,10 +47,21 @@ class CountryRequest extends FormRequest
                     'required', 'string', 'max:2',
                     Rule::unique('countries', 'iso2')->ignore($this->country),
                 ],
+                'slug' => [
+                    'required', 'string', 'max:250',
+                    Rule::unique('countries', 'slug')->ignore($this->country),
+                ],
             ]);
         }
 
         return $rules;
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'status' => $this->isMethod('POST') ? true : $this->boolean('status')
+        ]);
     }
 
     public function attributes()
@@ -57,6 +70,8 @@ class CountryRequest extends FormRequest
             'name' => 'Название страны',
             'iso3' => 'ISO 3',
             'iso2' => 'ISO 2',
+            'slug' => 'Slug',
+            'status' => 'Статус',
         ];
     }
 }

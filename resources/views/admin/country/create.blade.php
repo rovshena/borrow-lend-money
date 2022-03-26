@@ -33,6 +33,17 @@
                             </span>
                             @enderror
                         </div>
+                        <div class="col-12 col-md-6 form-group">
+                            <label for="slug">
+                                {{ __('Slug') }} <abbr title="{{ __('Обязательный') }}">*</abbr>
+                            </label>
+                            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" value="{{ old('slug') }}" name="slug" required>
+                            @error('slug')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                         <div class="col-12 col-md-6">
                             <div class="row">
                                 <div class="col-md-6 form-group">
