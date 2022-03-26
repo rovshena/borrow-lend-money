@@ -48,7 +48,7 @@ class CountrySeeder extends Seeder
                         $country->cities()->create([
                             'oblast' => isset($city['oblast']) ? $city['oblast'] : '',
                             'region' => isset($city['region']) ? $city['region'] : '',
-                            'city' => $city['city'],
+                            'name' => $city['city'],
                             'slug' => $slug,
                             'lat' => isset($city['lat']) ? $city['lat'] : '',
                             'lon' => isset($city['lon']) ? $city['lon'] : '',
