@@ -70,6 +70,6 @@ class CountryController extends Controller
 
     public function cities(Country $country)
     {
-        return $country->cities()->orderBy('name')->get(['id', 'name']);
+        return $country->cities()->enabled()->orderBy('name')->get(['id', 'name']);
     }
 }

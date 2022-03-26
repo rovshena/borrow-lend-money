@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Announcement;
 use App\Models\Country;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
@@ -70,11 +69,13 @@ class SitemapController extends Controller
             ->setPriority(0.1)
         );
 
-        $countries = Country::with(['states'])->get(['id']);
+        $countries = Country::with(['cities' => function($query) {
+            $query->enabled();
+        }])->enabled()->get(['id', 'slug']);
 
         if ($countries->isNotEmpty()) {
             foreach ($countries as $country) {
-                $sitemap->add(Url::create(route('category', ['geo', $country->id]))
+                $sitemap->add(Url::create(route('category', ['geo', $country->slug]))
                     ->setLastModificationDate(Carbon::today())
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                     ->setPriority(0.1)
@@ -82,7 +83,7 @@ class SitemapController extends Controller
 
                 if ($country->cities->isNotEmpty()) {
                     foreach ($country->cities as $city) {
-                        $sitemap->add(Url::create(route('category', ['geo', $country->id, $city->id]))
+                        $sitemap->add(Url::create(route('category', ['geo', $country->slug, $city->slug]))
                             ->setLastModificationDate(Carbon::today())
                             ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                             ->setPriority(0.1)
@@ -108,13 +109,13 @@ class SitemapController extends Controller
         if (file_exists($path)) {
             $file_content = file_get_contents($path);
             if (strlen($file_content)) {
-                return redirect()->route('admin.index')->with('success', 'The sitemap created successfully!');
+                return redirect()->route('admin.index')->with('success', 'The sitemap generated successfully!');
             } else {
                 return redirect()->route('admin.index')->with('error', 'The sitemap file created but the content is empty!');
             }
         }
 
-        return redirect()->route('admin.index')->with('error', 'The sitemap could not created!');
+        return redirect()->route('admin.index')->with('error', 'The sitemap could not generated!');
 
     }
 }

@@ -47,7 +47,7 @@
                         <ul class="dropdown-menu">
                             @foreach($countries as $country)
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('category', ['geo', $country->id]) }}">
+                                    <a class="dropdown-item" href="{{ route('category', ['geo', $country->slug]) }}">
                                         {{ $country->name }}
                                     </a>
                                 </li>

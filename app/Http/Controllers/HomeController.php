@@ -21,13 +21,19 @@ class HomeController extends Controller
             'countries.id as country_id',
             'cities.name as city',
             'countries.name as country',
+            'cities.slug as city_slug',
+            'countries.slug as country_slug',
             'countries.iso2',
         ])
-            ->join('countries', 'countries.id', 'cities.country_id')
+            ->join('countries', function ($join) {
+                $join->on('cities.country_id', '=', 'countries.id')
+                    ->where('countries.status', 1);
+            })
+            ->where('cities.status', 1)
             ->orderByRaw('IF(countries.iso2 = "RU", 1, 0) DESC')
             ->orderBy('countries.name', 'asc')
             ->orderBy('cities.name', 'asc')
-            ->paginate(40, ['*'], __('страница'))
+            ->paginate(40, ['*'])
             ->onEachSide(2);
         return view('visitor.index', compact(['cities', 'settings']));
     }
@@ -36,24 +42,39 @@ class HomeController extends Controller
     {
         $keyword = $request->input('search', '');
         $countries = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
-            ->join('countries', 'countries.id', '=', 'announcements.country_id')
-            ->join('cities', 'cities.id', '=', 'announcements.city_id')
+            ->join('countries', function ($join) {
+                $join->on('countries.id', '=', 'announcements.country_id')
+                    ->where('countries.status', 1);
+            })
+            ->join('cities', function ($join) {
+                $join->on('cities.id', '=', 'announcements.city_id')
+                    ->where('cities.status', 1);
+            })
             ->where('countries.name', 'like', "%{$keyword}%")
-            ->where('cities.status', 1)
             ->get();
 
         $cities = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
-            ->join('countries', 'countries.id', '=', 'announcements.country_id')
-            ->join('cities', 'cities.id', '=', 'announcements.city_id')
+            ->join('countries', function ($join) {
+                $join->on('countries.id', '=', 'announcements.country_id')
+                    ->where('countries.status', 1);
+            })
+            ->join('cities', function ($join) {
+                $join->on('cities.id', '=', 'announcements.city_id')
+                    ->where('cities.status', 1);
+            })
             ->where('cities.name', 'like', "%{$keyword}%")
-            ->where('cities.status', 1)
             ->get();
 
         $title = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
-            ->join('countries', 'countries.id', '=', 'announcements.country_id')
-            ->join('cities', 'cities.id', '=', 'announcements.city_id')
+            ->join('countries', function ($join) {
+                $join->on('countries.id', '=', 'announcements.country_id')
+                    ->where('countries.status', 1);
+            })
+            ->join('cities', function ($join) {
+                $join->on('cities.id', '=', 'announcements.city_id')
+                    ->where('cities.status', 1);
+            })
             ->where('announcements.title', 'like', "%{$keyword}%")
-            ->where('cities.status', 1)
             ->get();
 
         $all = ($countries->merge($cities))->merge($title);
@@ -91,14 +112,14 @@ class HomeController extends Controller
                     $query->orderBy('created_at', 'asc');
                 }])
                 ->orderBy('created_at', 'asc')
-                ->paginate(10, ['*'], __('страница'))
+                ->paginate(10, ['*'])
                 ->onEachSide(2),
             'header' => Setting::where('key', 'announcement_header_code')->firstOrFail(),
             'footer' => Setting::where('key', 'announcement_footer_code')->firstOrFail(),
         ]);
     }
 
-    public function category($category, $country_id = '', $city_id = '')
+    public function category($category, $country_slug = '', $city_slug = '')
     {
         $categories = ['borrow-money', 'lend-money', 'geo'];
         $settings = [];
@@ -107,33 +128,35 @@ class HomeController extends Controller
                 ->select(['id', 'title', 'content', 'company', 'type', 'country_id', 'city_id', 'is_vip', 'created_at']);
             if ($category == 'borrow-money') {
                 $announcements = $query
+                    ->whereRelation('country', 'status', 1)
                     ->whereRelation('city', 'status', 1)
                     ->where('type', Announcement::TYPE_BORROW)
                     ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
-                    ->paginate(12, ['*'], __('страница'))
+                    ->paginate(12, ['*'])
                     ->onEachSide(2);
                 $settings['title'] = Setting::where('key', 'borrow_money_title')->firstOrFail();
                 $settings['header'] = Setting::where('key', 'borrow_money_header_code')->firstOrFail();
                 $settings['footer'] = Setting::where('key', 'borrow_money_footer_code')->firstOrFail();
             } elseif ($category == 'lend-money') {
                 $announcements = $query
+                    ->whereRelation('country', 'status', 1)
                     ->whereRelation('city', 'status', 1)
                     ->where('type', Announcement::TYPE_LEND)
                     ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
-                    ->paginate(12, ['*'], __('страница'))
+                    ->paginate(12, ['*'])
                     ->onEachSide(2);
                 $settings['title'] = Setting::where('key', 'lend_money_title')->firstOrFail();
                 $settings['header'] = Setting::where('key', 'lend_money_header_code')->firstOrFail();
                 $settings['footer'] = Setting::where('key', 'lend_money_footer_code')->firstOrFail();
             } else {
-                $country = Country::findOrFail($country_id);
-                if (!empty($city_id)) {
-                    $city = $country->cities()->where('id', $city_id)->where('status', 1)->firstOrFail();
+                $country = Country::enabled()->where('slug', $country_slug)->firstOrFail();
+                if (!empty($city_slug)) {
+                    $city = $country->cities()->enabled()->where('slug', $city_slug)->firstOrFail();
                     $announcements = $query
-                        ->where('country_id', $country_id)
-                        ->where('city_id', $city_id)
+                        ->where('country_id', $country->id)
+                        ->where('city_id', $city->id)
                         ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
-                        ->paginate(12, ['*'], __('страница'))
+                        ->paginate(12, ['*'])
                         ->onEachSide(2);
                     $settings['title'] = Setting::where('key', 'category_city_title')->firstOrFail();
                     $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
@@ -145,8 +168,8 @@ class HomeController extends Controller
                     $settings['footer'] = Setting::where('key', 'category_city_footer_code')->firstOrFail();
                 } else {
                     $announcements = $country->cities()
-                        ->where('status', 1)
-                        ->paginate(24, ['*'], __('страница'))
+                        ->enabled()
+                        ->paginate(24, ['*'])
                         ->onEachSide(2);
                     $settings['title'] = Setting::where('key', 'category_country_title')->firstOrFail();
                     $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);

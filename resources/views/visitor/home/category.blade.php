@@ -40,7 +40,7 @@
                         <div class="card shadow-sm card-hover border-0 h-100">
                             <div class="card-body pb-3">
                                 <h3 class="h6 mb-2 fs-base">
-                                    <a class="nav-link stretched-link" href="{{ route('category', ['geo', request()->route()->parameter('country'), $announcement->id]) }}">
+                                    <a class="nav-link stretched-link" href="{{ route('category', ['geo', request()->route()->parameter('country'), $announcement->slug]) }}">
                                         {{ $announcement->name }}
                                     </a>
                                 </h3>

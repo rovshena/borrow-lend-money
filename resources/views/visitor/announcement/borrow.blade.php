@@ -30,7 +30,7 @@
                                 <select class="form-select form-select-lg @error('country_id') is-invalid @enderror" id="country_id" name="country_id" required>
                                     <option value="">Не выбрано</option>
                                     @foreach($countries as $country)
-                                        <option value="{{ $country->id }}" {{ old('country_id') == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
+                                        <option value="{{ $country->id }}" {{ old('country_id') == $country->id ? 'selected' : (count($countries) == 1 ? 'selected' : '') }}>{{ $country->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('country_id')
@@ -167,11 +167,12 @@
             $('#country_id').change(async function () {
                 const country_id = this.value
                 const $citySelectBox = $('#city_id')
+                $citySelectBox.children().remove()
+                $citySelectBox.append(`<option value="">Не выбрано</option>`)
                 if (country_id !== '') {
                     $citySelectBox.prop('disabled', false)
                     await loadCities(country_id, $citySelectBox)
                 } else {
-                    $citySelectBox.children().remove()
                     $citySelectBox.append(`<option value="">Не выбрано</option>`)
                     $citySelectBox.prop('disabled', true)
                 }
@@ -184,8 +185,6 @@
                     success: (response, textStatus, xhr) => {
                         if (response && Array.isArray(response) && response.length) {
                             const oldCityId = {{ \Illuminate\Support\Js::from(old('city_id')) }}
-                            $citySelectBox.children().remove()
-                            $citySelectBox.append(`<option value="">Не выбрано</option>`)
                             response.forEach((city) => {
                                 $citySelectBox.append(`
                                     <option value="${ city.id }" ${ parseInt(oldCityId) === city.id ? 'selected' : '' }>${ city.name }</option>

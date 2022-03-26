@@ -11,13 +11,13 @@ class AnnouncementController extends Controller
 {
     public function showBorrowMoneyForm()
     {
-        $countries = Country::orderBy('name', 'asc')->get(['id', 'name']);
+        $countries = Country::enabled()->orderBy('name', 'asc')->get(['id', 'name']);
         return view('visitor.announcement.borrow', compact('countries'));
     }
 
     public function showLendMoneyForm()
     {
-        $countries = Country::orderBy('name', 'asc')->get(['id', 'name']);
+        $countries = Country::enabled()->orderBy('name', 'asc')->get(['id', 'name']);
         return view('visitor.announcement.lend', compact('countries'));
     }
 
