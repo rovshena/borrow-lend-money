@@ -13,6 +13,8 @@ class Country extends Model
         'AZ', 'AM', 'BY', 'GE', 'KZ', 'KG', 'MD', 'RU', 'TJ', 'TM', 'UZ', 'UA'
     ];
 
+    const COUNTRY_DATASET = 'database/countries.json';
+
     protected $guarded = ['id'];
 
     public function cities()

@@ -11,6 +11,8 @@ class City extends Model
 {
     use HasFactory, HasStatusAttribute, HasStatusScope;
 
+    const CITY_DATASET = 'database/cities.json';
+
     protected $guarded = ['id'];
 
     public function country()
