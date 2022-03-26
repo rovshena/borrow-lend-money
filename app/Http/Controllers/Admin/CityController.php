@@ -14,7 +14,7 @@ class CityController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $cities = City::all(['id', 'name', 'status', 'country_id']);
+            $cities = City::all(['id', 'name', 'status', 'oblast', 'region', 'country_id']);
             return DataTables::of($cities)
                 ->addColumn('actions', function ($row) {
                     $edit = '<a href="' . route('admin.cities.edit', $row) . '" class="btn btn-subtle-success btn-sm mr-2"><i class="fas fa-edit fa-fw"></i></a>';

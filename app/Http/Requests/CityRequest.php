@@ -27,11 +27,14 @@ class CityRequest extends FormRequest
         $rules = [
             'country_id' => 'required|exists:countries,id',
             'status' => 'boolean|nullable',
+            'oblast' => 'nullable|string',
+            'region' => 'nullable|string',
         ];
 
         if ($this->isMethod('POST')) {
             $rules = array_merge($rules, [
                 'name' => 'required|string|unique:cities,name|max:250',
+                'slug' => 'required|unique:cities,slug|max:250',
             ]);
         }
 
@@ -40,6 +43,10 @@ class CityRequest extends FormRequest
                 'name' => [
                     'required', 'string', 'max:250',
                     Rule::unique('cities', 'name')->ignore($this->city),
+                ],
+                'slug' => [
+                    'required', 'string', 'max:250',
+                    Rule::unique('cities', 'slug')->ignore($this->city),
                 ],
             ]);
         }
@@ -60,6 +67,9 @@ class CityRequest extends FormRequest
             'name' => 'Название города',
             'status' => 'Статус',
             'country_id' => 'Страна',
+            'slug' => 'Slug',
+            'oblast' => 'Область',
+            'region' => 'Регион',
         ];
     }
 }

@@ -25,8 +25,10 @@
                         <tr>
                             <th> ID </th>
                             <th> {{ __('Название') }} </th>
-                            <th> {{ __('Статус') }} </th>
+                            <th> {{ __('Область') }} </th>
+                            <th> {{ __('Регион') }} </th>
                             <th> {{ __('Страна') }} </th>
+                            <th> {{ __('Статус') }} </th>
                             <th style="width:160px; min-width:160px;"> {{ __('Действия') }} </th>
                         </tr>
                     </thead>
@@ -42,8 +44,10 @@
     columns: [
     {data: 'id'},
     {data: 'name'},
-    {data: 'status'},
+    {data: 'oblast'},
+    {data: 'region'},
     {data: 'country_id'},
+    {data: 'status'},
     {
     data: 'actions',
     className: 'text-right',
