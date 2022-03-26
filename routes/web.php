@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/search', [HomeController::class, 'search'])->name('search');
+Route::post('/search/{country}/city', [HomeController::class, 'searchCity'])->name('search.city');
 Route::get('locale/{locale}', LocalizationController::class)->name('locale');
 
 Route::get('/privacy-policy', [SiteController::class, 'privacy'])->name('privacy');

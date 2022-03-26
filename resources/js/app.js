@@ -9,6 +9,7 @@ new Vue({
     data() {
         return {
             announcements: [],
+            cities: [],
         }
     },
     methods: {
@@ -21,6 +22,17 @@ new Vue({
                 })
             } else {
                 this.announcements = []
+            }
+        }, 1000),
+        searchCities: _.debounce(function (e) {
+            if (e.target.value.length) {
+                axios.post(searchUrl, {search: e.target.value}).then((response) => {
+                    if (response.data) {
+                        this.cities = response.data
+                    }
+                })
+            } else {
+                this.cities = []
             }
         }, 1000)
     },

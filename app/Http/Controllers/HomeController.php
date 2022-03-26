@@ -50,7 +50,7 @@ class HomeController extends Controller
                 $join->on('cities.id', '=', 'announcements.city_id')
                     ->where('cities.status', 1);
             })
-            ->where('countries.name', 'like', "%{$keyword}%")
+            ->whereRaw("MATCH(countries.name) AGAINST('*{$keyword}*' IN BOOLEAN MODE)")
             ->get();
 
         $cities = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
@@ -62,7 +62,7 @@ class HomeController extends Controller
                 $join->on('cities.id', '=', 'announcements.city_id')
                     ->where('cities.status', 1);
             })
-            ->where('cities.name', 'like', "%{$keyword}%")
+            ->whereRaw("MATCH(cities.name) AGAINST('*{$keyword}*' IN BOOLEAN MODE)")
             ->get();
 
         $title = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
@@ -74,7 +74,7 @@ class HomeController extends Controller
                 $join->on('cities.id', '=', 'announcements.city_id')
                     ->where('cities.status', 1);
             })
-            ->where('announcements.title', 'like', "%{$keyword}%")
+            ->whereRaw("MATCH(announcements.title) AGAINST('*{$keyword}*' IN BOOLEAN MODE)")
             ->get();
 
         $all = ($countries->merge($cities))->merge($title);
@@ -93,6 +93,25 @@ class HomeController extends Controller
         });
 
         return $all;
+    }
+
+    public function searchCity(Request $request, Country $country)
+    {
+        $keyword = $request->input('search', '');
+        $cities = $country->cities()
+            ->enabled()
+            ->whereRaw("MATCH(name) AGAINST('*{$keyword}*' IN BOOLEAN MODE)")
+            ->orderBy('name')
+            ->get(['id', 'name', 'slug']);
+
+        $cities->map(function ($item) use ($keyword) {
+            if (mb_eregi($keyword, $item['name'], $matches)) {
+                $item['name'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['name']);
+            }
+            return $item;
+        });
+
+        return $cities;
     }
 
     public function show(Announcement $announcement, $slug = "")
@@ -123,6 +142,7 @@ class HomeController extends Controller
     {
         $categories = ['borrow-money', 'lend-money', 'geo'];
         $settings = [];
+        $country = null;
         if (in_array($category, $categories)) {
             $query = Announcement::with(['comments', 'country', 'city'])
                 ->select(['id', 'title', 'content', 'company', 'type', 'country_id', 'city_id', 'is_vip', 'created_at']);
@@ -185,7 +205,8 @@ class HomeController extends Controller
 
         return view('visitor.home.category', [
             'announcements' => $announcements,
-            'settings' => $settings
+            'settings' => $settings,
+            'country' => $country,
         ]);
     }
 

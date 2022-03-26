@@ -18,7 +18,7 @@ class CreateCitiesTable extends Migration
             $table->foreignId('country_id')->constrained();
             $table->string('oblast')->nullable();
             $table->string('region')->nullable();
-            $table->string('name');
+            $table->string('name')->fulltext();
             $table->string('slug')->unique();
             $table->string('lat')->nullable();
             $table->string('lon')->nullable();
