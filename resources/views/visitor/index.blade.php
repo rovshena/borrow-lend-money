@@ -40,7 +40,7 @@
                         <div class="card shadow-sm card-hover border-0 h-100">
                             <div class="card-body pb-3">
                                 <h3 class="h6 mb-2 fs-base">
-                                    <a class="nav-link stretched-link" href="{{ route('category', ['geo', $city->country_slug, $city->city_slug]) }}">
+                                    <a class="nav-link stretched-link" href="{{ route('country', [$city->country_slug, $city->city_slug]) }}">
                                         {{ $city->country }} / {{ $city->city }}
                                     </a>
                                 </h3>
@@ -66,7 +66,7 @@
                             <h3 class="h6 mb-2 fs-base">
                                 <a
                                     class="nav-link stretched-link"
-                                    :href="`/announcements/${ announcement.id }`"
+                                    :href="`/announcement/${ announcement.slug }`"
                                     v-html="announcement.title"
                                 >
                                 </a>

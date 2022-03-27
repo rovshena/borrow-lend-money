@@ -42,7 +42,7 @@
     columns: [
     {data: 'id'},
     {data: 'country_id'},
-    {data: 'state_id'},
+    {data: 'city_id'},
     {data: 'title'},
     {data: 'type'},
     {data: 'is_vip'},

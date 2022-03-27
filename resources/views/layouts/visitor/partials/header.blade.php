@@ -1,9 +1,16 @@
 <header class="navbar navbar-expand-lg navbar-light fixed-top" data-scroll-header="">
     <div class="container">
-        <a class="navbar-brand me-3 me-xl-4 d-md-flex align-items-center" href="{{ url('/') }}">
-            <img class="me-2" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="" width="50">
-            <h4 class="mb-0 d-none d-md-block">{{ isset($shared_settings['title']) ? $shared_settings['title'] : '' }}</h4>
-        </a>
+        @if(Route::is('index'))
+            <div class="navbar-brand me-3 me-xl-4 d-md-flex align-items-center">
+                <img class="me-2" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="" width="50">
+                <h4 class="mb-0 d-none d-md-block">{{ isset($shared_settings['title']) ? $shared_settings['title'] : '' }}</h4>
+            </div>
+        @else
+            <a class="navbar-brand me-3 me-xl-4 d-md-flex align-items-center" href="{{ url('/') }}">
+                <img class="me-2" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="" width="50">
+                <h4 class="mb-0 d-none d-md-block">{{ isset($shared_settings['title']) ? $shared_settings['title'] : '' }}</h4>
+            </a>
+        @endif
         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,7 +54,7 @@
                         <ul class="dropdown-menu">
                             @foreach($countries as $country)
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('category', ['geo', $country->slug]) }}">
+                                    <a class="dropdown-item" href="{{ route('country', $country->slug) }}">
                                         {{ $country->name }}
                                     </a>
                                 </li>

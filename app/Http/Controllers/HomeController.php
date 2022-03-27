@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->input('search', '');
-        $countries = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
+        $countries = Announcement::select(['announcements.id', 'announcements.title', 'announcements.slug', 'countries.name as country', 'cities.name as city'])
             ->join('countries', function ($join) {
                 $join->on('countries.id', '=', 'announcements.country_id')
                     ->where('countries.status', 1);
@@ -53,7 +53,7 @@ class HomeController extends Controller
             ->whereRaw("MATCH(countries.name) AGAINST('*{$keyword}*' IN BOOLEAN MODE)")
             ->get();
 
-        $cities = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
+        $cities = Announcement::select(['announcements.id', 'announcements.title', 'announcements.slug', 'countries.name as country', 'cities.name as city'])
             ->join('countries', function ($join) {
                 $join->on('countries.id', '=', 'announcements.country_id')
                     ->where('countries.status', 1);
@@ -65,7 +65,7 @@ class HomeController extends Controller
             ->whereRaw("MATCH(cities.name) AGAINST('*{$keyword}*' IN BOOLEAN MODE)")
             ->get();
 
-        $title = Announcement::select(['announcements.id', 'announcements.title', 'countries.name as country', 'cities.name as city'])
+        $title = Announcement::select(['announcements.id', 'announcements.title', 'announcements.slug', 'countries.name as country', 'cities.name as city'])
             ->join('countries', function ($join) {
                 $join->on('countries.id', '=', 'announcements.country_id')
                     ->where('countries.status', 1);
@@ -114,14 +114,10 @@ class HomeController extends Controller
         return $cities;
     }
 
-    public function show(Announcement $announcement, $slug = "")
+    public function show(Announcement $announcement)
     {
-        if (!$announcement->city->status) {
+        if (!$announcement->country->status || !$announcement->city->status) {
             return abort(404);
-        }
-
-        if ($slug !== $announcement->slug) {
-            return redirect()->route('announcement.show', [$announcement->id, $announcement->slug]);
         }
 
         return view('visitor.announcement.show', [
@@ -138,14 +134,13 @@ class HomeController extends Controller
         ]);
     }
 
-    public function category($category, $country_slug = '', $city_slug = '')
+    public function category($category)
     {
-        $categories = ['borrow-money', 'lend-money', 'geo'];
+        $categories = ['borrow-money', 'lend-money'];
         $settings = [];
-        $country = null;
         if (in_array($category, $categories)) {
             $query = Announcement::with(['comments', 'country', 'city'])
-                ->select(['id', 'title', 'content', 'company', 'type', 'country_id', 'city_id', 'is_vip', 'created_at']);
+                ->select(['id', 'title', 'slug', 'content', 'company', 'type', 'country_id', 'city_id', 'is_vip', 'created_at']);
             if ($category == 'borrow-money') {
                 $announcements = $query
                     ->whereRelation('country', 'status', 1)
@@ -157,7 +152,7 @@ class HomeController extends Controller
                 $settings['title'] = Setting::where('key', 'borrow_money_title')->firstOrFail();
                 $settings['header'] = Setting::where('key', 'borrow_money_header_code')->firstOrFail();
                 $settings['footer'] = Setting::where('key', 'borrow_money_footer_code')->firstOrFail();
-            } elseif ($category == 'lend-money') {
+            } else {
                 $announcements = $query
                     ->whereRelation('country', 'status', 1)
                     ->whereRelation('city', 'status', 1)
@@ -168,42 +163,52 @@ class HomeController extends Controller
                 $settings['title'] = Setting::where('key', 'lend_money_title')->firstOrFail();
                 $settings['header'] = Setting::where('key', 'lend_money_header_code')->firstOrFail();
                 $settings['footer'] = Setting::where('key', 'lend_money_footer_code')->firstOrFail();
-            } else {
-                $country = Country::enabled()->where('slug', $country_slug)->firstOrFail();
-                if (!empty($city_slug)) {
-                    $city = $country->cities()->enabled()->where('slug', $city_slug)->firstOrFail();
-                    $announcements = $query
-                        ->where('country_id', $country->id)
-                        ->where('city_id', $city->id)
-                        ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
-                        ->paginate(12, ['*'])
-                        ->onEachSide(2);
-                    $settings['title'] = Setting::where('key', 'category_city_title')->firstOrFail();
-                    $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
-                    $settings['title']->value = str_replace('{{city}}', $city->name, $settings['title']->value);
-                    $settings['content'] = Setting::where('key', 'category_city_content')->firstOrFail();
-                    $settings['content']->value = str_replace('{{country}}', $country->name, $settings['content']->value);
-                    $settings['content']->value = str_replace('{{city}}', $city->name, $settings['content']->value);
-                    $settings['header'] = Setting::where('key', 'category_city_header_code')->firstOrFail();
-                    $settings['footer'] = Setting::where('key', 'category_city_footer_code')->firstOrFail();
-                } else {
-                    $announcements = $country->cities()
-                        ->enabled()
-                        ->paginate(24, ['*'])
-                        ->onEachSide(2);
-                    $settings['title'] = Setting::where('key', 'category_country_title')->firstOrFail();
-                    $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
-                    $settings['content'] = Setting::where('key', 'category_country_content')->firstOrFail();
-                    $settings['content']->value = str_replace('{{country}}', $country->name, $settings['content']->value);
-                    $settings['header'] = Setting::where('key', 'category_country_header_code')->firstOrFail();
-                    $settings['footer'] = Setting::where('key', 'category_country_footer_code')->firstOrFail();
-                }
             }
         } else {
             return abort(404);
         }
 
         return view('visitor.home.category', [
+            'announcements' => $announcements,
+            'settings' => $settings
+        ]);
+    }
+
+    public function country($country_slug, $city_slug = '')
+    {
+        $settings = [];
+        $country = Country::enabled()->where('slug', $country_slug)->firstOrFail();
+        if (!empty($city_slug)) {
+            $city = $country->cities()->enabled()->where('slug', $city_slug)->firstOrFail();
+            $announcements = Announcement::with(['comments', 'country', 'city'])
+                ->select(['id', 'title', 'slug', 'content', 'company', 'type', 'country_id', 'city_id', 'is_vip', 'created_at'])
+                ->where('country_id', $country->id)
+                ->where('city_id', $city->id)
+                ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
+                ->paginate(12, ['*'])
+                ->onEachSide(2);
+            $settings['title'] = Setting::where('key', 'category_city_title')->firstOrFail();
+            $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
+            $settings['title']->value = str_replace('{{city}}', $city->name, $settings['title']->value);
+            $settings['content'] = Setting::where('key', 'category_city_content')->firstOrFail();
+            $settings['content']->value = str_replace('{{country}}', $country->name, $settings['content']->value);
+            $settings['content']->value = str_replace('{{city}}', $city->name, $settings['content']->value);
+            $settings['header'] = Setting::where('key', 'category_city_header_code')->firstOrFail();
+            $settings['footer'] = Setting::where('key', 'category_city_footer_code')->firstOrFail();
+        } else {
+            $announcements = $country->cities()
+                ->enabled()
+                ->paginate(24, ['*'])
+                ->onEachSide(2);
+            $settings['title'] = Setting::where('key', 'category_country_title')->firstOrFail();
+            $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
+            $settings['content'] = Setting::where('key', 'category_country_content')->firstOrFail();
+            $settings['content']->value = str_replace('{{country}}', $country->name, $settings['content']->value);
+            $settings['header'] = Setting::where('key', 'category_country_header_code')->firstOrFail();
+            $settings['footer'] = Setting::where('key', 'category_country_footer_code')->firstOrFail();
+        }
+
+        return view('visitor.home.country', [
             'announcements' => $announcements,
             'settings' => $settings,
             'country' => $country,
@@ -219,7 +224,7 @@ class HomeController extends Controller
     public function comment(CommentRequest $request, Announcement $announcement)
     {
         $announcement->masterComments()->create($request->validated());
-        return redirect()->route('announcement.show', [$announcement->id, $announcement->slug])->with('success', 'Ваш комментарий успешно добавлен.');
+        return redirect()->route('announcement.show', $announcement->slug)->with('success', 'Ваш комментарий успешно добавлен.');
     }
 
     public function reply(ReplyCommentRequest $request, Announcement $announcement, Comment $comment)
@@ -227,7 +232,7 @@ class HomeController extends Controller
         $validated = $request->validated();
         $validated['parent_id'] = $comment->id;
         $announcement->comments()->create($validated);
-        return redirect()->route('announcement.show', [$announcement->id, $announcement->slug])
+        return redirect()->route('announcement.show', $announcement->slug)
             ->with('success', 'Ваш ответ на комментарий '. $comment->name .' успешно добавлен!');
     }
 }

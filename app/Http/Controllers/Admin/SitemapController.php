@@ -75,7 +75,7 @@ class SitemapController extends Controller
 
         if ($countries->isNotEmpty()) {
             foreach ($countries as $country) {
-                $sitemap->add(Url::create(route('category', ['geo', $country->slug]))
+                $sitemap->add(Url::create(route('country', $country->slug))
                     ->setLastModificationDate(Carbon::today())
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                     ->setPriority(0.1)
@@ -83,7 +83,7 @@ class SitemapController extends Controller
 
                 if ($country->cities->isNotEmpty()) {
                     foreach ($country->cities as $city) {
-                        $sitemap->add(Url::create(route('category', ['geo', $country->slug, $city->slug]))
+                        $sitemap->add(Url::create(route('country', [$country->slug, $city->slug]))
                             ->setLastModificationDate(Carbon::today())
                             ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                             ->setPriority(0.1)
@@ -91,7 +91,7 @@ class SitemapController extends Controller
 
                         if ($city->status && $city->announcements()->exists()) {
                             foreach ($city->announcements as $announcement) {
-                                $sitemap->add(Url::create(route('announcement.show', [$announcement->id, $announcement->slug]))
+                                $sitemap->add(Url::create(route('announcement.show', $announcement->slug))
                                     ->setLastModificationDate(Carbon::today())
                                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                                     ->setPriority(0.1)

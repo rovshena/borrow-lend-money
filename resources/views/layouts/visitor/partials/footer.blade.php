@@ -19,7 +19,7 @@
                     <a class="nav-link-light px-2 mx-1" href="{{ route('contact') }}">Связаться с нами</a>
                     <a class="nav-link-light px-2 mx-1" href="{{ route('privacy') }}">Политика конфиденциальности</a>
                     <a class="nav-link-light px-2 mx-1" href="{{ route('terms') }}">Условия использования</a>
-{{--                    <a class="nav-link-light px-2 mx-1" href="{{ route('sitemap') }}">Карта сайта</a>--}}
+                    <a class="nav-link-light px-2 mx-1" target="_blank" href="{{ asset('sitemap.xml') }}">Карта сайта</a>
                 </div>
                 <div class="d-flex align-items-center">
                     <div class="ms-4 ps-lg-2 text-nowrap">

@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\Traits\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Announcement extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory;
 
     const TYPE_BORROW = 1;
     const TYPE_LEND = 2;
@@ -32,11 +31,6 @@ class Announcement extends Model
         }
 
         return '<span class="badge bg-faded-info fs-sm me-2">Дам деньги в долг</span>';
-    }
-
-    public function getSlugAttribute()
-    {
-        return $this->slug($this->title);
     }
 
     public function comments()

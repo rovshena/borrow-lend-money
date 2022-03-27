@@ -46,11 +46,10 @@ Route::post('/lend-money', [AnnouncementController::class, 'storeLendMoney'])->n
 Route::get('/reload-captcha', [CaptchaController::class, 'reloadCaptcha'])->name('reload-captcha');
 
 Route::get('/credit-calculator', [HomeController::class, 'creditCalculator'])->name('credit-calculator');
-Route::get('/category/{category}/{country?}/{city?}', [HomeController::class, 'category'])->name('category');
-
-Route::get('/announcements/{announcement}/{slug?}', [HomeController::class, 'show'])->name('announcement.show');
-Route::post('/announcements/{announcement}/comment', [HomeController::class, 'comment'])->name('announcement.comment');
-Route::post('/announcements/{announcement}/comment/{comment}/reply', [HomeController::class, 'reply'])->name('announcement.comment.reply');
+Route::get('/announcements/{category}', [HomeController::class, 'category'])->name('category');
+Route::get('/announcement/{announcement:slug}', [HomeController::class, 'show'])->name('announcement.show');
+Route::post('/announcement-comments/{announcement}/comment', [HomeController::class, 'comment'])->name('announcement.comment');
+Route::post('/announcement-comments/{announcement}/comment/{comment}/reply', [HomeController::class, 'reply'])->name('announcement.comment.reply');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
@@ -81,3 +80,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/generate-sitemap', SitemapController::class)->name('generate.sitemap');
     });
 });
+
+Route::get('/{country}/{city?}', [HomeController::class, 'country'])->name('country');

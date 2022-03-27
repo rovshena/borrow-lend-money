@@ -20,11 +20,5 @@
             </div>
         </div>
     </section>
-    <section class="container mb-5">
-        <div class="col-md-10 mx-md-auto mx-3 mt-sm-0 mt-5 py-sm-5 py-4 px-0 rounded-3 bg-light shadow-sm">
-            <div class="col-md-10 mx-md-auto mx-3 py-lg-4 px-0">
-                {!! $credit_calculator->value !!}
-            </div>
-        </div>
-    </section>
+    {!! $credit_calculator->value !!}
 @endsection

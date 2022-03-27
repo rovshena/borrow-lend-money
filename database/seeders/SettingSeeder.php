@@ -165,8 +165,8 @@ class SettingSeeder extends Seeder
             [
                 'key' => 'credit_calculator',
                 'description' => 'Страница кредитного калькулятора',
-                'value' => 'Страница кредитного калькулятора',
-                'type' => 'editor',
+                'value' => '',
+                'type' => 'code',
                 'created_at' => $now,
                 'updated_at' => $now
             ],
