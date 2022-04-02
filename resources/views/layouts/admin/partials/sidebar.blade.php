@@ -93,6 +93,12 @@
                             <span class="menu-text">{{ __('Объявления') }}</span>
                         </a>
                     </li>
+                    <li class="menu-item {{ Route::is('admin.comments.*') ? 'has-active' : '' }}">
+                        <a href="{{ route('admin.comments.index') }}" class="menu-link">
+                            <span class="menu-icon fas fa-comments"></span>
+                            <span class="menu-text">{{ __('Комментарии') }}</span>
+                        </a>
+                    </li>
                     <li class="menu-item">
                         <a href="javascript:void(0);" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="menu-link">
                             <span class="menu-icon fas fa-sign-out-alt"></span>

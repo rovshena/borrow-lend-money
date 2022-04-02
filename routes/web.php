@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AnnouncementController as AdminAnnouncementController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\InquiryController;
 use App\Http\Controllers\Admin\PageController;
@@ -77,6 +78,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('countries', CountryController::class)->except(['show']);
         Route::resource('cities', CityController::class)->except(['show']);
         Route::resource('announcements', AdminAnnouncementController::class)->except(['create', 'store', 'destroy', 'show']);
+        Route::resource('comments', CommentController::class)->only(['index', 'destroy', 'show']);
         Route::get('/generate-sitemap', SitemapController::class)->name('generate.sitemap');
     });
 });
