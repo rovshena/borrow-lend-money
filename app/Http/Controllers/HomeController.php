@@ -79,18 +79,14 @@ class HomeController extends Controller
 
         $all = ($countries->merge($cities))->merge($title);
 
-        $all->map(function ($item) use ($keyword) {
-            if (mb_eregi($keyword, $item['title'], $matches)) {
-                $item['title'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['title']);
-            }
-            if (mb_eregi($keyword, $item['city'], $matches)) {
-                $item['city'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['city']);
-            }
-            if (mb_eregi($keyword, $item['country'], $matches)) {
-                $item['country'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['country']);
-            }
-            return $item;
-        });
+        if (extension_loaded('mbstring')) {
+            $all->map(function ($item) use ($keyword) {
+                $item['title'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">\\0</span>', $item['title']);
+                $item['city'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">\\0</span>', $item['city']);
+                $item['country'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">\\0</span>', $item['country']);
+                return $item;
+            });
+        }
 
         return $all;
     }
@@ -104,12 +100,12 @@ class HomeController extends Controller
             ->orderBy('name')
             ->get(['id', 'name', 'slug']);
 
-        $cities->map(function ($item) use ($keyword) {
-            if (mb_eregi($keyword, $item['name'], $matches)) {
-                $item['name'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">'. $matches[0] .'</span>', $item['name']);
-            }
-            return $item;
-        });
+        if (extension_loaded('mbstring')) {
+            $cities->map(function ($item) use ($keyword) {
+                $item['name'] = mb_eregi_replace($keyword, '<span class="bg-faded-primary">\\0</span>', $item['name']);
+                return $item;
+            });
+        }
 
         return $cities;
     }
