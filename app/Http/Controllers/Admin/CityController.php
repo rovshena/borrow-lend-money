@@ -44,7 +44,7 @@ class CityController extends Controller
     public function store(CityRequest $request)
     {
         City::create($request->validated());
-        return redirect()->route('admin.cities.index')->with('success', __('Новый город успешно добавлен.'));
+        return redirect()->back()->with('success', __('Новый город успешно добавлен.'));
     }
 
     public function edit(City $city)
@@ -58,7 +58,7 @@ class CityController extends Controller
     public function update(CityRequest $request, City $city)
     {
         if ($city->update($request->validated())) {
-            return redirect()->route('admin.cities.index')->with('success', __('Город успешно обновлен.'));
+            return redirect()->back()->with('success', __('Город успешно обновлен.'));
         } else {
             return back()->with('error', __('Не могу обновить город.'));
         }

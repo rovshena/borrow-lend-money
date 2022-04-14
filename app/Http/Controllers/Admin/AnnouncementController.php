@@ -54,7 +54,7 @@ class AnnouncementController extends Controller
     public function update(AnnouncementRequest $request, Announcement $announcement)
     {
         if ($announcement->update($request->validated())) {
-            return redirect()->route('admin.announcements.index')->with('success', 'Объявление успешно обновлено!');
+            return redirect()->back()->with('success', 'Объявление успешно обновлено!');
         } else {
             return back()->with('error', 'Не могу обновить объявление!');
         }

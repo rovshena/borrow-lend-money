@@ -15,7 +15,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $settings = Setting::whereIn('key', ['home_page_title', 'home_page_excerpt'])->get();
+        $settings = Setting::enabled()->whereIn('key', ['home_page_title', 'home_page_excerpt'])->get();
         $cities = City::select([
             'cities.id as city_id',
             'countries.id as country_id',
@@ -125,8 +125,8 @@ class HomeController extends Controller
                 ->orderBy('created_at', 'asc')
                 ->paginate(10, ['*'])
                 ->onEachSide(2),
-            'header' => Setting::where('key', 'announcement_header_code')->firstOrFail(),
-            'footer' => Setting::where('key', 'announcement_footer_code')->firstOrFail(),
+            'header' => Setting::enabled()->where('key', 'announcement_header_code')->first(),
+            'footer' => Setting::enabled()->where('key', 'announcement_footer_code')->first(),
         ]);
     }
 
@@ -145,9 +145,9 @@ class HomeController extends Controller
                     ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
                     ->paginate(12, ['*'])
                     ->onEachSide(2);
-                $settings['title'] = Setting::where('key', 'borrow_money_title')->firstOrFail();
-                $settings['header'] = Setting::where('key', 'borrow_money_header_code')->firstOrFail();
-                $settings['footer'] = Setting::where('key', 'borrow_money_footer_code')->firstOrFail();
+                $settings['title'] = Setting::enabled()->where('key', 'borrow_money_title')->first();
+                $settings['header'] = Setting::enabled()->where('key', 'borrow_money_header_code')->first();
+                $settings['footer'] = Setting::enabled()->where('key', 'borrow_money_footer_code')->first();
             } else {
                 $announcements = $query
                     ->whereRelation('country', 'status', 1)
@@ -156,9 +156,9 @@ class HomeController extends Controller
                     ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
                     ->paginate(12, ['*'])
                     ->onEachSide(2);
-                $settings['title'] = Setting::where('key', 'lend_money_title')->firstOrFail();
-                $settings['header'] = Setting::where('key', 'lend_money_header_code')->firstOrFail();
-                $settings['footer'] = Setting::where('key', 'lend_money_footer_code')->firstOrFail();
+                $settings['title'] = Setting::enabled()->where('key', 'lend_money_title')->first();
+                $settings['header'] = Setting::enabled()->where('key', 'lend_money_header_code')->first();
+                $settings['footer'] = Setting::enabled()->where('key', 'lend_money_footer_code')->first();
             }
         } else {
             return abort(404);
@@ -183,25 +183,33 @@ class HomeController extends Controller
                 ->orderBy('is_vip', 'desc')->orderBy('created_at', 'desc')
                 ->paginate(12, ['*'])
                 ->onEachSide(2);
-            $settings['title'] = Setting::where('key', 'category_city_title')->firstOrFail();
-            $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
-            $settings['title']->value = str_replace('{{city}}', $city->name, $settings['title']->value);
-            $settings['content'] = Setting::where('key', 'category_city_content')->firstOrFail();
-            $settings['content']->value = str_replace('{{country}}', $country->name, $settings['content']->value);
-            $settings['content']->value = str_replace('{{city}}', $city->name, $settings['content']->value);
-            $settings['header'] = Setting::where('key', 'category_city_header_code')->firstOrFail();
-            $settings['footer'] = Setting::where('key', 'category_city_footer_code')->firstOrFail();
+            $settings['title'] = Setting::enabled()->where('key', 'category_city_title')->first();
+            if (isset($settings['title']) && !is_null($settings['title'])) {
+                $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
+                $settings['title']->value = str_replace('{{city}}', $city->name, $settings['title']->value);
+            }
+            $settings['content'] = Setting::enabled()->where('key', 'category_city_content')->first();
+            if (isset($settings['content']) && !is_null($settings['content'])) {
+                $settings['content']->value = str_replace('{{country}}', $country->name, $settings['content']->value);
+                $settings['content']->value = str_replace('{{city}}', $city->name, $settings['content']->value);
+            }
+            $settings['header'] = Setting::enabled()->where('key', 'category_city_header_code')->first();
+            $settings['footer'] = Setting::enabled()->where('key', 'category_city_footer_code')->first();
         } else {
             $announcements = $country->cities()
                 ->enabled()
                 ->paginate(24, ['*'])
                 ->onEachSide(2);
-            $settings['title'] = Setting::where('key', 'category_country_title')->firstOrFail();
-            $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
-            $settings['content'] = Setting::where('key', 'category_country_content')->firstOrFail();
-            $settings['content']->value = str_replace('{{country}}', $country->name, $settings['content']->value);
-            $settings['header'] = Setting::where('key', 'category_country_header_code')->firstOrFail();
-            $settings['footer'] = Setting::where('key', 'category_country_footer_code')->firstOrFail();
+            $settings['title'] = Setting::enabled()->where('key', 'category_country_title')->first();
+            if (isset($settings['title']) && !is_null($settings['title'])) {
+                $settings['title']->value = str_replace('{{country}}', $country->name, $settings['title']->value);
+            }
+            $settings['content'] = Setting::enabled()->where('key', 'category_country_content')->first();
+            if (isset($settings['content']) && !is_null($settings['content'])) {
+                $settings['content']->value = str_replace('{{country}}', $country->name, $settings['content']->value);
+            }
+            $settings['header'] = Setting::enabled()->where('key', 'category_country_header_code')->first();
+            $settings['footer'] = Setting::enabled()->where('key', 'category_country_footer_code')->first();
         }
 
         return view('visitor.home.country', [
@@ -213,7 +221,7 @@ class HomeController extends Controller
 
     public function creditCalculator()
     {
-        $credit_calculator = Setting::where('key', 'credit_calculator')->firstOrFail();
+        $credit_calculator = Setting::enabled()->where('key', 'credit_calculator')->firstOrFail();
         return view('visitor.home.credit-calculator', compact('credit_calculator'));
     }
 

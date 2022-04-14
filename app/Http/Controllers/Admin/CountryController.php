@@ -38,7 +38,7 @@ class CountryController extends Controller
     public function store(CountryRequest $request)
     {
         Country::create($request->validated());
-        return redirect()->route('admin.countries.index')->with('success', __('Новая страна успешно добавлена.'));
+        return redirect()->back()->with('success', __('Новая страна успешно добавлена.'));
     }
 
     public function edit(Country $country)
@@ -49,7 +49,7 @@ class CountryController extends Controller
     public function update(CountryRequest $request, Country $country)
     {
         if ($country->update($request->validated())) {
-            return redirect()->route('admin.countries.index')->with('success', __('Страна успешно обновлена.'));
+            return redirect()->back()->with('success', __('Страна успешно обновлена.'));
         } else {
             return back()->with('error', __('Не могу обновить страну.'));
         }

@@ -13,20 +13,21 @@ class SiteController extends Controller
 {
     public function privacy()
     {
-        $policy = Setting::where('key', 'privacy_policy')->firstOrFail();
+        $policy = Setting::enabled()->where('key', 'privacy_policy')->firstOrFail();
         return view('visitor.site.privacy', compact('policy'));
     }
 
     public function terms()
     {
-        $terms = Setting::where('key', 'terms_of_use')->firstOrFail();
+        $terms = Setting::enabled()->where('key', 'terms_of_use')->firstOrFail();
         return view('visitor.site.terms', compact('terms'));
     }
 
     public function about()
     {
-        $settings = Setting::whereIn('key', ['about_us', 'about_us_excerpt'])->get();
-        return view('visitor.site.about', compact('settings'));
+        $about_us = Setting::enabled()->where('key', 'about_us')->firstOrFail();
+        $about_us_excerpt = Setting::enabled()->where('key', 'about_us_excerpt')->first();
+        return view('visitor.site.about', compact('about_us', 'about_us_excerpt'));
     }
 
     public function contact(InquiryRequest $request)

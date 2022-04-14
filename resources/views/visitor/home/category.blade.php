@@ -1,26 +1,30 @@
 @extends('layouts.visitor.app')
 
-@section('title', $settings['title']->value)
+@section('title', $settings['title']->value ?? 'Возьму деньги в долг')
 
-@section('meta.description', $settings['title']->value)
+@section('meta.description', $settings['title']->value ?? 'Возьму деньги в долг')
 
-@section('meta.keywords', $settings['title']->value)
+@section('meta.keywords', $settings['title']->value ?? 'Возьму деньги в долг')
 
-@section('og.title', $settings['title']->value)
+@section('og.title', $settings['title']->value ?? 'Возьму деньги в долг')
 
-@section('og.description', $settings['title']->value)
+@section('og.description', $settings['title']->value ?? 'Возьму деньги в долг')
 
 @section('content')
     <section class="pt-5">
         <div class="container pt-5">
             <div class="mx-auto text-center" style="max-width: 856px;">
+                @if(isset($settings['title']) && !is_null($settings['title']))
                 <h1 class="display-6 mb-4 pb-lg-2">
                     {{ $settings['title']->value }}
                 </h1>
+                @endif
             </div>
         </div>
     </section>
+    @if(isset($settings['header']) && !is_null($settings['header']))
     {!! $settings['header']->value !!}
+    @endif
     <section class="container">
         <div class="row g-4 mb-3 pb-3 justify-content-center">
             @forelse($announcements as $announcement)
@@ -41,7 +45,7 @@
                             <p class="mb-2 fs-sm text-muted">
                                 {{ Str::limit(strip_tags($announcement->content), 150) }}
                             </p>
-                            @if($announcement->type === \App\Models\Announcement::TYPE_LEND)
+                            @if($announcement->type === \App\Models\Announcement::TYPE_LEND && filled($announcement->company))
                                 <div class="fs-sm">
                                     <i class="fi-building mt-n1 me-2"></i>
                                     {{ $announcement->company }}
@@ -77,5 +81,7 @@
             {{ $announcements->links() }}
         </div>
     </section>
-    {!! $settings['footer']->value !!}
+    @if(isset($settings['footer']) && !is_null($settings['footer']))
+        {!! $settings['footer']->value !!}
+    @endif
 @endsection

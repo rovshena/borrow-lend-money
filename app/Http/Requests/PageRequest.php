@@ -32,11 +32,11 @@ class PageRequest extends FormRequest
         foreach ($settings as $setting) {
             if ($setting->type == 'text') {
                 $rule = [
-                    $setting->key => 'required|string|max:250',
+                    $setting->key => 'nullable|string|max:250',
                 ];
             } elseif ($setting->type == 'textarea' || $setting->type == 'editor') {
                 $rule = [
-                    $setting->key => 'required|string',
+                    $setting->key => 'nullable|string',
                 ];
             } else {
                 $rule = [

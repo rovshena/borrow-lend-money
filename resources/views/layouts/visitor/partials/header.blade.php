@@ -39,11 +39,13 @@
                                 <i class="fas fa-handshake fa-fw fs-base opacity-50 me-2"></i>Дать деньги
                             </a>
                         </li>
+                        @if(Arr::exists($shared_settings, 'credit_calculator'))
                         <li>
                             <a class="dropdown-item" href="{{ route('credit-calculator') }}">
                                 <i class="fas fa-calculator fa-fw fs-base opacity-50 me-2"></i>Кредит калькулятор
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li>
                 @if(count($countries))

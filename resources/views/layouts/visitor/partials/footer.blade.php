@@ -15,10 +15,16 @@
             </p>
             <div class="d-flex flex-lg-row flex-column align-items-center order-lg-2 order-1 ms-lg-4 mb-lg-0 mb-4">
                 <div class="d-flex flex-wrap fs-sm mb-lg-0 mb-4 pe-lg-4">
+                    @if(Arr::exists($shared_settings, 'about_us'))
                     <a class="nav-link-light px-2 mx-1" href="{{ route('about') }}">О нас</a>
+                    @endif
                     <a class="nav-link-light px-2 mx-1" href="{{ route('contact') }}">Связаться с нами</a>
-                    <a class="nav-link-light px-2 mx-1" href="{{ route('privacy') }}">Политика конфиденциальности</a>
+                    @if(Arr::exists($shared_settings, 'privacy_policy'))
+                        <a class="nav-link-light px-2 mx-1" href="{{ route('privacy') }}">Политика конфиденциальности</a>
+                    @endif
+                    @if(Arr::exists($shared_settings, 'terms_of_use'))
                     <a class="nav-link-light px-2 mx-1" href="{{ route('terms') }}">Условия использования</a>
+                    @endif
                     <a class="nav-link-light px-2 mx-1" target="_blank" href="{{ asset('sitemap.xml') }}">Карта сайта</a>
                 </div>
                 <div class="d-flex align-items-center">

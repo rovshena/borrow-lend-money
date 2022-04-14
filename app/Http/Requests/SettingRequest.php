@@ -30,19 +30,19 @@ class SettingRequest extends FormRequest
 
         if ($this->setting->type == 'text') {
             $rules = array_merge($rules, [
-                'value' => 'required|string|max:250',
+                'value' => 'nullable|string|max:250',
             ]);
         }
 
         if ($this->setting->type == 'textarea' || $this->setting->type == 'editor' || $this->setting->type == 'code') {
             $rules = array_merge($rules, [
-                'value' => 'required|string',
+                'value' => 'nullable|string',
             ]);
         }
 
         if ($this->setting->type == 'file' && $this->setting->value === null) {
             $rules = array_merge($rules, [
-                'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp|max:15360'
+                'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:15360'
             ]);
         }
 

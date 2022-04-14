@@ -13,6 +13,7 @@
             serverSide: true,
             autoWidth: false,
             deferRender: true,
+            stateSave: true,
             search: {
                 return: true,
             },

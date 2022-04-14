@@ -48,6 +48,6 @@ class PageController extends Controller
             ]);
         }
 
-        return redirect()->route('admin.pages.index')->with('success', 'Настройка успешно обновлена!');
+        return redirect()->back()->with('success', 'Настройка успешно обновлена!');
     }
 }

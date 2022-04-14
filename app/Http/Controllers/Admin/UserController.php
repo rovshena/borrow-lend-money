@@ -39,7 +39,7 @@ class UserController extends Controller
         $validated['password'] = Hash::make($request->password);
         User::create($validated);
 
-        return redirect()->route('admin.users.index')->with('success', 'Пользователь успешно создан!');
+        return redirect()->back()->with('success', 'Пользователь успешно создан!');
     }
 
     public function edit(User $user)
@@ -65,7 +65,7 @@ class UserController extends Controller
         }
 
         if ($user->save()) {
-            return redirect()->route('admin.users.index')->with('success', 'Пользователь успешно обновлен!');
+            return redirect()->back()->with('success', 'Пользователь успешно обновлен!');
         } else {
             return back()->with('error', 'Не могу обновить данные пользователя!');
         }

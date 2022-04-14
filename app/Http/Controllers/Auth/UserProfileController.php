@@ -20,7 +20,7 @@ class UserProfileController extends Controller
         $user->password = Hash::make($request->password);
 
         if ($user->save()) {
-            return redirect()->route('admin.index')->with('success', 'Ваш пароль был успешно изменен!');
+            return redirect()->route('admin.change-password')->with('success', 'Ваш пароль был успешно изменен!');
         } else {
             return back()->with('error', 'Не могу изменить пароль!');
         }

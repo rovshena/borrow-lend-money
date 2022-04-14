@@ -22,15 +22,13 @@ class SettingComposer
                 'vk_link',
                 'telegram_link',
                 'messenger_link',
+                'privacy_policy',
+                'terms_of_use',
+                'about_us',
+                'credit_calculator',
             ])
-            ->get(['key', 'value']);
+            ->pluck('value', 'key');
 
-        $settings = [];
-
-        foreach ($variables as $variable) {
-            $settings[$variable->key] = $variable->value;
-        }
-
-        $view->with('shared_settings', $settings);
+        $view->with('shared_settings', $variables);
     }
 }

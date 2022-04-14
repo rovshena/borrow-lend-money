@@ -15,12 +15,16 @@
         <section class="pt-5 pb-3">
             <div class="container pt-5 pb-3">
                 <div class="mx-auto text-center" style="max-width: 856px;">
+                    @if($settings->where('key', 'home_page_title')->isNotEmpty())
                     <h1 class="mb-2 pb-1">
                         {{ $settings->where('key', 'home_page_title')->first()->value }}
                     </h1>
+                    @endif
+                    @if($settings->where('key', 'home_page_excerpt')->isNotEmpty())
                     <p class="mb-4">
                         {{ $settings->where('key', 'home_page_excerpt')->first()->value }}
                     </p>
+                    @endif
                     <h6 class="mb-2 text-left">Поиск по обьявлениям городов</h6>
                     <div class="form-group form-group-lg rounded-pill">
                         <input

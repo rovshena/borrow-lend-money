@@ -43,7 +43,7 @@ class SettingController extends Controller
     public function update(SettingRequest $request, Setting $setting)
     {
         if ($setting->update($request->validated())) {
-            return redirect()->route('admin.settings.index')->with('success', 'Настройка успешно обновлена!');
+            return redirect()->back()->with('success', 'Настройка успешно обновлена!');
         } else {
             return back()->with('error', 'Не могу обновить настройку!');
         }

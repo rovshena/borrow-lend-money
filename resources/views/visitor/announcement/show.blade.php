@@ -11,7 +11,9 @@
 @section('og.description', $announcement->title)
 
 @section('content')
-    {!! $header->value !!}
+    @if(isset($header) && !is_null($header))
+        {!! $header->value !!}
+    @endif
     <div class="container mt-5 mb-md-4 py-5">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
@@ -52,14 +54,18 @@
                     <div class="d-flex align-items-center text-body text-decoration-none">
                         <img class="rounded-circle" src="{{ asset('assets/images/avatars/placeholder.jpg') }}" width="70" alt="{{ $announcement->name }}">
                         <div class="ps-3">
-                            <h2 class="h6 mb-1">{{ $announcement->name }}</h2>
+                            <h2 class="h6 mb-1">{{ filled($announcement->name) ? $announcement->name : 'Аноним' }}</h2>
+                            @if(filled($announcement->phone))
                             <span class="fs-sm me-2">
                                 <i class="fi-phone me-2"></i>{{ $announcement->phone }}
                             </span>
+                            @endif
+                            @if(filled($announcement->email))
                             <span class="fs-sm me-2">
                                 <i class="fi-mail me-2"></i>{{ $announcement->email }}
                             </span>
-                            @if($announcement->type === \App\Models\Announcement::TYPE_LEND)
+                            @endif
+                            @if($announcement->type === \App\Models\Announcement::TYPE_LEND && filled($announcement->company))
                                 <span class="fs-sm me-2">
                                     <i class="fi-building me-2"></i>{{ $announcement->company }}
                                 </span>
@@ -257,8 +263,9 @@
             </div>
         </div>
     </div>
-
-    {!! $footer->value !!}
+    @if(isset($footer) && !is_null($footer))
+        {!! $footer->value !!}
+    @endif
 @endsection
 
 @push('page.js')

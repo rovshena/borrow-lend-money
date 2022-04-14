@@ -1,26 +1,29 @@
 @extends('layouts.visitor.app')
 
-@section('title', $settings['title']->value)
+@section('title', $settings['title']->value ?? 'Деньги в долг')
 
-@section('meta.description', $settings['title']->value)
+@section('meta.description', $settings['title']->value ?? 'Деньги в долг')
 
-@section('meta.keywords', $settings['title']->value)
+@section('meta.keywords', $settings['title']->value ?? 'Деньги в долг')
 
-@section('og.title', $settings['title']->value)
+@section('og.title', $settings['title']->value ?? 'Деньги в долг')
 
-@section('og.description', $settings['title']->value)
+@section('og.description', $settings['title']->value ?? 'Деньги в долг')
 
 @section('content')
     <div id="app">
         <section class="pt-5">
             <div class="container pt-5">
                 <div class="mx-auto text-center" style="max-width: 856px;">
+                    @if(isset($settings['title']) && !is_null($settings['title']))
                     <h1 class="display-6 mb-4 pb-lg-2">
                         {{ $settings['title']->value }}
                     </h1>
+                    @endif
                 </div>
             </div>
         </section>
+        @if(isset($settings['content']) && !is_null($settings['content']))
         <section class="container mb-5">
             <div class="col-md-10 mx-md-auto mx-3 mt-sm-0 mt-5 py-sm-5 py-4 px-0 rounded-3 bg-light shadow-sm">
                 <div class="col-md-10 mx-md-auto mx-3 py-lg-4 px-0">
@@ -28,7 +31,10 @@
                 </div>
             </div>
         </section>
-        {!! $settings['header']->value !!}
+        @endif
+        @if(isset($settings['header']) && !is_null($settings['header']))
+            {!! $settings['header']->value !!}
+        @endif
         @if(!request()->route()->hasParameter('city'))
             <section class="pb-5">
                 <div class="container">
@@ -108,7 +114,7 @@
                                     <p class="mb-2 fs-sm text-muted">
                                         {{ Str::limit(strip_tags($announcement->content), 150) }}
                                     </p>
-                                    @if($announcement->type === \App\Models\Announcement::TYPE_LEND)
+                                    @if($announcement->type === \App\Models\Announcement::TYPE_LEND && filled($announcement->company))
                                         <div class="fs-sm">
                                             <i class="fi-building mt-n1 me-2"></i>
                                             {{ $announcement->company }}
@@ -145,7 +151,9 @@
                 </div>
             </section>
         @endif
-        {!! $settings['footer']->value !!}
+        @if(isset($settings['footer']) && !is_null($settings['footer']))
+            {!! $settings['footer']->value !!}
+        @endif
     </div>
 @endsection
 
