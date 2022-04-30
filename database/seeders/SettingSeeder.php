@@ -306,6 +306,62 @@ class SettingSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now
             ],
+            [
+                'key' => 'about_us_title',
+                'description' => 'Заголовок',
+                'value' => 'О нас',
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'privacy_policy_title',
+                'description' => 'Заголовок',
+                'value' => 'Политика в отношении обработки персональных данных',
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'terms_of_use_title',
+                'description' => 'Заголовок',
+                'value' => 'Условия использования',
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'contact_us_title',
+                'description' => 'Заголовок',
+                'value' => 'Напишите нам!',
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'contact_us_excerpt',
+                'description' => 'Краткая выдержка',
+                'value' => 'Заполните форму, и наша команда постарается связаться с вами в течение 24 часов.',
+                'type' => 'textarea',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'lend_money_form_title',
+                'description' => 'Заголовок',
+                'value' => 'Подать бесплатное объявление (Дать займ)',
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
+            [
+                'key' => 'borrow_money_form_title',
+                'description' => 'Заголовок',
+                'value' => 'Подать бесплатное объявление (Взять займ)',
+                'type' => 'text',
+                'created_at' => $now,
+                'updated_at' => $now
+            ],
         ]);
     }
 }

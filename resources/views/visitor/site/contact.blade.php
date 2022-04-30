@@ -15,9 +15,11 @@
         <div class="row align-items-center gy-4">
             <div class="col-md-6">
                 <div class="mx-md-0 mx-auto mb-md-5 mb-4 pb-md-4 text-center">
-                    <h1 class="mb-4">Напишите нам!</h1>
+                    <h1 class="mb-4">
+                        {{ $heading }}
+                    </h1>
                     <p class="mb-0 fs-lg text-muted">
-                        Заполните форму, и наша команда постарается связаться с вами в течение 24 часов.
+                        {{ $contact_us_excerpt }}
                     </p>
                 </div>
                 <img class="d-block mx-auto" style="max-height: 300px;" src="{{ asset('assets/images/illustrations/contact.gif') }}" alt="Illustration">

@@ -37,7 +37,7 @@ Route::get('locale/{locale}', LocalizationController::class)->name('locale');
 Route::get('/privacy-policy', [SiteController::class, 'privacy'])->name('privacy');
 Route::get('/terms-of-use', [SiteController::class, 'terms'])->name('terms');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
-Route::view('/contact', 'visitor.site.contact')->name('contact');
+Route::get('/contact', [SiteController::class, 'showContactUsForm'])->name('contact');
 Route::put('/contact', [SiteController::class, 'contact'])->name('contact.post')->middleware('throttle:contact');
 Route::get('/countries/{country}/cities', [CountryController::class, 'cities'])->name('country.cities');
 Route::get('/borrow-money', [AnnouncementController::class, 'showBorrowMoneyForm'])->name('borrow.money');

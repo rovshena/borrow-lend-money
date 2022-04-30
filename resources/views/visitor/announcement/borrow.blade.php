@@ -16,7 +16,7 @@
             <div class="col-lg-11 col-xl-10 mt-5">
                 <div class="text-center pb-4 mb-3 mt-2">
                     <h1 class="h2 mb-4">
-                        Подать бесплатное объявление (Взять деньги)
+                        {{ $heading }}
                     </h1>
                 </div>
                 <div class="bg-faded-success rounded-3 p-4 p-md-5 mb-3">

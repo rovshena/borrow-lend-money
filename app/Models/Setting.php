@@ -64,5 +64,20 @@ class Setting extends Model
             'key' => 'announcement',
             'name' => 'Страница объявлений'
         ],
+        10 => [
+            'id' => 11,
+            'key' => 'contact_us',
+            'name' => 'Связаться с нами'
+        ],
+        11 => [
+            'id' => 12,
+            'key' => 'lend_money_form',
+            'name' => 'Форм: Дать займ'
+        ],
+        12 => [
+            'id' => 13,
+            'key' => 'borrow_money_form',
+            'name' => 'Форм: Взять займ'
+        ],
     ];
 }

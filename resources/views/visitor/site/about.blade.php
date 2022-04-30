@@ -15,7 +15,7 @@
         <div class="container pt-5">
             <div class="mb-lg-5 mx-auto text-center" style="max-width: 856px;">
                 <h1 class="display-6 mb-4 pb-lg-2">
-                    О нас
+                    {{ $heading }}
                 </h1>
                 @if(!empty($about_us_excerpt))
                 <p class="lead">

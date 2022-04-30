@@ -15,7 +15,7 @@
         <div class="container pt-5">
             <div class="mx-auto text-center" style="max-width: 856px;">
                 <h1 class="display-6 mb-4 pb-lg-2">
-                    Политика конфиденциальности
+                    {{ $heading }}
                 </h1>
             </div>
         </div>
